@@ -301,16 +301,23 @@
     tick();
   })();
 
-  /* ---------- hide open replay once past hero; reveal nav if scrolled past opening ---------- */
+  /* ---------- hide open replay once past hero; nav signup only after hero form leaves ---------- */
   (function () {
     var btn = $('#btnReplay');
     var open = $('#open');
     var nav = $('#nav');
+    var heroForm = $('#openForm');
     if (!open) return;
     function sync() {
       var r = open.getBoundingClientRect();
       var past = r.bottom < navH() + 8;
       root.toggleAttribute('data-past-open', past);
+      var signupInView = false;
+      if (heroForm) {
+        var fr = heroForm.getBoundingClientRect();
+        signupInView = fr.width > 0 && fr.bottom > navH() + 4 && fr.top < window.innerHeight - 8;
+      }
+      root.toggleAttribute('data-nav-signup', !signupInView);
       if (past) {
         if (btn) btn.hidden = true;
         root.classList.remove('nav-away');

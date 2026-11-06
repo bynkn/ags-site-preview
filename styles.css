@@ -101,6 +101,8 @@ html[data-shot] .nav{
 .nav-link{font-size:14px;color:var(--mu);text-decoration:none;transition:color .15s}
 .nav-link:hover{color:var(--tx)}
 .btn-sm{font-size:14px;padding:8px 14px;height:36px}
+a.nav-signup{display:none}
+html[data-nav-signup] a.nav-signup{display:inline-flex}
 .brand-dot{
   width:8px;height:8px;border-radius:50%;
   background:var(--dot);flex:none;
@@ -114,14 +116,15 @@ html.js:not(.reduced) .brand-dot{animation:pip 2.6s ease-out infinite}
 }
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .replay{
-  appearance:none;border:1px solid var(--ln);
-  background:transparent;color:var(--mu);
-  font-family:var(--sans);font-size:12px;font-weight:500;
-  letter-spacing:.04em;text-transform:uppercase;
-  padding:8px 14px;border-radius:999px;cursor:pointer;
+  position:absolute;left:clamp(16px,2.2vw,28px);bottom:8px;z-index:8;
+  appearance:none;border:1px solid color-mix(in srgb,var(--ln2) 70%,transparent);
+  background:color-mix(in srgb,var(--bg) 42%,transparent);color:var(--mu);
+  font-family:var(--sans);font-size:11px;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;
+  padding:6px 10px;border-radius:999px;cursor:pointer;
   transition:color .2s,border-color .2s,background .2s;
 }
-.replay:hover{color:var(--tx);border-color:var(--mu2);background:var(--bg2)}
+.replay:hover{color:var(--tx);border-color:var(--mu2);background:color-mix(in srgb,var(--bg) 72%,transparent)}
 .nav-r .btn-sm{white-space:nowrap;flex:none}
 @media (max-width:760px){
   .brand .tag{display:none}
@@ -130,10 +133,13 @@ html.js:not(.reduced) .brand-dot{animation:pip 2.6s ease-out infinite}
   .brand{font-size:14px;gap:10px}
   .nav-r{gap:10px}
 }
+@media (max-width:760px){
+  .open .replay{left:auto;right:14px;bottom:auto;top:calc(var(--nav) + 8px)}
+}
 @media (max-width:400px){
   .nav-r{gap:8px}
   .nav-r .btn-sm{padding:8px 10px;font-size:13px}
-  .replay{padding:8px 10px;font-size:11px}
+  .replay{padding:5px 8px;font-size:10px}
 }
 
 /* ——— shared section chrome ——— */
@@ -382,7 +388,7 @@ html.js:not(.reduced) .brand-dot{animation:pip 2.6s ease-out infinite}
   transition:opacity 1s var(--ease-out),transform 1.15s var(--ease-out);
 }
 .open-stage.is-land .open-land{
-  transform:translate(-50%,-52%);
+  transform:translate(-50%,-66%);
   transition:transform .9s var(--ease-out);
 }
 .after-hook{
@@ -443,7 +449,7 @@ html.reduced:not([data-beat]) .lede{opacity:0;visibility:hidden}
 html.reduced:not([data-beat]) .hook{opacity:1;transform:translateY(0) scale(1)}
 html.reduced:not([data-beat]) .after-hook{opacity:1;transform:none;pointer-events:auto}
 html.reduced:not([data-beat]) .open-stage.is-land .open-land,
-html.reduced:not([data-beat]) .open-land{transform:translate(-50%,-52%)}
+html.reduced:not([data-beat]) .open-land{transform:translate(-50%,-66%)}
 html.reduced:not([data-past-open]) .replay{display:inline-flex !important}
 
 html[data-beat="hook"] .replay,
@@ -499,7 +505,7 @@ html[data-beat="after"] .pay-bad{opacity:.62;transform:translate(-50%,-40%) tran
 html[data-beat="after"] .lede{opacity:0;visibility:hidden}
 html[data-beat="after"] .hook{opacity:1;transform:translateY(0) scale(1);visibility:visible}
 html[data-beat="after"] .after-hook{opacity:1;transform:none;pointer-events:auto;visibility:visible}
-html[data-beat="after"] .open-land{transform:translate(-50%,-52%)}
+html[data-beat="after"] .open-land{transform:translate(-50%,-66%)}
 
 @media (min-width:521px){
   .pay[data-i="0"]{--x:22%; --y:11%}
@@ -545,25 +551,34 @@ html[data-beat="after"] .open-land{transform:translate(-50%,-52%)}
   html[data-beat="after"] .pay[data-i="8"]{--x:50% !important; --y:6% !important}
   .open-stage.is-hook .pay[data-i="9"],
   html[data-beat="hook"] .pay[data-i="9"],
-  html[data-beat="after"] .pay[data-i="9"]{--x:14% !important; --y:18% !important}
+  html[data-beat="after"] .pay[data-i="9"]{--x:15% !important; --y:54% !important}
   .open-stage.is-hook .pay[data-i="10"],
   html[data-beat="hook"] .pay[data-i="10"],
-  html[data-beat="after"] .pay[data-i="10"]{--x:86% !important; --y:20% !important}
+  html[data-beat="after"] .pay[data-i="10"]{--x:85% !important; --y:54% !important}
   .open-stage.is-hook .pay[data-i="11"],
   html[data-beat="hook"] .pay[data-i="11"],
-  html[data-beat="after"] .pay[data-i="11"]{--x:50% !important; --y:78% !important}
+  html[data-beat="after"] .pay[data-i="11"]{
+    --x:50% !important;top:auto !important;bottom:108px !important;
+    transform:translate(-50%,0) !important;
+  }
+  .open-stage:has(.hook.is-in) .pay[data-i="4"]{
+    opacity:0 !important;visibility:hidden;
+  }
 }
 @media (min-width:521px) and (max-width:900px){
   .pay-bad{min-width:min(240px,40vw)}
   .open-stage.is-hook .pay[data-i="9"],
   html[data-beat="hook"] .pay[data-i="9"],
-  html[data-beat="after"] .pay[data-i="9"]{--x:20% !important; --y:16% !important}
+  html[data-beat="after"] .pay[data-i="9"]{--x:18% !important; --y:56% !important}
   .open-stage.is-hook .pay[data-i="10"],
   html[data-beat="hook"] .pay[data-i="10"],
-  html[data-beat="after"] .pay[data-i="10"]{--x:80% !important; --y:18% !important}
+  html[data-beat="after"] .pay[data-i="10"]{--x:82% !important; --y:56% !important}
   .open-stage.is-hook .pay[data-i="11"],
   html[data-beat="hook"] .pay[data-i="11"],
-  html[data-beat="after"] .pay[data-i="11"]{--x:50% !important; --y:76% !important}
+  html[data-beat="after"] .pay[data-i="11"]{
+    --x:50% !important;top:auto !important;bottom:100px !important;
+    transform:translate(-50%,0) !important;
+  }
 }
 @media (max-width:520px){
   .brand-name{font-size:12px}
@@ -587,7 +602,15 @@ html[data-beat="after"] .open-land{transform:translate(-50%,-52%)}
   .pay[data-i="9"],
   .pay[data-i="10"]{opacity:0 !important;pointer-events:none;visibility:hidden}
   .pay[data-i="8"]{--x:50% !important; --y:48% !important}
-  .pay[data-i="11"]{--x:50% !important; --y:74% !important;min-width:min(280px,86vw)}
+  .pay[data-i="11"]{--x:50% !important;top:auto !important;bottom:108px !important;min-width:min(280px,86vw);transform:translate(-50%,0) !important}
+  .open-stage:has(.hook.is-in) .pay[data-i="0"],
+  .open-stage:has(.hook.is-in) .pay[data-i="1"],
+  .open-stage:has(.hook.is-in) .pay[data-i="2"],
+  .open-stage:has(.hook.is-in) .pay[data-i="3"],
+  .open-stage:has(.hook.is-in) .pay[data-i="8"]{
+    opacity:0 !important;visibility:hidden;
+  }
+  .open > .replay{top:calc(var(--nav) + 8px)}
   .pay-compromised{font-size:9px;letter-spacing:.07em}
   html[data-beat="agents"] .pay[data-i="4"],
   html[data-beat="off"] .pay[data-i="4"],
@@ -616,9 +639,9 @@ html.reduced:not([data-beat]) .open-land::before{
   html.reduced:not([data-beat]) .pay[data-i="6"]{--x:16% !important; --y:88% !important}
   html.reduced:not([data-beat]) .pay[data-i="7"]{--x:84% !important; --y:90% !important}
   html.reduced:not([data-beat]) .pay[data-i="8"]{--x:50% !important; --y:6% !important}
-  html.reduced:not([data-beat]) .pay[data-i="9"]{--x:14% !important; --y:18% !important}
-  html.reduced:not([data-beat]) .pay[data-i="10"]{--x:86% !important; --y:20% !important}
-  html.reduced:not([data-beat]) .pay[data-i="11"]{--x:50% !important; --y:78% !important}
+  html.reduced:not([data-beat]) .pay[data-i="9"]{--x:15% !important; --y:54% !important}
+  html.reduced:not([data-beat]) .pay[data-i="10"]{--x:85% !important; --y:54% !important}
+  html.reduced:not([data-beat]) .pay[data-i="11"]{--x:50% !important;top:auto !important;bottom:108px !important;transform:translate(-50%,0) !important}
 }
 
 /* ========== 2 · REALITY (Main.dc .real/.w frame, dark wash) ========== */
@@ -965,18 +988,25 @@ html.reduced:not([data-beat]) .open-land::before{
 .btn-primary:hover{background:#fff;box-shadow:0 0 24px rgba(242,240,234,.1)}
 .btn-primary:active{transform:translateY(1px)}
 
-.form-card{max-width:560px;margin:0 auto;background:var(--pnl);border:1px solid var(--ln2);border-radius:12px;overflow:hidden;text-align:left;box-shadow:0 30px 60px -36px rgba(0,0,0,.5)}
-.form-card .term-bar{display:flex;align-items:center;gap:14px;height:44px;padding:0 16px;border-bottom:1px solid var(--ln);background:var(--bar);font-family:var(--mono);font-size:var(--ts-mono);color:var(--mu)}
-.form-card .lights{display:flex;gap:7px}
-.form-card .lights i{width:10px;height:10px;border-radius:50%;background:var(--ln2)}
-.form-card .term-title{color:var(--mu);flex:1}
+.form-card{
+  max-width:560px;margin:0 auto;text-align:left;overflow:hidden;border-radius:14px;
+  background:#2C3134;
+  border:1px solid color-mix(in srgb,var(--dot) 72%,#d7ebe3);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb,var(--dot) 28%,transparent),
+    0 24px 50px -28px rgba(0,0,0,.55);
+}
 .form-body{padding:28px 28px 30px;display:flex;flex-direction:column;gap:20px}
 .fld{display:flex;flex-direction:column;gap:9px}
-.fld-l{font-size:var(--ts-mono);color:var(--mu)}
+.form-card .fld-l{font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:-.011em;color:#FFFFFF}
 .fld-l .pr{color:var(--dot)}
-.fld input{font-family:var(--mono);font-size:15px;color:var(--tx);background:var(--bg);border:1px solid var(--ln2);border-radius:8px;height:46px;padding:0 14px;outline:none;transition:border-color .15s;width:100%}
-.fld input::placeholder{color:var(--ph)}
-.fld input:focus{border-color:var(--tx)}
+.form-card .fld input{
+  font-family:var(--sans);font-size:16px;font-weight:500;color:#FFFFFF;
+  background:#101214;border:1px solid color-mix(in srgb,var(--dot) 58%,#9eb8ae);
+  border-radius:8px;height:48px;padding:0 14px;outline:none;transition:border-color .15s,box-shadow .15s;width:100%;
+}
+.form-card .fld input::placeholder{color:#E4E2DA}
+.form-card .fld input:focus{border-color:var(--dot);box-shadow:0 0 0 3px color-mix(in srgb,var(--dot) 32%,transparent)}
 .fld input.bad{border-color:var(--stop)}
 .form-act{display:flex;align-items:center;gap:16px;margin-top:4px}
 .form-act .btn{height:46px}
@@ -986,19 +1016,19 @@ html.reduced:not([data-beat]) .open-land::before{
 .form-ok .form-dot{width:9px;height:9px;animation:breathe 2.4s ease-in-out infinite}
 .form-card.done .fld,.form-card.done .form-act,.form-card.done .who{display:none}
 .form-fine{margin:0;font-size:13px;color:var(--mu)}
-.fld-l .opt{color:var(--mu2);font-weight:400;letter-spacing:0;text-transform:none}
+.form-card .fld-l .opt{color:#F2F0EA;font-weight:500;letter-spacing:0;text-transform:none}
 .who{margin:0;padding:0;border:0;display:flex;flex-direction:column;gap:10px}
 .who legend{padding:0}
 .who-opts{display:flex;flex-wrap:wrap;gap:8px}
 .who input{position:absolute;opacity:0;pointer-events:none}
-.who label{
-  padding:9px 16px;border:1px solid var(--ln2);border-radius:999px;
-  font-family:var(--sans);font-size:14px;font-weight:500;color:var(--tx2);
-  cursor:pointer;background:var(--bg);min-height:40px;box-sizing:border-box;
+.form-card .who label{
+  padding:9px 16px;border:1px solid color-mix(in srgb,var(--dot) 55%,#b7ccc4);border-radius:999px;
+  font-family:var(--sans);font-size:15px;font-weight:600;color:#FFFFFF;
+  cursor:pointer;background:#101214;min-height:40px;box-sizing:border-box;
   display:inline-flex;align-items:center;transition:background .15s,border-color .15s,color .15s;
 }
-.who label:hover{border-color:var(--mu2);color:var(--tx)}
-.who input:checked + label{background:var(--tx);color:var(--bg);border-color:var(--tx)}
+.form-card .who label:hover{border-color:var(--dot);color:#FFFFFF}
+.form-card .who input:checked + label{background:#F4F2EC;color:#111;border-color:#F4F2EC}
 .who input:focus-visible + label{outline:2px solid var(--dot);outline-offset:2px}
 
 .foot{position:relative;background:var(--bg);color:var(--tx)}
@@ -1038,7 +1068,7 @@ html[data-shot="open-after-hook"] .pay[data-i="8"]{opacity:.7}
 html[data-shot="open-after-hook"] .lede{opacity:0;visibility:hidden}
 html[data-shot="open-after-hook"] .hook{opacity:1;transform:translateY(0) scale(1)}
 html[data-shot="open-after-hook"] .after-hook{opacity:1;transform:none;pointer-events:auto}
-html[data-shot="open-after-hook"] .open-land{transform:translate(-50%,-52%)}
+html[data-shot="open-after-hook"] .open-land{transform:translate(-50%,-66%)}
 html[data-shot="open-after-hook"] .replay{display:none !important}
 html[data-shot="proof-blocked"] .stage-in{opacity:1;transform:none}
 html[data-shot="proof-blocked"] .rv{opacity:1;transform:none}
