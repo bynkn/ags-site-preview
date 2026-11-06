@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Agentic GUARDIANS</title>
+<meta name="description" content="Agentic GUARDIANS is the trust layer for AI agents. It learns what your agent normally does and stops anything that doesn&rsquo;t fit, before it runs.">
+<meta name="theme-color" content="#050505">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%23050505%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%276%27 fill=%27%23A8D5C2%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+<script>
+(function(){
+  var r=document.documentElement,q=location.search;
+  r.classList.add('js');
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches) r.classList.add('reduced');
+  if(/[?&]static=1/.test(q)) r.classList.add('reduced','static','instant');
+  if(/[?&]beat=(\w+)/.test(q)) r.dataset.beat=RegExp.$1;
+  if(/[?&]shot=(\w+)/.test(q)) r.dataset.shot=RegExp.$1;
+  if(!r.classList.contains('reduced')&&!r.dataset.beat&&!r.dataset.shot) r.classList.add('nav-away');
+})();
+</script>
+</head>
+<body id="top">
+
+<header class="nav" id="nav" aria-label="Site">
+  <div class="nav-in">
+    <a class="brand" href="#top" aria-label="Agentic GUARDIANS, back to top">
+      <span class="wm"><span class="wm-a">Agentic</span> <span class="wm-g">GUARDIANS</span><i class="wm-dot" aria-hidden="true"></i></span>
+      <span class="tag">The trust layer for AI agents</span>
+    </a>
+    <div class="nav-r">
+      <a class="nav-link" href="../story-r3/">How it works</a>
+      <a class="btn btn-primary btn-sm" href="#access">Get early access</a>
+      <button type="button" class="replay" id="btnReplay" hidden title="Replay opening">Replay</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- 1 · OPEN &mdash; stitch / first-screen DNA + after-hook trust + signup -->
+  <section class="open" id="open" aria-label="Opening" aria-live="polite">
+    <div class="open-stage" id="openStage">
+      <div class="field" id="field" aria-label="Agent activity">
+        <article class="pay" data-i="0">
+          <span class="pay-who mono">agent · eng-07</span>
+          <span class="pay-act">Opened pull request <span class="acct">#482</span></span>
+          <span class="pay-amt">review</span>
+        </article>
+        <article class="pay" data-i="1">
+          <span class="pay-who mono">agent · finance-02</span>
+          <span class="pay-act">Paid supplier invoice <span class="acct">••2290</span></span>
+          <span class="pay-amt">$890</span>
+        </article>
+        <article class="pay" data-i="2">
+          <span class="pay-who mono">agent · desk-11</span>
+          <span class="pay-act">Booked Tuesday standup room</span>
+          <span class="pay-amt">cal</span>
+        </article>
+        <article class="pay" data-i="3">
+          <span class="pay-who mono">agent · ops-04</span>
+          <span class="pay-act">Deployed staging build <span class="acct">v0.9.4</span></span>
+          <span class="pay-amt">live</span>
+        </article>
+        <article class="pay" data-i="4">
+          <span class="pay-who mono">agent · support-03</span>
+          <span class="pay-act">Summarized 14 support tickets</span>
+          <span class="pay-amt">done</span>
+        </article>
+        <article class="pay" data-i="5">
+          <span class="pay-who mono">agent · ops-04</span>
+          <span class="pay-act">Paid electricity bill</span>
+          <span class="pay-amt">$142</span>
+        </article>
+        <article class="pay" data-i="6">
+          <span class="pay-who mono">agent · eng-07</span>
+          <span class="pay-act">Created ticket <span class="acct">ENG-1904</span></span>
+          <span class="pay-amt">jira</span>
+        </article>
+        <article class="pay" data-i="7">
+          <span class="pay-who mono">agent · finance-02</span>
+          <span class="pay-act">Sent weekly digest to finance@</span>
+          <span class="pay-amt">sent</span>
+        </article>
+        <article class="pay pay-off" data-i="8">
+          <span class="pay-who mono">agent · payments-01</span>
+          <span class="pay-act">Paid <span class="acct">••7731</span></span>
+          <span class="pay-amt">$4,800</span>
+          <span class="pay-note">new account</span>
+        </article>
+      </div>
+      <div class="field-bad" id="fieldBad" aria-hidden="true">
+        <article class="pay pay-bad" data-i="9">
+          <span class="pay-who mono">agent · payments-01</span>
+          <span class="pay-act">Paid <span class="acct">••8814</span></span>
+          <span class="pay-amt">$12,400</span>
+          <span class="pay-note">new vendor</span>
+          <span class="pay-compromised">Compromised</span>
+        </article>
+        <article class="pay pay-bad" data-i="10">
+          <span class="pay-who mono">agent · data-06</span>
+          <span class="pay-act">Exported customer DB</span>
+          <span class="pay-amt">done</span>
+          <span class="pay-compromised">Compromised</span>
+        </article>
+        <article class="pay pay-bad" data-i="11">
+          <span class="pay-who mono">agent · iam-02</span>
+          <span class="pay-act">Disabled 2FA for admin</span>
+          <span class="pay-amt">ok</span>
+          <span class="pay-compromised">Compromised</span>
+        </article>
+      </div>
+      <p class="lede" id="lede">Your AI agent is already out there.</p>
+      <div class="open-land" id="openLand">
+        <h1 class="hook" id="hook">
+          Do you know what your agent is doing <span class="nw">right now?</span>
+        </h1>
+        <div class="after-hook" id="afterHook">
+          <p class="trust-line"><b>Agentic GUARDIANS</b> is the trust layer for AI agents.</p>
+          <p class="trust-line">It learns how each of your agents behaves, and blocks anything out of pattern before it runs.</p>
+          <p class="open-fine muted">No AI. No GPU. Just behavioral math.</p>
+          <form class="open-form" id="openForm" novalidate>
+            <label class="sr-only" for="openEmail">Work email</label>
+            <input type="email" name="email" id="openEmail" required autocomplete="email" placeholder="you@company.com">
+            <button class="btn btn-primary" type="submit">Get early access</button>
+            <p class="open-form-ok" id="openFormOk" role="status" hidden><i class="brand-dot form-dot" aria-hidden="true"></i>You&rsquo;re on the list.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+    <span class="cue" id="openCue" aria-hidden="true"></span>
+  </section>
+
+  <!-- 2 · THE REALITY &mdash; one-pager stacked + stitch wording -->
+  <section class="sec why" id="why" aria-label="The reality">
+    <span class="node" aria-hidden="true"></span>
+    <div class="why-stack">
+      <p class="why-k rv">The reality is...</p>
+      <p class="big m1 rv" style="--d:1"><strong>Agents drift.</strong></p>
+      <p class="big m2 rv" style="--d:2">They make things up.</p>
+      <p class="big m3 rv" style="--d:3">They forget rules.</p>
+      <p class="big m4 rv" style="--d:4">They get weaponized.</p>
+      <p class="why-line why-1 rv" style="--d:5">A compromised agent doesn&rsquo;t look compromised.</p>
+      <p class="why-line why-2 rv" style="--d:6">Same keys. Same access. Weaponized with someone else&rsquo;s intent.</p>
+    </div>
+    <span class="cue" aria-hidden="true"></span>
+  </section>
+
+  <!-- 3 · TRUST ASK + NOW YOU CAN + DEMO -->
+  <section class="sec proof" id="proof" aria-label="Now you can">
+    <div class="frame proof-head">
+      <p class="trust-ask rv"><span class="ask-a">So, can you <strong>trust</strong> your agent to do what it&rsquo;s told?</span> <span class="ask-b">And only that?</span></p>
+      <h2 class="proof-title rv" style="--d:1">Now you can.</h2>
+    </div>
+    <div class="track" id="track">
+      <div class="stage" id="stage">
+        <div class="stage-in" id="stageIn" data-step="1">
+          <div class="cap-row">
+            <p class="step-k" aria-hidden="true"><span class="pips"><i></i><i></i><i></i><i></i><i></i></span></p>
+            <div class="caps">
+              <p class="cap" data-c="1">Agentic <span class="wm-g">GUARDIANS</span> is watching.</p>
+              <p class="cap" data-c="2">It&rsquo;s learned this agent&rsquo;s baseline behaviour.</p>
+              <p class="cap" data-c="3">Then it does something it never has.</p>
+            </div>
+          </div>
+          <div class="cb-grid">
+            <div class="term term-demo" id="demoTerm">
+              <div class="term-bar"><span class="lights"><i></i><i></i><i></i></span><span class="term-title">ops@payments-01 &mdash; agent &mdash; 120×12</span></div>
+              <div class="term-body">
+                <i class="watcher" aria-hidden="true" hidden></i>
+                <div class="ln"><span class="ts">14:02:07</span><span><span class="pr">%</span> agent run pay-invoices</span></div>
+                <div class="ln f2"><span class="ts">14:02:08</span><span><span class="k">task</span>Pay supplier invoices <span class="ok">✓</span></span></div>
+                <div class="ln f2"><span class="ts">14:02:09</span><span><span class="k">open</span>invoice_0412.pdf <span class="ok">✓</span></span></div>
+                <div class="ln f3"><span class="ts">14:02:10</span><span><span class="k">verify</span>supplier · on file ••2290 <span class="ok">✓</span></span></div>
+                <div class="ln f4 ml2"><span class="ts">14:02:11</span><span><span class="k">match</span>ledger · october <span class="ok">✓</span></span></div>
+                <div class="ln f4"><span class="ts">14:02:12</span><span><span class="k">transfer</span>payments-api amount=$4,800 to="acct ••7731"</span></div>
+                <div class="ln f4 u4"><span class="ts">14:02:12</span><span><span class="k">check</span>checking…</span></div>
+                <div class="ln f5 blk-l"><span class="ts">14:02:13</span><span><span class="k x">blocked</span><span class="x">✖ Blocked by Agentic GUARDIANS · not executed</span></span></div>
+                <div class="ln st-l"><span class="ts">14:02:13</span><span><span class="k">status</span><span class="d">balance $52,300 · unchanged</span><span class="d f5r"> · transfer blocked</span></span></div>
+                <div class="ln ln-cur"><span class="ts">14:02:13</span><span><span class="pr">%</span> <span class="cur" aria-hidden="true"></span></span></div>
+              </div>
+            </div>
+            <div class="cb-side">
+              <div class="side-a">
+                <div class="pnl pnl-cur agp">
+                  <div class="pnl-top ph-top"><span class="pip pip-cur mono"><i></i>current action</span><span class="ph">
+                    <span class="phk s2"><i></i>Learning</span><span class="phk s3"><i></i>Behaviour locked</span><span class="phk s4"><i></i>Checking</span><span class="phk s5"><i></i>Blocked</span></span></div>
+                  <div class="ph-sub"><span class="s2">3 of 5 runs</span><span class="s3"></span><span class="s4"></span><span class="s5">1 action blocked</span></div>
+                  <ul class="ag-acts mono">
+                    <li class="f2 r1"><span class="an">task <span class="aa">pay-invoices</span></span><span class="tg">Learning</span></li>
+                    <li class="f2 r2"><span class="an">open <span class="aa">invoice_0412.pdf</span></span><span class="tg">Learning</span></li>
+                    <li class="f3 r3"><span class="an">verify <span class="aa">supplier ••2290</span></span><span class="tg">Allowed</span></li>
+                    <li class="f4 r35"><span class="an">match <span class="aa">ledger</span></span><span class="tg">Allowed</span></li>
+                    <li class="f4 r4"><span class="an">transfer <span class="aa">$4,800 → ••7731</span></span><span class="tg tg4">Checking</span><span class="tg tg5">Blocked</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="pnl pnl-ok rc">
+                <div class="pnl-top mono"><span class="pip"><i></i>baseline behaviour</span><span class="muted">payments-01</span></div>
+                <p class="pnl-p">Normal sequence:</p>
+                <p class="seq mono"><span class="tok">open</span><span class="ar">→</span><span class="tok">verify</span><span class="ar">→</span><span class="tok">match</span><span class="ar">→</span><span class="tok exp">pay ••2290</span></p>
+              </div>
+              <div class="pnl pnl-dev rc">
+                <div class="pnl-top mono"><span class="pip pip-dev"><i></i>deviation detected</span><span class="muted">blocked</span></div>
+                <dl class="eo">
+                  <div><dt class="mono">Expected</dt><dd class="mono">pay supplier ••2290</dd></div>
+                  <div><dt class="mono">Observed</dt><dd><span class="mono">transfer $4,800 → ••7731</span>, an account it has never paid.</dd></div>
+                </dl>
+                <p class="verdict">Not the supplier. Balance unchanged at $52,300.</p>
+              </div>
+            </div>
+          </div>
+          <div class="proof-res" aria-live="polite">
+            <div class="res">
+              <div class="res-l">
+                <p class="blk">Blocked<br>before it ran.</p>
+                <p class="nomove">$4,800 never moved.</p>
+              </div>
+              <div class="res-r">
+                <p class="never">It has paid ••2290 every month. <span>It has never paid ••7731.</span></p>
+                <p class="hid">A hidden instruction in <i>invoice_0412.pdf</i> tried to change the payee. Same keys. Same access. Wrong intent.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="cue" aria-hidden="true"></span>
+  </section>
+
+  <!-- 4 · TOOLS &mdash; one-pager / Main.dc -->
+  <section class="sec tools" id="tools" aria-label="Today&rsquo;s tools">
+    <span class="node" aria-hidden="true"></span>
+    <div class="frame">
+      <h2 class="tools-lead rv">
+        <span class="tools-they">Today&rsquo;s tools check who the agent is, what it says, or what already happened.</span>
+        <span class="tools-we">Not behaviour or intent. Not what it&rsquo;s about to do.</span>
+      </h2>
+      <div class="tl">
+        <div class="ti rv" style="--d:1"><div class="tn">Identity and access</div><div class="td">Verifies credentials, not intent.</div></div>
+        <div class="ti rv" style="--d:2"><div class="tn">Prompt filters</div><div class="td">Inspect language. A well-written attack is language too.</div></div>
+        <div class="ti rv" style="--d:3"><div class="tn">Enterprise AI security platforms</div><div class="td">Useful, but complex, expensive and built for big companies.</div></div>
+        <div class="ti rv" style="--d:4"><div class="tn">Logs and monitoring</div><div class="td">Tell you after the fact, not before the action runs.</div></div>
+        <div class="ti rv" style="--d:5"><div class="tn">Manual review</div><div class="td">Too slow, too costly, and it doesn&rsquo;t scale for small teams.</div></div>
+      </div>
+    </div>
+    <span class="cue" aria-hidden="true"></span>
+  </section>
+
+  <!-- 5 · CLOSE &mdash; industry + mic-drops + stronger signup (no How / no math / no envelope) -->
+  <section class="sec access" id="access" aria-label="Close">
+    <span class="node" aria-hidden="true"></span>
+    <div class="frame">
+    <div class="mic rv">
+      <p class="mic-line">The industry&rsquo;s answer: AI to guard AI. More models. More tokens. More GPUs.</p>
+      <p class="mic-line mic-2"><b>The same injection can fool the guard too.</b></p>
+      <p class="mic-drop">Trust the behaviour. Block the rest.</p>
+    </div>
+    <h2 class="access-h rv" style="--d:1">Your agent is running right now. <span class="access-dim">Nobody is watching it yet.</span></h2>
+    <div class="thesis rv" style="--d:2">
+      <p class="thesis-line">Because AI can&rsquo;t police AI. Math can.</p>
+      <p class="thesis-sub">Statistics, not AI. Runs on CPU.</p>
+    </div>
+    <form class="form-card rv" id="accessForm" style="--d:3" novalidate>
+      <div class="term-bar">
+        <span class="lights"><i></i><i></i><i></i></span>
+        <span class="term-title">request-access</span>
+      </div>
+      <div class="form-body">
+        <fieldset class="who">
+          <legend class="fld-l mono"><span class="pr">$</span> I&rsquo;m… <span class="opt">optional</span></legend>
+          <div class="who-opts">
+            <input type="radio" name="who" id="w1" value="using"><label for="w1">Using agents</label>
+            <input type="radio" name="who" id="w2" value="investing"><label for="w2">Investing</label>
+            <input type="radio" name="who" id="w3" value="curious"><label for="w3">Curious</label>
+          </div>
+        </fieldset>
+        <label class="fld">
+          <span class="fld-l mono"><span class="pr">$</span> work email</span>
+          <input type="email" name="email" id="email" required autocomplete="email" placeholder="you@company.com">
+        </label>
+        <label class="fld">
+          <span class="fld-l mono"><span class="pr">$</span> What do you run? <span class="opt">optional</span></span>
+          <input type="text" name="what-run" id="what-run" autocomplete="off" placeholder="coding agents, support bots…">
+        </label>
+        <div class="form-act">
+          <button class="btn btn-primary" type="submit">Get early access</button>
+          <p class="form-err mono" id="formErr" role="alert"></p>
+        </div>
+        <p class="form-ok" id="formOk" role="status" hidden><i class="brand-dot form-dot" aria-hidden="true"></i>We&rsquo;ll be in touch.</p>
+      </div>
+    </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-line">
+      <span class="foot-brand"><i class="brand-dot" aria-hidden="true"></i><span class="wm-a">Agentic</span> <span class="wm-g">GUARDIANS</span></span>
+      <span class="fsep" aria-hidden="true">·</span>
+      <span class="foot-legal">© 2026 Agentic GUARDIANS</span>
+      <span class="fsep" aria-hidden="true">·</span>
+      <a href="mailto:founders@agenticguardians.com">founders@agenticguardians.com</a>
+    </p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
