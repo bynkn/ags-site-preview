@@ -117,21 +117,31 @@
     var BAD_START = 9;
     var timers = [];
 
+    var seq = 0;
     function clearTimers() {
       timers.forEach(function (t) { clearTimeout(t); });
       timers = [];
     }
-    function later(ms, fn) { timers.push(setTimeout(fn, ms)); }
+    /* Token dies on reset/replay/resize, so a desktop beat cannot finish a phone sequence or the reverse. */
+    function later(ms, fn) {
+      var token = seq;
+      var mobile = isMobileHero();
+      timers.push(setTimeout(function () {
+        if (token !== seq || isMobileHero() !== mobile) return;
+        fn();
+      }, ms));
+    }
 
     var mRows = $$('.m-row');
-    var mobileHero = window.matchMedia('(max-width: 520px)');
-    /* Phone only. Desktop BEATS stay locked. One timer list, cleared on every play/replay. */
+    var mobileHero = window.matchMedia('(max-width: 520px), (max-height: 500px) and (max-width: 932px)');
+    /* Phone opening only. Desktop BEATS stay locked. */
+    /* Lede is immediate. Payments are a short shock, then the question. Not a long log. */
     var M_BEATS = {
-      rows: [420, 780, 1140, 1500],
-      bad: 2320,
-      hook: 2920,
-      after: 3380,
-      replay: 3380
+      rows: [280, 620, 960, 1280],
+      bad: 1680,
+      ask: 2550,
+      after: 3050,
+      replay: 3050
     };
 
     function isMobileHero() { return mobileHero.matches; }
@@ -141,15 +151,13 @@
     }
 
     function showMobileEnd() {
+      stage.classList.add('is-ask', 'is-hook', 'is-land');
+      hook.classList.add('is-in');
+      if (after) after.classList.add('is-in');
       if (lede) {
         lede.classList.remove('is-out');
         lede.classList.add('is-in');
       }
-      mRows.forEach(function (row) { row.classList.add('is-in'); });
-      if (mRows[3]) mRows[3].classList.add('is-bad');
-      stage.classList.add('is-hook', 'is-land');
-      hook.classList.add('is-in');
-      if (after) after.classList.add('is-in');
     }
 
     function playMobile(beat, shot) {
@@ -173,20 +181,24 @@
       later(M_BEATS.bad, function () {
         if (mRows[3]) mRows[3].classList.add('is-bad');
       });
-      later(M_BEATS.hook, function () {
-        stage.classList.add('is-hook');
+      later(M_BEATS.ask, function () {
+        stage.classList.add('is-ask', 'is-hook');
         hook.classList.add('is-in');
         revealNav();
       });
-      later(M_BEATS.after, showAfter);
+      later(M_BEATS.after, function () {
+        stage.classList.add('is-land');
+        if (after) after.classList.add('is-in');
+      });
       later(M_BEATS.replay, function () {
         if (btnReplay) btnReplay.hidden = false;
       });
     }
 
     function reset() {
+      seq++;
       clearTimers();
-      stage.classList.remove('is-alive', 'is-hook', 'is-land');
+      stage.classList.remove('is-alive', 'is-hook', 'is-land', 'is-ask');
       if (lede) lede.classList.remove('is-in', 'is-out');
       hook.classList.remove('is-in');
       if (after) after.classList.remove('is-in');
