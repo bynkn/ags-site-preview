@@ -1080,7 +1080,7 @@ html.instant[data-past-open] .replay{display:none !important}
 
 /* Phone opening: portrait, and short landscape. Desktop keeps the floating cards. */
 .m-scene{display:contents}
-.m-lines,.m-explain{display:none}
+.m-lines,.m-explain,.m-task{display:none}
 @media (max-width:520px), (max-height:500px) and (max-width:932px){
   .open{
     height:auto;
@@ -1144,6 +1144,18 @@ html.instant[data-past-open] .replay{display:none !important}
     text-shadow:none;
   }
   .lede.is-in{opacity:1 !important;visibility:visible !important}
+  .m-scene .lede{display:none !important}
+  .m-task{
+    display:block;
+    margin:0;
+    max-width:11em;
+    font-weight:500;
+    font-size:clamp(1.85rem, 8vw, 2.45rem);
+    line-height:1.08;
+    letter-spacing:-.034em;
+    color:var(--tx);
+    text-align:left;
+  }
   .m-lines{
     display:flex;
     flex-direction:column;
@@ -1158,30 +1170,28 @@ html.instant[data-past-open] .replay{display:none !important}
     font-family:var(--mono);
   }
   .m-row{
-    display:grid;
-    grid-template-columns:1fr auto;
-    gap:4px 12px;
-    align-items:baseline;
+    display:block;
     margin:0;
-    padding:6px 0;
+    padding:8px 0;
     opacity:0;
     font-family:var(--mono);
-    font-size:12.5px;
+    font-size:15px;
     font-weight:400;
     line-height:1.35;
     letter-spacing:-.01em;
-    color:#d9d6ce;
+    color:#e6e3db;
   }
+  .m-row + .m-row{border-top:1px solid #2a2a2e}
   .m-row.is-in{opacity:1;transition:opacity .28s var(--ease-out), color .28s ease}
-  .m-cmd{min-width:0}
+  .m-cmd{display:block}
   .m-st{
     display:none;
+    margin-top:4px;
     font-family:var(--sans);
     font-size:11px;
     font-weight:600;
-    letter-spacing:.08em;
+    letter-spacing:.12em;
     text-transform:uppercase;
-    text-align:right;
   }
   .m-row.is-done .m-st{display:block;color:#6dd49a}
   .m-exp{display:none;grid-column:1 / -1;margin:0;font-size:12px;color:#d4d1c8}
@@ -1316,7 +1326,7 @@ html.instant[data-past-open] .replay{display:none !important}
     gap:36px;
     padding:24px 36px;
   }
-  .lede,.lede.is-in,.lede.is-out{font-size:clamp(1.55rem, 3.4vw, 2rem);max-width:8em}
+  .m-task{font-size:clamp(1.55rem, 3.4vw, 2rem);max-width:9em}
   .m-lines{gap:0;max-width:22rem}
   .m-row{font-size:12px;padding:4px 0}
   .open-stage.is-ask .open-land{
