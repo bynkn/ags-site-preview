@@ -1077,3 +1077,118 @@ html[data-past-open] .replay,
 html[data-shot]:not([data-shot="open-hook"]) .replay,
 html.reduced[data-past-open] .replay,
 html.instant[data-past-open] .replay{display:none !important}
+
+/* Phone hero only (≤520px). Desktop keeps the floating cards. */
+.m-term{display:none}
+@media (max-width:520px){
+  .open-stage .field,
+  .open-stage .field-bad{display:none !important}
+  .open > .cue{display:none}
+  .open-stage{
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:stretch;
+    gap:12px;
+    height:100%;
+    padding:calc(var(--nav) + 40px) 16px 16px;
+    box-sizing:border-box;
+    overflow:hidden;
+  }
+  .open-stage::before{opacity:.15}
+  .lede,
+  .lede.is-in,
+  .lede.is-out{
+    position:relative !important;
+    left:auto !important;
+    top:auto !important;
+    width:100% !important;
+    margin:0;
+    transform:none !important;
+    font-size:clamp(1.15rem, 4.8vw, 1.4rem);
+    line-height:1.25;
+    text-align:center;
+  }
+  .lede.is-in,
+  html.reduced:not([data-beat]) .lede{
+    opacity:1 !important;
+    visibility:visible !important;
+  }
+  .m-term{
+    display:block;
+    width:100%;
+    margin:0;
+    padding:2px 12px 8px;
+    border:1px solid var(--ln2);
+    border-radius:12px;
+    background:linear-gradient(180deg, color-mix(in srgb, var(--card) 92%, #fff), var(--card));
+    box-shadow:0 16px 36px rgba(0,0,0,.32);
+  }
+  .m-row{
+    opacity:0;
+    padding:7px 0 6px;
+    border-top:1px solid var(--ln);
+    font-family:var(--mono);
+    font-size:13px;
+    line-height:1.35;
+    color:var(--tx);
+  }
+  .m-row:first-child{border-top:0}
+  .m-row.is-in{opacity:1;transition:opacity .32s var(--ease-out), color .28s ease}
+  .m-line{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+  .m-act{min-width:0}
+  .m-tag{
+    display:none;
+    flex:none;
+    font-family:var(--sans);
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--stop);
+  }
+  .m-exp{
+    margin:3px 0 0;
+    font-family:var(--mono);
+    font-size:12px;
+    line-height:1.3;
+    color:var(--stop);
+    opacity:0;
+    max-height:0;
+    overflow:hidden;
+  }
+  .m-row.is-bad,
+  html.reduced .m-row[data-row="3"]{color:var(--stop)}
+  .m-row.is-bad .m-tag,
+  html.reduced .m-row[data-row="3"] .m-tag{display:inline}
+  .m-row.is-bad .m-exp,
+  html.reduced .m-row[data-row="3"] .m-exp{opacity:1;max-height:2.2em}
+  html.reduced .m-row{opacity:1 !important}
+  .open-land,
+  .open-stage.is-land .open-land,
+  html.reduced:not([data-beat]) .open-land,
+  html[data-beat="after"] .open-land,
+  html[data-shot="open-after-hook"] .open-land{
+    position:relative !important;
+    left:auto !important;
+    top:auto !important;
+    width:100% !important;
+    margin:0;
+    transform:none !important;
+  }
+  .open-land::before,
+  .open-stage.is-hook .open-land::before,
+  html.reduced:not([data-beat]) .open-land::before{content:none !important;display:none !important}
+  .hook{
+    width:100%;
+    font-size:clamp(26px, 7.5vw, 34px);
+    line-height:1.08;
+    text-shadow:none;
+  }
+  .after-hook{width:100%;max-width:none;margin-top:10px}
+  .trust-line{font-size:clamp(.92rem, 3.45vw, 1.02rem);line-height:1.4}
+  .trust-line + .trust-line{margin-top:6px}
+  .open-fine{margin-top:8px}
+  .after-hook > .open-fine + .open-form,
+  .open-form{margin-top:12px}
+}
