@@ -1080,7 +1080,7 @@ html.instant[data-past-open] .replay{display:none !important}
 
 /* Phone opening: portrait, and short landscape. Desktop keeps the floating cards. */
 .m-scene{display:contents}
-.m-lines,.m-explain,.m-task{display:none}
+.m-lines,.m-explain{display:none}
 @media (max-width:520px), (max-height:500px) and (max-width:932px){
   .open{
     height:auto;
@@ -1143,19 +1143,8 @@ html.instant[data-past-open] .replay{display:none !important}
     color:var(--tx);
     text-shadow:none;
   }
-  .lede.is-in{opacity:1 !important;visibility:visible !important}
-  .m-scene .lede{display:none !important}
-  .m-task{
-    display:block;
-    margin:0;
-    max-width:11em;
-    font-weight:500;
-    font-size:clamp(1.85rem, 8vw, 2.45rem);
-    line-height:1.08;
-    letter-spacing:-.034em;
-    color:var(--tx);
-    text-align:left;
-  }
+  .lede.is-in,
+  html.reduced:not([data-beat]) .lede{opacity:1 !important;visibility:visible !important}
   .m-lines{
     display:flex;
     flex-direction:column;
@@ -1326,7 +1315,7 @@ html.instant[data-past-open] .replay{display:none !important}
     gap:36px;
     padding:24px 36px;
   }
-  .m-task{font-size:clamp(1.55rem, 3.4vw, 2rem);max-width:9em}
+  .lede,.lede.is-in,.lede.is-out{font-size:clamp(1.55rem, 3.4vw, 2rem);max-width:9em}
   .m-lines{gap:0;max-width:22rem}
   .m-row{font-size:12px;padding:4px 0}
   .open-stage.is-ask .open-land{

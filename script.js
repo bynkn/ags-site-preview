@@ -135,14 +135,14 @@
     var mRows = $$('.m-row');
     var mobileHero = window.matchMedia('(max-width: 520px), (max-height: 500px) and (max-width: 932px)');
     /* Phone opening only. Desktop BEATS stay locked. */
-    /* Asked task is immediate. One normal completion, then the send. Hold the red line, then the question, then the sentence. */
+    /* Lede is immediate. Two ordinary completions, then the break. Hold the red line, then the question, then the sentence. */
     var M_BEATS = {
-      rows: [500, 1600],
-      done: [900],
-      bad: 2200,
-      ask: 5200,
-      after: 6000,
-      replay: 6000
+      rows: [450, 1100, 1800],
+      done: [800, 1450],
+      bad: 2400,
+      ask: 5400,
+      after: 6200,
+      replay: 6200
     };
 
     function isMobileHero() { return mobileHero.matches; }
@@ -185,7 +185,7 @@
         });
       });
       later(M_BEATS.bad, function () {
-        if (mRows[1]) mRows[1].classList.add('is-bad');
+        if (mRows[2]) mRows[2].classList.add('is-bad');
       });
       later(M_BEATS.ask, function () {
         stage.classList.add('is-ask', 'is-hook');
