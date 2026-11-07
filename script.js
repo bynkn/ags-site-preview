@@ -137,17 +137,18 @@
     /* Phone opening only. Desktop BEATS stay locked. */
     /* Lede is immediate. Payments are a short shock, then the question. Not a long log. */
     var M_BEATS = {
-      rows: [280, 620, 960, 1280],
-      bad: 1680,
-      ask: 2550,
-      after: 3050,
-      replay: 3050
+      rows: [220, 520, 820, 1120],
+      done: [380, 680, 980],
+      bad: 1560,
+      ask: 2400,
+      after: 2880,
+      replay: 2880
     };
 
     function isMobileHero() { return mobileHero.matches; }
 
     function clearMobileRows() {
-      mRows.forEach(function (row) { row.classList.remove('is-in', 'is-bad'); });
+      mRows.forEach(function (row) { row.classList.remove('is-in', 'is-done', 'is-bad'); });
     }
 
     function showMobileEnd() {
@@ -176,6 +177,11 @@
       M_BEATS.rows.forEach(function (t, i) {
         later(t, function () {
           if (mRows[i]) mRows[i].classList.add('is-in');
+        });
+      });
+      M_BEATS.done.forEach(function (t, i) {
+        later(t, function () {
+          if (mRows[i]) mRows[i].classList.add('is-done');
         });
       });
       later(M_BEATS.bad, function () {

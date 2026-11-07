@@ -1080,7 +1080,7 @@ html.instant[data-past-open] .replay{display:none !important}
 
 /* Phone opening: portrait, and short landscape. Desktop keeps the floating cards. */
 .m-scene{display:contents}
-.m-lines{display:none}
+.m-lines,.m-explain{display:none}
 @media (max-width:520px), (max-height:500px) and (max-width:932px){
   .open{
     height:auto;
@@ -1144,42 +1144,50 @@ html.instant[data-past-open] .replay{display:none !important}
     text-shadow:none;
   }
   .lede.is-in{opacity:1 !important;visibility:visible !important}
-  .m-lines{display:flex;flex-direction:column;align-items:flex-start;gap:13px;margin:0;max-width:22em}
-  .m-row{
+  .m-lines{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    width:min(100%, 24rem);
     margin:0;
+    padding:10px 12px 8px;
+    border:1px solid #2c2c30;
+    border-radius:10px;
+    background:#0c0c0c;
+    font-family:var(--mono);
+  }
+  .m-row{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:4px 12px;
+    align-items:baseline;
+    margin:0;
+    padding:6px 0;
     opacity:0;
-    font-family:var(--sans);
-    font-size:clamp(1.08rem, 4.7vw, 1.3rem);
-    font-weight:500;
-    letter-spacing:-.022em;
-    line-height:1.25;
-    color:var(--tx);
-  }
-  .m-row[data-row="3"]{font-size:clamp(1.22rem, 5.5vw, 1.5rem)}
-  .m-row.is-in{opacity:1;transition:opacity .5s var(--ease-out), color .45s ease}
-  .m-lines:has(.is-bad) .m-row.is-in:not(.is-bad){color:#8c8a84}
-  .m-tag,
-  .m-exp{display:none}
-  .m-row.is-bad,
-  .m-row.is-bad .m-line{color:var(--stop)}
-  .m-row.is-bad .m-tag,
-  .m-row.is-bad .m-exp{display:block}
-  .m-tag{
-    margin-top:10px;
-    font-family:var(--sans);
-    font-size:12px;
-    font-weight:600;
-    letter-spacing:.16em;
-    text-transform:uppercase;
-    color:var(--stop);
-  }
-  .m-exp{
-    margin-top:6px;
-    font-size:.92rem;
-    font-weight:500;
+    font-family:var(--mono);
+    font-size:12.5px;
+    font-weight:400;
+    line-height:1.35;
     letter-spacing:-.01em;
-    color:#d4d1c8;
+    color:#d9d6ce;
   }
+  .m-row.is-in{opacity:1;transition:opacity .28s var(--ease-out), color .28s ease}
+  .m-cmd{min-width:0}
+  .m-st{
+    display:none;
+    font-family:var(--sans);
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    text-align:right;
+  }
+  .m-row.is-done .m-st{display:block;color:#6dd49a}
+  .m-exp{display:none;grid-column:1 / -1;margin:0;font-size:12px;color:#d4d1c8}
+  .m-row.is-bad{color:var(--stop)}
+  .m-row.is-bad .m-st{display:block;color:var(--stop)}
+  .m-row.is-bad .m-exp{display:block}
 
   .open-land,
   .open-stage.is-land .open-land,
@@ -1251,18 +1259,20 @@ html.instant[data-past-open] .replay{display:none !important}
     pointer-events:auto;
   }
   .trust-line,
-  .trust-line b{
+  .open-fine{display:none !important}
+  .m-explain{
+    display:block;
     margin:0;
-    max-width:22em;
+    max-width:20em;
     text-align:left;
     color:var(--tx) !important;
-    font-size:clamp(1.02rem, 4.2vw, 1.16rem);
-    line-height:1.45;
-    text-shadow:none;
+    opacity:1 !important;
+    font-family:var(--sans);
+    font-size:clamp(1.05rem, 4.4vw, 1.2rem);
+    font-weight:500;
+    line-height:1.4;
+    letter-spacing:-.02em;
   }
-  .trust-line b{font-weight:600}
-  .trust-line + .trust-line{margin-top:10px}
-  .open-fine{margin:12px 0 0;text-align:left;color:#c9c7c1 !important;opacity:1 !important;font-size:14px}
   .after-hook > .open-fine + .open-form,
   .open-form{margin-top:clamp(48px, 9vh, 84px);max-width:none}
   .open-form{flex-direction:column;align-items:stretch;gap:10px}
@@ -1307,8 +1317,8 @@ html.instant[data-past-open] .replay{display:none !important}
     padding:24px 36px;
   }
   .lede,.lede.is-in,.lede.is-out{font-size:clamp(1.55rem, 3.4vw, 2rem);max-width:8em}
-  .m-lines{gap:8px}
-  .m-row{font-size:1.05rem}
+  .m-lines{gap:0;max-width:22rem}
+  .m-row{font-size:12px;padding:4px 0}
   .open-stage.is-ask .open-land{
     flex-direction:column;
     align-items:flex-start;
@@ -1317,6 +1327,6 @@ html.instant[data-past-open] .replay{display:none !important}
   }
   .hook,.hook.is-in{font-size:clamp(1.65rem, 3.5vw, 2.05rem);max-width:12em}
   .after-hook{margin-top:12px;max-width:36rem}
-  .trust-line,.trust-line b{font-size:.98rem}
+  .m-explain{font-size:1rem;max-width:28em}
   .open-form{margin-top:28px}
 }
