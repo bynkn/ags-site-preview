@@ -1215,7 +1215,8 @@ html.instant[data-past-open] .replay{display:none !important}
   }
   .open:has(.open-stage.is-ask),
   .open-stage.is-ask{min-height:0}
-  .open-stage.is-ask .open-land{
+  .open-stage.is-ask .open-land,
+  html.reduced:not([data-beat]) .open-stage.is-ask .open-land{
     position:relative !important;
     inset:auto !important;
     height:auto !important;
