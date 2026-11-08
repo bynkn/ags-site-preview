@@ -135,14 +135,14 @@
     var mRows = $$('.m-row');
     var mobileHero = window.matchMedia('(max-width: 520px), (max-height: 500px) and (max-width: 932px)');
     /* Phone opening only. Desktop BEATS stay locked. */
-    /* Lede is immediate. Two ordinary completions, then the break. Hold the red line, then the question, then the sentence. */
+    /* Each line is readable before its status, and the next line waits. Red holds, then the question, then the sentence. */
     var M_BEATS = {
-      rows: [450, 1100, 1800],
-      done: [800, 1450],
-      bad: 2400,
-      ask: 5400,
-      after: 6200,
-      replay: 6200
+      rows: [700, 2500, 4300],
+      done: [1700, 3500],
+      bad: 5300,
+      ask: 8300,
+      after: 9100,
+      replay: 9100
     };
 
     function isMobileHero() { return mobileHero.matches; }
