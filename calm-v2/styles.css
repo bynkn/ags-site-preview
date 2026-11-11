@@ -1926,10 +1926,20 @@ html.instant .now-story::before,html.reduced .now-story::before{transition:none}
   .open > .cue{display:block}
 }
 
-/* Mobile only: pin the demo. The stage box does not change size between steps. */
+/* The blocked caption is the phone step. Desktop keeps the proof-res block. */
+@media (min-width:761px){
+  .cap[data-c="4"]{display:none !important}
+}
+
+/* Phone demo, v5's stage: one fixed svh frame, only this step's panels, one-line terminal rows. */
 @media (max-width:760px){
+  .now-story .sec.proof,
+  .now-story.day > .sec.proof{padding:0}
+  .now-story .sec.proof > .cue,
+  .now-story .sec.proof::before{display:none}
   .now-story .proof .track{
     height:calc(100svh - var(--nav) + 4 * 30svh);
+    padding:0 16px;
     overflow-anchor:none;
   }
   .now-story .stage{
@@ -1938,31 +1948,223 @@ html.instant .now-story::before,html.reduced .now-story::before{transition:none}
     height:calc(100svh - var(--nav));
     min-height:calc(100svh - var(--nav));
     max-height:calc(100svh - var(--nav));
-    padding:14px 0 0;
+    padding:8px 0 0;
     align-items:flex-start;
     overflow:hidden;
     overflow-anchor:none;
     contain:layout paint;
     will-change:transform;
+    background:transparent;
   }
-  .now-story .cap-row{height:4.6em;margin-bottom:12px;overflow:hidden}
-  .now-story .caps{height:2.8em}
+  .now-story .stage-in{
+    overflow-anchor:none;
+  }
+
+  .now-story .cap-row{
+    height:auto;
+    margin:0 0 8px;
+    overflow:visible;
+    overflow-anchor:none;
+  }
+  .now-story .step-k{margin:0 0 4px}
+  .now-story .pips{gap:5px}
+  .now-story .pips i{width:14px;height:3px}
+  .now-story .caps{
+    display:grid;
+    align-items:start;
+    height:44px;
+    min-height:44px;
+    overflow:visible;
+  }
   .now-story .cap,
   .now-story .cap.on{
-    position:absolute;left:0;right:0;top:0;height:auto;margin:0;
+    grid-area:1/1;
+    position:relative;
+    inset:auto;
+    height:auto;
+    margin:0;
+    font-size:18px;
+    line-height:22px;
+    font-weight:600;
+    letter-spacing:-.02em;
+    text-wrap:balance;
+    white-space:normal;
+    opacity:0;
+    visibility:hidden;
+    transform:none;
+    transition:opacity .35s ease;
+    pointer-events:none;
   }
-  .now-story .cap{opacity:0;visibility:hidden}
-  .now-story .cap.on{opacity:1;visibility:visible;transition:opacity .35s ease}
+  .now-story .cap.on{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
+  .now-story .stage-in[data-step="5"] .caps{height:44px;min-height:44px}
+
+  .now-story .cb-grid{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    min-height:0;
+  }
+  .now-story .term-demo .term-bar{
+    height:28px;
+    min-height:28px;
+    padding:0 10px;
+    font-size:12px;
+    gap:8px;
+  }
+  .now-story .term-demo .lights i{width:8px;height:8px}
+  .now-story .term-demo .term-title{margin-right:0;font-size:12px}
   .now-story .term-demo .term-body{
-    height:calc(8 * 1.55em + 22px);
-    min-height:calc(8 * 1.55em + 22px);
-    max-height:calc(8 * 1.55em + 22px);
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    height:calc(5 * 22px + 16px);
+    min-height:calc(5 * 22px + 16px);
+    max-height:calc(5 * 22px + 16px);
+    padding:8px 10px 8px 22px;
+    font-size:15px;
+    line-height:22px;
     overflow:hidden;
+    overflow-anchor:none;
   }
-}
-@media (max-width:760px) and (max-height:760px){
-  .stage-in[data-step="4"] .term-demo .ln:not(.f3):not(.f4):not(.st-l):not(.ln-cur),
-  .stage-in[data-step="5"] .term-demo .ln:not(.f4):not(.f5):not(.st-l):not(.ln-cur){
-    visibility:hidden;opacity:0;position:absolute;pointer-events:none;
+  .now-story .term-demo .ln{
+    display:none;
+    flex:none;
+    align-items:center;
+    gap:0;
+    height:22px;
+    min-height:22px;
+    max-height:22px;
+    white-space:nowrap;
+    overflow:hidden;
+    overflow-wrap:normal;
+    word-break:normal;
+    text-overflow:ellipsis;
+    animation:none !important;
   }
+  .now-story .term-demo .ts{display:none}
+  .now-story .term-demo .ln > span:last-child{
+    display:block;
+    flex:1 1 auto;
+    min-width:0;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow-wrap:normal;
+    word-break:normal;
+    line-height:22px;
+  }
+  .now-story .term-demo .ln .k{min-width:0;width:auto;margin-right:.6ch}
+  .now-story .term-demo .blk-l .k{display:none}
+  .now-story .term-demo .watcher{left:8px;width:7px;height:7px}
+  .now-story .stage-in[data-step="1"] .term-demo .ln:not(.f2):not(.f3):not(.f4):not(.f5):not(.st-l):not(.ln-cur),
+  .now-story .stage-in[data-step="2"] .term-demo .ln:not(.f3):not(.f4):not(.f5):not(.st-l):not(.ln-cur),
+  .now-story .stage-in[data-step="3"] .term-demo .ln.f2,
+  .now-story .stage-in[data-step="3"] .term-demo .ln.f3,
+  .now-story .stage-in[data-step="4"] .term-demo .ln.f3,
+  .now-story .stage-in[data-step="4"] .term-demo .ln.f4,
+  .now-story .stage-in[data-step="5"] .term-demo .ln.f4,
+  .now-story .stage-in[data-step="5"] .term-demo .ln.f5,
+  .now-story .stage-in[data-step="5"] .term-demo .ln.st-l{
+    display:flex;
+    visibility:visible;
+    opacity:1;
+    position:relative;
+    pointer-events:auto;
+  }
+  .now-story .stage-in[data-step="5"] .term-demo .ln.u4{display:none}
+  .now-story .term-demo .st-l .d:not(.f5r){display:none}
+
+  .now-story .cb-side{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    min-height:0;
+    position:relative;
+  }
+  .now-story .cb-side > .side-a,
+  .now-story .cb-side > .rc{flex:0 0 auto;width:100%;min-width:0}
+  .now-story .side-a .agp{flex:0 0 auto}
+  .now-story .cb-side{gap:0}
+  .now-story .cb-side > .rc{
+    display:block !important;
+    position:relative;
+    height:0;
+    min-height:0;
+    margin:0 !important;
+    padding:0 !important;
+    border-width:0 !important;
+    overflow:hidden;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:none;
+    transition:opacity .4s ease;
+    animation:none !important;
+  }
+  .now-story .stage-in[data-step="3"] .cb-side > .pnl-ok,
+  .now-story .stage-in[data-step="4"] .cb-side > .pnl-ok,
+  .now-story .stage-in[data-step="5"] .cb-side > .pnl-ok,
+  .now-story .stage-in[data-step="5"] .cb-side > .pnl-dev{
+    display:block !important;
+    position:relative;
+    height:auto;
+    overflow:visible;
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    margin-top:8px !important;
+    padding:8px 10px !important;
+    border-width:1px !important;
+  }
+  .now-story .proof-res,
+  .now-story .stage-in[data-step="5"] .proof-res{display:none !important}
+
+  .now-story .pnl{padding:8px 10px;border-radius:10px;box-shadow:none}
+  .now-story .pnl-top{gap:8px;font-size:13px}
+  .now-story .pip{padding:2px 8px;font-size:11px;gap:6px}
+  .now-story .ph-top{gap:4px;margin:0;line-height:20px}
+  .now-story .ph{display:block;height:auto;line-height:0;overflow:visible}
+  .now-story .phk{font-size:16px;line-height:22px;height:22px;letter-spacing:0;gap:6px;white-space:nowrap;align-items:center;animation:none !important;transform:none}
+  .now-story .stage-in[data-step="2"] .phk.s2,
+  .now-story .stage-in[data-step="3"] .phk.s3,
+  .now-story .stage-in[data-step="4"] .phk.s4,
+  .now-story .stage-in[data-step="5"] .phk.s5{display:flex}
+  .now-story .pip{line-height:18px}
+  .now-story .ph-sub{font-size:13px;margin:0 0 4px;min-height:0}
+  .now-story .ag-acts{margin:0;font-size:13px}
+  .now-story .ag-acts li{
+    display:none;
+    padding:2px 0;
+  }
+  .now-story .stage-in[data-step="2"] .ag-acts li.f2,
+  .now-story .stage-in[data-step="3"] .ag-acts li.f3,
+  .now-story .stage-in[data-step="4"] .ag-acts li.f4{
+    display:flex;
+    visibility:visible;
+  }
+  .now-story .stage-in[data-step="5"] .ag-acts{display:none}
+  .now-story .stage-in[data-step="5"] .agp{padding-bottom:8px}
+  .now-story .stage-in[data-step="5"] .agp .ph-sub{margin-bottom:0}
+  .now-story .pnl-ok .pnl-top{margin-bottom:4px}
+  .now-story .pnl-ok .pnl-p{display:inline;margin:0 .4ch 0 0;font-size:13px}
+  .now-story .pnl-ok .seq{
+    display:inline;
+    margin:0;
+    font-size:13px;
+    white-space:normal;
+  }
+  .now-story .seq .ar{margin:0 .35ch}
+  .now-story .eo{margin:4px 0 0;gap:2px}
+  .now-story .eo > div{
+    grid-template-columns:78px minmax(0,1fr);
+    gap:6px;
+    padding:1px 0;
+  }
+  .now-story .eo dt{font-size:11px}
+  .now-story .eo dd{font-size:13px;line-height:1.3}
+  .now-story .verdict{margin:4px 0 0;padding-top:4px;font-size:13px;line-height:1.3}
 }
