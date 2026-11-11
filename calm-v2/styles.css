@@ -1371,9 +1371,9 @@ html[data-nav-light] .nav .btn-primary:hover{background:#24618a;box-shadow:none}
 /* Black fades to off-white. The glacier wash sits only around Now you can, and again at the ending. */
 .fade-rise{
   position:relative;
-  height:240px;
+  height:480px;
   overflow:visible;
-  background:linear-gradient(180deg,#050505 0%,#f9f8f4 100%);
+  background:linear-gradient(180deg,#050505 0%,#0b0b0b 10%,#1a1a19 20%,#333331 30%,#575653 40%,#807e7a 50%,#a9a7a2 60%,#cdcbc5 70%,#e7e5df 80%,#f4f2ed 90%,#f9f8f4 100%);
   pointer-events:none;
 }
 .fade-rise::before{content:none}
@@ -1461,7 +1461,7 @@ html.reduced .day .cue{opacity:1;transform:none}
 }
 .trust-giant .lt-h{display:block;--lt-accent:#24618a;--lt-end:#43434b}
 @media (max-width:800px){
-  .fade-rise{height:140px}
+  .fade-rise{height:280px}
   .bay-now{padding:0 0 96px}
   .bay-ask{padding:36px 0 16px}
   .bay-cloud{min-height:420px;padding:64px 0}

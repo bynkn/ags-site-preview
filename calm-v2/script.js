@@ -319,7 +319,10 @@
       }
       root.toggleAttribute('data-nav-signup', !signupInView);
       var fade = document.querySelector('.fade-rise');
-      if (fade) root.toggleAttribute('data-nav-light', fade.getBoundingClientRect().top <= navH());
+      if (fade) {
+        var fr = fade.getBoundingClientRect();
+        root.toggleAttribute('data-nav-light', fr.top + fr.height / 2 <= navH());
+      }
       if (past) {
         if (btn) btn.hidden = true;
         root.classList.remove('nav-away');
