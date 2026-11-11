@@ -175,8 +175,9 @@ html.js:not(.reduced) .brand-dot{animation:pip 2.6s ease-out infinite}
 }
 .js .cue{transform:scaleY(0);opacity:0}
 .js .cue.on{transform:none;opacity:1}
-.js .cue.past{opacity:1;transform:none}
-.js .cue.on.past::after{animation:cueTravel 2.8s ease-in-out infinite}
+.js .cue.past{opacity:0;transform:scaleY(0)}
+.js .day .cue.past{opacity:1;transform:none}
+.js .day .cue.on.past::after{animation:cueTravel 2.8s ease-in-out infinite}
 .cue::after{
   content:"";position:absolute;left:50%;top:0;width:2px;height:22%;margin-left:-1px;
   border-radius:1px;background:linear-gradient(transparent,var(--mu2),var(--tx),var(--mu2),transparent);
