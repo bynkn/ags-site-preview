@@ -1258,7 +1258,11 @@ html.instant[data-past-open] .replay{display:none !important}
 .trust-close,.end-glow{position:relative;z-index:1;background:transparent}
 .trust-close{padding:clamp(88px,12vw,140px) 0 clamp(28px,4vw,40px)}
 .end-glow{padding:clamp(28px,4vw,48px) 0 0}
+.end-glow .bay-h{max-width:none}
 .end-glow .bay-h + .bay-h{margin-top:8px}
+@media (min-width:900px){
+  .end-glow .bay-h{font-size:54px;white-space:nowrap}
+}
 .end-glow .form-card{margin:clamp(28px,4vw,40px) 0 0;max-width:36rem}
 .end-glow .form-act .btn-primary{
   background:#24618a;color:#fff;border-radius:999px;
