@@ -1373,7 +1373,10 @@ html[data-nav-light] .nav .btn-primary:hover{background:#24618a;box-shadow:none}
   position:relative;
   height:480px;
   overflow:visible;
-  background:linear-gradient(180deg,#050505 0%,#0b0b0b 10%,#1a1a19 20%,#333331 30%,#575653 40%,#807e7a 50%,#a9a7a2 60%,#cdcbc5 70%,#e7e5df 80%,#f4f2ed 90%,#f9f8f4 100%);
+  margin:0;
+  border:0;
+  box-shadow:none;
+  background:linear-gradient(180deg,#050505 0%,#0e0e0e 8%,#272726 16%,#4b4a49 24%,#747472 32%,#9f9e9c 40%,#c6c5c2 48%,#e5e4e0 56%,#f7f6f2 64%,#f9f8f4 68%,#f9f8f4 100%);
   pointer-events:none;
 }
 .fade-rise::before{content:none}
