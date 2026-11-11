@@ -174,9 +174,11 @@
 
     function reset() {
       clearTimers();
-      stage.classList.remove('is-alive', 'is-hook', 'is-land', 'is-ask', 'is-term');
+      stage.classList.remove('is-alive', 'is-hook', 'is-land', 'is-ask', 'is-term', 'is-term-out', 'is-settled');
       if (lede) lede.classList.remove('is-in', 'is-out');
-      hook.classList.remove('is-in');
+      hook.classList.remove('is-in', 'is-out');
+      canSkip = false;
+      skipped = false;
       if (after) after.classList.remove('is-in');
       pays.forEach(function (p) { p.classList.remove('is-in', 'is-soft'); });
       clearMobileRows();
@@ -184,19 +186,38 @@
       if (openCue) openCue.classList.remove('on', 'loop');
     }
 
+    var canSkip = false, skipped = false;
+    function settleIntro() {
+      if (skipped) return;
+      skipped = true;
+      canSkip = false;
+      clearTimers();
+      stage.classList.add('is-ask', 'is-hook', 'is-term-out', 'is-settled');
+      if (lede) {
+        lede.classList.remove('is-in');
+        lede.classList.add('is-out');
+      }
+      hook.classList.remove('is-in');
+      hook.classList.add('is-out');
+      if (after) after.classList.add('is-in');
+      if (btnReplay) btnReplay.hidden = false;
+      armCue();
+    }
     function showMobileEnd() {
-      stage.classList.add('is-ask', 'is-hook', 'is-land');
-      hook.classList.add('is-in');
+      stage.classList.add('is-ask', 'is-hook', 'is-term-out', 'is-settled');
+      hook.classList.remove('is-in');
+      hook.classList.add('is-out');
       if (after) after.classList.add('is-in');
       if (lede) {
-        lede.classList.remove('is-out');
-        lede.classList.add('is-in');
+        lede.classList.remove('is-in');
+        lede.classList.add('is-out');
       }
       mRows.forEach(function (row, i) {
         row.classList.add('is-in');
         if (i < mRows.length - 1) row.classList.add('is-done');
         else row.classList.add('is-bad');
       });
+      if (btnReplay) btnReplay.hidden = false;
       armCue();
     }
 
@@ -242,18 +263,35 @@
         var last = mRows[mRows.length - 1];
         if (last) last.classList.add('is-bad');
       });
-      later(termAt + M_BEATS.ask, function () {
+      later(8100, function () { stage.classList.add('is-term-out'); });
+      later(8500, function () {
+        if (skipped) return;
+        canSkip = true;
         stage.classList.add('is-ask', 'is-hook');
+        hook.classList.remove('is-out');
         hook.classList.add('is-in');
-        revealNav();
       });
-      later(termAt + M_BEATS.after, function () {
-        stage.classList.add('is-land');
+      later(11700, function () {
+        if (skipped) return;
+        hook.classList.remove('is-in');
+        hook.classList.add('is-out');
+      });
+      later(11720, function () {
+        if (skipped) return;
+        canSkip = false;
         if (after) after.classList.add('is-in');
+        if (btnReplay) btnReplay.hidden = false;
         armCue();
       });
-      later(termAt + M_BEATS.replay, function () { if (btnReplay) btnReplay.hidden = false; });
     }
+    function onSkip() {
+      if (!canSkip || skipped || !isMobileHero()) return;
+      settleIntro();
+    }
+    window.addEventListener('pointerdown', onSkip, { passive: true });
+    window.addEventListener('wheel', onSkip, { passive: true });
+    window.addEventListener('touchmove', onSkip, { passive: true });
+    window.addEventListener('scroll', onSkip, { passive: true });
 
     function showPay(i, softOlder) {
       var p = pays[i];
