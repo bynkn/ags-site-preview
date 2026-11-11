@@ -1848,8 +1848,8 @@ html.instant .now-story::before,html.reduced .now-story::before{transition:none}
     position:absolute !important;
     left:50% !important;
     top:50% !important;
-    width:min(18em,88vw) !important;
-    max-width:none;
+    width:max-content !important;
+    max-width:92vw;
     margin:0 !important;
     text-align:center;
     font-weight:500;
@@ -1860,6 +1860,7 @@ html.instant .now-story::before,html.reduced .now-story::before{transition:none}
     text-shadow:none;
   }
   .lede.is-in{opacity:1 !important;visibility:visible !important}
+  .lede-l1,.lede-l2{display:block;white-space:nowrap}
   .lede.is-out{
     opacity:0 !important;
     visibility:hidden;
