@@ -318,6 +318,8 @@
         signupInView = fr.width > 0 && fr.bottom > navH() + 4 && fr.top < window.innerHeight - 8;
       }
       root.toggleAttribute('data-nav-signup', !signupInView);
+      var proof = $('#proof');
+      if (proof) root.toggleAttribute('data-nav-light', proof.getBoundingClientRect().bottom <= navH() + 36);
       if (past) {
         if (btn) btn.hidden = true;
         root.classList.remove('nav-away');
