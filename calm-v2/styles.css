@@ -1531,6 +1531,14 @@ html.reduced .day .cue{opacity:1;transform:none}
   #why .m4{margin-bottom:48px}
   #why .why-1{font-size:28px}
 }
+#why .why-k, #why .why-2{color:#8A8882}
+#why .why-open{color:#C9C7C1}
+#why .big.m1{color:#8A8882}
+#why .big.m2{color:#A7A59F}
+#why .big.m3{color:#C0BEB8}
+#why .big.m4{color:#F2F0EA}
+#why .big.m1 strong{color:inherit;font-weight:inherit}
+#why .why-1{color:#B2D3E7}
 .day .tools-lead,.tools-lead{
   font-size:clamp(1.5rem,2.6vw,2.25rem);
   font-weight:600;
