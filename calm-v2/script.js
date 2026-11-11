@@ -318,11 +318,6 @@
         signupInView = fr.width > 0 && fr.bottom > navH() + 4 && fr.top < window.innerHeight - 8;
       }
       root.toggleAttribute('data-nav-signup', !signupInView);
-      var fade = document.querySelector('.fade-rise');
-      if (fade) {
-        var fr = fade.getBoundingClientRect();
-        root.toggleAttribute('data-nav-light', fr.top + fr.height / 2 <= navH());
-      }
       if (past) {
         if (btn) btn.hidden = true;
         root.classList.remove('nav-away');
@@ -334,6 +329,42 @@
     }
     addEventListener('scroll', sync, { passive: true });
     sync();
+  })();
+
+  /* ---------- world flip: short dawn, reversible, same flag as the nav ---------- */
+  (function () {
+    var meta = document.querySelector('meta[name="theme-color"]');
+    var why = $('#why');
+    var story = document.querySelector('.now-story') || $('#proof');
+    var frozen = /[?&]world=(light|dark)/.test(location.search);
+    function world(light) {
+      var w = light ? 'light' : 'dark';
+      if (root.getAttribute('data-world') !== w) {
+        root.setAttribute('data-world', w);
+        if (meta) meta.setAttribute('content', light ? '#f9f8f4' : '#050505');
+      }
+      root.toggleAttribute('data-nav-light', !!light);
+    }
+    function tickWorld() {
+      if (!why) return;
+      var nh = navH(), vh = window.innerHeight;
+      var whyBottom = why.getBoundingClientRect().bottom;
+      var storyTop = story ? story.getBoundingClientRect().top : Infinity;
+      world(whyBottom < nh + 48 || storyTop < vh * 0.72);
+    }
+    if (/[?&]world=light/.test(location.search)) world(true);
+    else if (/[?&]world=dark/.test(location.search)) world(false);
+    else tickWorld();
+    if (!frozen) {
+      var queued = false;
+      var req = function () {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(function () { queued = false; tickWorld(); });
+      };
+      addEventListener('scroll', req, { passive: true });
+      addEventListener('resize', req);
+    }
   })();
 
   /* ---------- scroll cues ---------- */
