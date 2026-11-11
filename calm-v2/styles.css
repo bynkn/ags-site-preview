@@ -1917,7 +1917,10 @@ html.instant .now-story::before,html.reduced .now-story::before{transition:none}
     position:relative !important;
     opacity:1 !important;visibility:visible !important;pointer-events:auto;
   }
-  .hook,.hook.is-in{max-width:11em;margin:0;text-align:left;text-shadow:none !important}
+  .open-stage.is-ask{padding-left:0;padding-right:0}
+  .open-stage.is-ask .open-land{padding-left:16px;padding-right:16px}
+  .hook,.hook.is-in{max-width:none;width:100%;margin:0;text-align:center;text-wrap:balance;text-shadow:none !important;font-size:26px;line-height:30px}
+  .hook-l1,.hook-l2{display:block;white-space:nowrap}
   .after-hook{width:100%;max-width:24rem;margin-top:22px}
   .open-form{flex-direction:column;align-items:stretch;max-width:none}
   .open > .cue{display:block}
