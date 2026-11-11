@@ -1370,15 +1370,7 @@ html[data-nav-light] .nav .btn-primary:hover{background:#24618a;box-shadow:none}
   .g-cg .g-w{grid-column:auto}
 }
 
-/* Short dawn into the light page. The glacier band stays on Now you can. */
-.sdawn{
-  display:block;
-  height:140px;
-  margin:0;
-  pointer-events:none;
-  background:linear-gradient(#050505,#f9f8f4);
-  border-image:linear-gradient(#050505,#f9f8f4) fill 0//0 100vmax;
-}
+/* The page itself eases from black to off-white. No static dawn strip. */
 .bay-now{
   position:relative;
   overflow:visible;
@@ -1463,7 +1455,6 @@ html.reduced .day .cue{opacity:1;transform:none}
 }
 .trust-giant .lt-h{display:block;--lt-accent:#24618a;--lt-end:#43434b}
 @media (max-width:800px){
-  .sdawn{height:96px}
   .bay-now{padding:0 0 96px}
   .bay-ask{padding:36px 0 16px}
   .bay-cloud{min-height:420px;padding:64px 0}
@@ -1577,7 +1568,9 @@ html.reduced .day .cue{opacity:1;transform:none}
 /* Now you can: full-width glacier band. Peak is #9CC9E6, the same blue as the old cloud. */
 .now-story{
   position:relative;
-  background:#f9f8f4;
+  --bg:unset; --bg2:unset; --tx:unset; --tx2:unset; --mu:unset; --mu2:unset; --ln:unset; --ln2:unset;
+  background:transparent;
+  color:var(--tx);
   overflow:visible;
 }
 .now-story::before{
@@ -1593,10 +1586,12 @@ html.reduced .day .cue{opacity:1;transform:none}
   pointer-events:none;
   z-index:0;
   filter:none;
-  opacity:1;
+  opacity:0;
+  transition:opacity 1.1s ease;
   -webkit-mask-image:none;
   mask-image:none;
 }
+html[data-world="light"] .now-story::before{opacity:1}
 .now-story > *{position:relative;z-index:1}
 #proof.bay-now::before,
 #proof.bay-now::after,
@@ -1633,7 +1628,7 @@ html.reduced .day .cue{opacity:1;transform:none}
   font-weight:300;
   line-height:1.35;
   letter-spacing:-.015em;
-  color:#5c6168;
+  color:var(--tx2);
   max-width:none;
   white-space:normal;
   text-wrap:pretty;
@@ -1643,7 +1638,7 @@ html.reduced .day .cue{opacity:1;transform:none}
   font-weight:600;
   line-height:1.35;
   letter-spacing:-.015em;
-  color:#43434b;
+  color:var(--tx);
 }
 .now-story .bay-ask .trust-ask .ask-b{
   display:block;
@@ -1651,10 +1646,11 @@ html.reduced .day .cue{opacity:1;transform:none}
   font-weight:600;
   line-height:1.3;
   letter-spacing:-.02em;
-  color:#43434b;
+  color:var(--tx);
   margin-top:4px;
 }
-.now-story .now-giant{margin:0}
+.now-story .now-giant{margin:0;color:var(--tx);--lt-end:var(--tx)}
+.now-story .now-giant .lt.in{color:var(--tx)}
 .now-story .bay-p{
   margin:24px 0 0;
   max-width:28em;
@@ -1662,7 +1658,7 @@ html.reduced .day .cue{opacity:1;transform:none}
   font-size:20px;
   line-height:1.35;
   letter-spacing:-.015em;
-  color:#43434b;
+  color:var(--tx);
   text-wrap:pretty;
 }
 .bay-own{white-space:nowrap}
@@ -1765,9 +1761,10 @@ html.instant .nav,html.reduced .nav,
 html.instant .brand,html.reduced .brand,
 html.instant .nav-link,html.reduced .nav-link,
 html.instant .nav .btn-primary,html.reduced .nav .btn-primary,
-html.instant .nav .wm-dot,html.reduced .nav .wm-dot{transition:none}
+html.instant .nav .wm-dot,html.reduced .nav .wm-dot,
+html.instant .now-story::before,html.reduced .now-story::before{transition:none}
 @media (prefers-reduced-motion:reduce){
-  html,.nav,.brand,.nav-link,.nav .btn-primary,.nav .wm-dot{transition:none}
+  html,.nav,.brand,.nav-link,.nav .btn-primary,.nav .wm-dot,.now-story::before{transition:none}
 }
 
 /* Mobile only: quiet rules in Learns, Blocks, and Signs.

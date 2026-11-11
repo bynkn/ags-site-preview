@@ -335,7 +335,7 @@
   (function () {
     var meta = document.querySelector('meta[name="theme-color"]');
     var why = $('#why');
-    var story = document.querySelector('.now-story') || $('#proof');
+    var ask = document.querySelector('#proof .trust-ask');
     var frozen = /[?&]world=(light|dark)/.test(location.search);
     function world(light) {
       var w = light ? 'light' : 'dark';
@@ -347,10 +347,12 @@
     }
     function tickWorld() {
       if (!why) return;
-      var nh = navH(), vh = window.innerHeight;
+      var vh = window.innerHeight;
       var whyBottom = why.getBoundingClientRect().bottom;
-      var storyTop = story ? story.getBoundingClientRect().top : Infinity;
-      world(whyBottom < nh + 48 || storyTop < vh * 0.72);
+      var askTop = ask ? ask.getBoundingClientRect().top : Infinity;
+      var light = root.getAttribute('data-world') === 'light';
+      if (!light && (whyBottom < vh * 0.55 || askTop < vh * 0.8)) world(true);
+      else if (light && whyBottom > vh * 0.7) world(false);
     }
     if (/[?&]world=light/.test(location.search)) world(true);
     else if (/[?&]world=dark/.test(location.search)) world(false);
