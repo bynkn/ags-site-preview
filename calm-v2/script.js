@@ -334,7 +334,6 @@
     function mqMob() { return window.matchMedia('(max-width:760px)').matches; }
     if (mqMob()) {
       var track = $('#track'), stage = $('#stage');
-      var bridge = document.querySelector('.bay-p');
       var N = 4, cur = 0, queued = false;
       var tick = function () {
         queued = false;
@@ -344,9 +343,11 @@
         var r = track.getBoundingClientRect(), total = track.offsetHeight - sh;
         var p = total > 0 ? (nh - r.top) / total : 0;
         var k = Math.max(1, Math.min(N, 1 + Math.floor(p * N)));
-        var gone = !bridge || bridge.getBoundingClientRect().bottom < nh + 2;
-        si.classList.toggle('live', gone);
-        if (!gone) k = 1;
+        var stageR = stage.getBoundingClientRect();
+        var peek = stageR.top < window.innerHeight - 8;
+        si.classList.toggle('live', peek);
+        var stuck = stageR.top <= nh + 2;
+        if (!stuck) k = 1;
         if (k !== cur) { cur = k; setStep(si, k); }
       };
       var req = function () { if (!queued) { queued = true; requestAnimationFrame(tick); } };
