@@ -1204,6 +1204,7 @@ html.reduced .rv{opacity:1 !important;transform:none !important;transition:none 
 }
 .calm-h + .calm-h{margin-top:.18em}
 .calm-h.accent{color:#24618a}
+.calm-strong{font-size:clamp(2.55rem,6.2vw,80px);font-weight:700;letter-spacing:-.035em;max-width:11em;margin-top:.42em}
 .calm-body{
   margin:0 0 clamp(28px,4vw,44px);
   max-width:900px;
@@ -1328,11 +1329,8 @@ html.reduced .rv{opacity:1 !important;transform:none !important;transition:none 
 .g-deny{color:#b3261e !important;font-weight:600}
 .g-sm{font-family:var(--sans) !important;font-size:14px !important;font-weight:400}
 
-.watch{position:relative;z-index:1;padding:clamp(64px,9vw,110px) 0 clamp(36px,6vw,72px);background:#fafbfc}
-.watch .calm-h{max-width:14em}
-.watch .watch-lead{max-width:18em;margin-bottom:.62em}
 .close{position:relative;z-index:1;padding:clamp(72px,12vw,160px) 0 clamp(48px,8vw,96px)}
-.close .calm-h{max-width:14em}
+.close .calm-h{max-width:16em}
 .close .form-card{margin:clamp(48px,7vw,84px) 0 0;max-width:36rem}
 .story{margin:clamp(36px,5vw,56px) 0 0;font-size:16px;font-weight:400;letter-spacing:-.01em}
 .story a{color:#4a525a;text-decoration:none}
@@ -1382,6 +1380,7 @@ html.reduced .rv{opacity:1 !important;transform:none !important;transition:none 
 }
 @media (max-width:520px){
   .calm-h{font-size:clamp(1.85rem,8.4vw,2.4rem)}
+  .calm-strong{font-size:clamp(2.2rem,10vw,2.9rem);font-weight:700}
   .calm-body{font-size:clamp(1.2rem,5.4vw,1.45rem)}
   .g-eo{grid-template-columns:92px 1fr}
   .g-cg{grid-template-columns:1fr}
