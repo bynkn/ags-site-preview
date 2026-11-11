@@ -1231,17 +1231,11 @@ html.instant[data-past-open] .replay{display:none !important}
 .g-cg span{font-family:var(--mono);font-size:13px}
 .g-deny{color:#b3261e;font-weight:600}
 .g-sm{font-family:var(--sans);font-size:14px}
-.day .beat-l,.day .tools-they,.day .mic-drop,.day .access-h,.day .tools-lead{
-  font-weight:500;
-  font-size:clamp(28px,4.2vw,60px);
-  line-height:1;
-  letter-spacing:-.03em;
-  color:#43434b;
-  max-width:12em;
-}
-.day .tools-we{color:#24618a;font-weight:500}
-.day .beat-s{font-weight:300;font-size:clamp(16px,1.5vw,22px);line-height:1.35;letter-spacing:-.02em;color:#43434b;max-width:32em}
-.day .tools-lead + .tools-lead{margin-top:clamp(56px,8vw,96px)}
+.day .beat-l,.day .tools-they,.day .access-h,.day .tools-lead,.day .thesis-line{color:#43434b}
+.day .tools-we,.day .mic-2,.day .mic-2 b,.day .thesis-line b{color:#24618a}
+.day .beat-s,.day .mic-line{color:#5c6168}
+.day .tools .mic{margin-top:clamp(72px,10vw,140px)}
+.day .tools .thesis-line{margin-top:clamp(56px,8vw,96px);max-width:24em}
 .day .mic-drop{margin-top:0}
 .g-cn{font-weight:400;font-size:clamp(18px,2.8vw,40px);letter-spacing:-.03em;line-height:1.1}
 .bay-col{max-width:720px}
@@ -1350,9 +1344,7 @@ html[data-nav-light] .nav .btn-primary:hover{background:#24618a;box-shadow:none}
   .bay-now .trust-ask .ask-a{white-space:normal}
 }
 @media (max-width:800px){
-  .bay-h,.day .beat-l,.day .tools-they,.day .mic-drop,.day .access-h,.day .tools-lead{font-size:28px}
-  .bay-p{font-size:16px}
-  .day .beat-s{font-size:16px}
+  .bay-h{font-size:28px}
   .g-cn{font-size:18px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -1366,132 +1358,54 @@ html[data-nav-light] .nav .btn-primary:hover{background:#24618a;box-shadow:none}
   .g-cg .g-w{grid-column:auto}
 }
 
-/* Reality and industry use the close-block size. Glow only at the handoff and the ending. */
-.why{padding:72px 0 28px}
-.why-k{margin:0 0 18px}
-.why-stack{max-width:1240px}
-.why-lead{
-  margin:0;
-  max-width:none;
-  font-family:var(--sans);
-  font-weight:700;
-  font-size:34px;
-  line-height:1.2;
-  letter-spacing:-.03em;
-  color:#f2f1ec;
-}
-.why-lead span{display:block}
-@media (min-width:1000px){
-  .why-lead span{white-space:nowrap}
-}
-.why-mint{
-  margin:28px 0 0;
-  max-width:36em;
-  font-family:var(--sans);
-  font-weight:700;
-  font-size:34px;
-  line-height:1.2;
-  letter-spacing:-.03em;
-  color:#A8D5C2;
-}
-.why-1{
-  margin:28px 0 0;
-  max-width:22em;
-  font-size:34px;
-  font-weight:700;
-  line-height:1.2;
-  letter-spacing:-.03em;
-  color:#f2f1ec;
-}
-.why-2{
-  margin:10px 0 0;
-  max-width:28em;
-  font-size:34px;
-  font-weight:500;
-  line-height:1.25;
-  letter-spacing:-.02em;
-  color:#c9c7c1;
-  white-space:normal;
-}
-.glow-rise{
+/* Black fades to off-white. The glacier wash sits only around Now you can, and again at the ending. */
+.fade-rise{
   position:relative;
-  height:280px;
+  height:460px;
   overflow:hidden;
   background:#050505;
   pointer-events:none;
 }
-.glow-rise::before{
+.fade-rise::before{
   content:"";
   position:absolute;
-  left:-22%;
-  width:144%;
-  top:-36px;
-  bottom:-48px;
-  background:linear-gradient(180deg,
-    #050505 0%,
-    #050505 12%,
-    #143044 30%,
-    #8ec4de 50%,
-    #d7eef8 70%,
-    #f9f8f4 88%,
-    #f9f8f4 100%);
-  filter:blur(40px);
+  left:0;right:0;top:-20px;bottom:-20px;
+  background:linear-gradient(180deg,#050505 0%,#050505 18%,#3a3a38 46%,#b9b6b0 72%,#f9f8f4 90%,#f9f8f4 100%);
+  filter:blur(22px);
 }
 .bay-now{
-  overflow:visible;
+  position:relative;
+  overflow:hidden;
   background:#f9f8f4;
-  padding:32px 0 108px;
+  padding:72px 0 260px;
 }
-.bay-now::before,
-.bay-now::after{content:none;display:none;height:0;background:none;filter:none}
+.bay-now::before{
+  content:"";
+  display:block;
+  position:absolute;
+  left:-18%;
+  width:136%;
+  top:4%;
+  height:58%;
+  background:linear-gradient(180deg,rgba(249,248,244,0) 0%,rgba(156,201,230,.22) 32%,rgba(156,201,230,.4) 50%,rgba(168,214,232,.2) 70%,rgba(249,248,244,0) 100%);
+  filter:blur(40px);
+  pointer-events:none;
+}
+.bay-now::after{content:none;display:none}
+.bay-now .frame{position:relative;z-index:1}
+.bay-p{
+  margin:22px 0 0;
+  max-width:28em;
+  font-weight:500;
+  font-size:clamp(1.05rem,1.5vw,1.25rem);
+  line-height:1.4;
+  letter-spacing:-.015em;
+}
 .band{display:none}
 .day .sec::before{display:none}
-.day .tools-lead,
-.day .tools-they,
-.day .tools-we{
-  font-size:34px;
-  font-weight:700;
-  line-height:1.2;
-  letter-spacing:-.03em;
-  max-width:22em;
-}
-.day .tools-they{color:#43434b}
-.day .tools-we{color:#24618a}
-.day .tools-lead{gap:22px}
-.tools-industry{gap:0}
-.tools-industry .tools-they{margin:0}
-.ind-more{
-  display:block;
-  margin:6px 0 0;
-  font-family:var(--sans);
-  font-size:34px;
-  font-weight:500;
-  line-height:1.2;
-  letter-spacing:-.03em;
-  color:#6a7076;
-}
-.tools-industry .tools-we{margin-top:22px}
-.tools-calm{
-  margin:36px 0 0;
-  max-width:none;
-  font-family:var(--sans);
-  font-size:42px;
-  font-weight:500;
-  line-height:1.15;
-  letter-spacing:-.03em;
-  color:#43434b;
-  white-space:nowrap;
-}
-.tools-calm span{font-weight:700;color:#24618a}
 .trust-close{text-align:left}
-.trust-giant{
-  text-align:left;
-  max-width:none;
-}
+.trust-giant{text-align:left;max-width:none}
 @media (max-width:800px){
-  .why-lead,.why-mint,.why-1,.why-2,.day .tools-lead,.day .tools-they,.day .tools-we,.ind-more{font-size:22px}
-  .why-lead span,.tools-calm{white-space:normal}
-  .tools-calm{font-size:26px}
-  .bay-now{padding:28px 0 72px}
-  .glow-rise{height:180px}
+  .fade-rise{height:220px}
+  .bay-now{padding:48px 0 140px}
 }
