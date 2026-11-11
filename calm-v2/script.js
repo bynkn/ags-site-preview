@@ -383,7 +383,8 @@
     var words = text.split(' ');
     var letters = [];
     el.textContent = '';
-    words.forEach(function (word) {
+    words.forEach(function (word, idx) {
+      if (idx) el.appendChild(document.createTextNode(' '));
       var w = document.createElement('span');
       w.className = 'wrd';
       w.setAttribute('aria-hidden', 'true');
