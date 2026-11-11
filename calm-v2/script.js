@@ -132,7 +132,7 @@
 
     function reset() {
       clearTimers();
-      stage.classList.remove('is-alive', 'is-hook', 'is-land', 'is-ask');
+      stage.classList.remove('is-alive', 'is-hook', 'is-land', 'is-ask', 'is-term');
       if (lede) lede.classList.remove('is-in', 'is-out');
       hook.classList.remove('is-in');
       if (after) after.classList.remove('is-in');
@@ -173,28 +173,40 @@
         return;
       }
       concealNavForOpening();
-      if (lede) {
-        lede.classList.remove('is-out');
-        lede.classList.add('is-in');
-      }
+      /* Same lede beats as desktop: in at 700, out at 3400. The terminal
+         fades in only after that fade has finished, then runs the same row clock. */
+      var termAt = BEATS.ledeOut + 700;
+      later(BEATS.lede, function () {
+        if (lede) {
+          lede.classList.remove('is-out');
+          lede.classList.add('is-in');
+        }
+      });
+      later(BEATS.ledeOut, function () {
+        if (lede) {
+          lede.classList.remove('is-in');
+          lede.classList.add('is-out');
+        }
+      });
+      later(termAt, function () { stage.classList.add('is-term'); });
       M_BEATS.rows.forEach(function (t, i) {
-        later(t, function () { if (mRows[i]) mRows[i].classList.add('is-in'); });
+        later(termAt + t, function () { if (mRows[i]) mRows[i].classList.add('is-in'); });
       });
       M_BEATS.done.forEach(function (t, i) {
-        later(t, function () { if (mRows[i]) mRows[i].classList.add('is-done'); });
+        later(termAt + t, function () { if (mRows[i]) mRows[i].classList.add('is-done'); });
       });
-      later(M_BEATS.bad, function () { if (mRows[2]) mRows[2].classList.add('is-bad'); });
-      later(M_BEATS.ask, function () {
+      later(termAt + M_BEATS.bad, function () { if (mRows[2]) mRows[2].classList.add('is-bad'); });
+      later(termAt + M_BEATS.ask, function () {
         stage.classList.add('is-ask', 'is-hook');
         hook.classList.add('is-in');
         revealNav();
       });
-      later(M_BEATS.after, function () {
+      later(termAt + M_BEATS.after, function () {
         stage.classList.add('is-land');
         if (after) after.classList.add('is-in');
         armCue();
       });
-      later(M_BEATS.replay, function () { if (btnReplay) btnReplay.hidden = false; });
+      later(termAt + M_BEATS.replay, function () { if (btnReplay) btnReplay.hidden = false; });
     }
 
     function showPay(i, softOlder) {
