@@ -1674,7 +1674,7 @@ html[data-world="light"] .now-story::before{opacity:1}
 }
 .now-story .stage{
   position:relative;
-  top:auto !important;
+  top:auto;
   min-height:0;
   padding:30px 0 0;
   align-items:flex-start;
@@ -1798,4 +1798,23 @@ html.instant .now-story::before,html.reduced .now-story::before{transition:none}
     background:#f9f8f4;
     box-shadow:inset 0 0 0 1px #74736E;
   }
+}
+
+/* Mobile only: pin the demo and scrub four equal steps. Desktop stays play-once. */
+@media (max-width:760px){
+  .now-story .proof .track{
+    height:calc(100vh - var(--nav) + 4 * 30vh);
+  }
+  .now-story .stage{
+    position:sticky;
+    top:var(--nav);
+    min-height:calc(100vh - var(--nav));
+    padding:14px 0 0;
+    align-items:flex-start;
+  }
+  .now-story .cap-row{margin-bottom:12px}
+}
+@media (max-width:760px) and (max-height:760px){
+  .stage-in[data-step="4"] .term-demo .ln:not(.f3):not(.f4):not(.st-l):not(.ln-cur){display:none}
+  .stage-in[data-step="5"] .term-demo .ln:not(.f4):not(.f5):not(.st-l):not(.ln-cur){display:none}
 }

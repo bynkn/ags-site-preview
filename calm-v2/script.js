@@ -267,6 +267,32 @@
       return;
     }
 
+    function mqMob() { return window.matchMedia('(max-width:760px)').matches; }
+    if (mqMob()) {
+      var track = $('#track'), stage = $('#stage');
+      var bridge = document.querySelector('.bay-p');
+      var N = 4, cur = 0, queued = false;
+      var tick = function () {
+        queued = false;
+        if (!mqMob() || !track || !stage) return;
+        var nh = navH(), vh = window.innerHeight;
+        var sh = stage.offsetHeight, stick = Math.min(nh, vh - sh);
+        if (stage.style.top !== stick + 'px') stage.style.top = stick + 'px';
+        var r = track.getBoundingClientRect(), total = track.offsetHeight - sh;
+        var p = total > 0 ? (stick - r.top) / total : 0;
+        var k = Math.max(1, Math.min(N, 1 + Math.floor(p * N)));
+        var gone = !bridge || bridge.getBoundingClientRect().bottom < nh + 2;
+        si.classList.toggle('live', gone);
+        if (!gone) k = 1;
+        if (k !== cur) { cur = k; setStep(si, k); }
+      };
+      var req = function () { if (!queued) { queued = true; requestAnimationFrame(tick); } };
+      window.addEventListener('scroll', req, { passive: true });
+      window.addEventListener('resize', function () { placeWatcher(si); req(); });
+      tick();
+      return;
+    }
+
     var i = 0, paused = true, done = false, timer = null;
     var delays = [800, 800, 800, 900];
     function go() {
