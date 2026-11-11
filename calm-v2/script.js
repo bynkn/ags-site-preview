@@ -229,11 +229,10 @@
     }
   })();
 
-  /* ---------- 3 · proof sticky steps (r5 DNA) ---------- */
+  /* ---------- 3 · proof plays once when the demo enters ---------- */
   (function () {
-    var track = $('#track'), stage = $('#stage'), si = $('#stageIn');
-    if (!track || !si) return;
-    var N = 4;
+    var si = $('#stageIn');
+    if (!si) return;
 
     function placeWatcher(el) {
       var w = $('.watcher', el); if (!w) return;
@@ -260,7 +259,7 @@
       placeWatcher(el);
     }
 
-    if (INSTANT || root.dataset.shot === 'proof-blocked') {
+    if (INSTANT || RM || root.dataset.shot === 'proof-blocked') {
       si.classList.add('live');
       setStep(si, 4);
       window.addEventListener('load', function () { placeWatcher(si); });
@@ -268,37 +267,38 @@
       return;
     }
 
-    setStep(si, 1);
-    var fit = function () {
-      var was = si.getAttribute('data-step');
-      si.setAttribute('data-step', String(N + 1));
-      placeWatcher(si);
-      si.setAttribute('data-step', was);
-    };
-    fit();
-    window.addEventListener('load', fit);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
-
-    var cur = 0, queued = false;
-    var gate = $('#proof') && $('#proof .trust-ask');
-    var tick = function () {
-      queued = false;
-      var nh = navH(), vh = window.innerHeight;
-      var sh = stage.offsetHeight, stick = Math.min(nh, vh - sh);
-      if (stage.style.top !== stick + 'px') stage.style.top = stick + 'px';
-      var r = track.getBoundingClientRect(), total = track.offsetHeight - sh;
-      var p = total > 0 ? (stick - r.top) / total : 0;
-      var k = Math.max(1, Math.min(N, 1 + Math.floor(p * N)));
-      var gone = !gate || gate.getBoundingClientRect().bottom < nh + 2;
-      if (!gone && r.top < vh * 0.55) gone = true;
-      si.classList.toggle('live', gone);
-      if (!gone) k = 1;
-      if (k !== cur) { cur = k; setStep(si, k); }
-    };
-    var req = function () { if (!queued) { queued = true; requestAnimationFrame(tick); } };
-    window.addEventListener('scroll', req, { passive: true });
-    window.addEventListener('resize', function () { fit(); req(); });
-    tick();
+    var i = 0, paused = true, done = false, timer = null;
+    var delays = [800, 800, 800, 900];
+    function go() {
+      if (done) return;
+      paused = false;
+      setStep(si, i);
+      si.classList.add('live');
+      if (i >= 4) {
+        done = true;
+        timer = null;
+        io.disconnect();
+        return;
+      }
+      i += 1;
+      timer = setTimeout(function () {
+        timer = null;
+        if (!paused && !done) go();
+      }, delays[i - 1]);
+    }
+    var io = new IntersectionObserver(function (ents) {
+      ents.forEach(function (en) {
+        if (en.isIntersecting) {
+          paused = false;
+          if (!done && !timer) go();
+        } else if (!done && i > 0) {
+          paused = true;
+          if (timer) { clearTimeout(timer); timer = null; }
+        }
+      });
+    }, { threshold: 0.35, rootMargin: '0px 0px -10% 0px' });
+    io.observe(si);
+    window.addEventListener('resize', function () { placeWatcher(si); });
   })();
 
   /* ---------- hide open replay once past hero; nav signup only after hero form leaves ---------- */
