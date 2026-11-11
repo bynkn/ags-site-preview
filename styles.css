@@ -933,6 +933,7 @@ html.reduced:not([data-beat]) .open-land::before{
 .tools-dim{color:var(--tx2)}
 .tools-they{display:block;color:var(--tx);font-weight:700}
 .tools-we{display:block;color:#A8D5C2;font-weight:700}
+.tools-catch{display:block;color:var(--tx);font-weight:700}
 .tl{margin:clamp(36px,5vw,60px) 0 0;max-width:none;border-top:1px solid var(--ln)}
 .ti{display:flex;flex-wrap:wrap;gap:6px 40px;padding:24px 0;border-bottom:1px solid var(--ln);text-align:left}
 .tn{flex:0 1 300px;min-width:0;font-weight:600;font-size:19px;letter-spacing:-.01em;color:var(--tx)}
@@ -1359,4 +1360,21 @@ html.instant[data-past-open] .replay{display:none !important}
   .after-hook{margin-top:12px;max-width:36rem}
   .m-explain{font-size:1rem;max-width:28em}
   .open-form{margin-top:28px}
+}
+
+/* ========== copy batch: three beats, result line, close lines ========== */
+.beats{padding:clamp(88px,12vw,150px) var(--pad);text-align:left}
+.beats::before{opacity:.6}
+.beat-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(28px,4vw,64px);align-items:start}
+.beat-l{margin:0;font-family:var(--sans);font-weight:700;letter-spacing:-.035em;line-height:1.05;font-size:clamp(1.7rem,2.2vw,2.55rem);color:var(--tx);text-wrap:balance}
+.beat-s{margin:14px 0 0;max-width:22em;font-size:15px;line-height:1.45;color:var(--mu)}
+.proof-each{margin:22px 0 0;max-width:28em;font-family:var(--sans);font-size:clamp(1.05rem,1.5vw,1.25rem);line-height:1.4;font-weight:500;letter-spacing:-.015em;color:var(--tx2);text-wrap:balance}
+.proof-each .wm-g{font-weight:700;color:var(--tx)}
+.proof-res .res-keep{margin:28px 0 0;font-family:var(--sans);font-size:clamp(1.05rem,1.6vw,1.3rem);font-weight:600;letter-spacing:-.015em;line-height:1.35;color:var(--tx);text-wrap:balance}
+.access-watch{margin:18px 0 22px;max-width:14em;font-family:var(--sans);font-size:clamp(1.25rem,2.2vw,1.7rem);font-weight:500;letter-spacing:-.02em;line-height:1.25;color:var(--tx2);text-wrap:balance}
+.access-let{margin:0 0 28px;max-width:14em;font-family:var(--sans);font-size:clamp(1.35rem,2.6vw,1.9rem);font-weight:600;letter-spacing:-.02em;line-height:1.2;color:var(--tx);text-wrap:balance}
+@media (max-width:760px){
+  .beats{padding:clamp(64px,14vw,96px) 22px}
+  .beat-row{grid-template-columns:1fr;gap:40px}
+  .beat-l{font-size:clamp(1.85rem,8vw,2.4rem)}
 }
