@@ -2168,3 +2168,15 @@ html.instant .now-story::before,html.reduced .now-story::before{transition:none}
   .now-story .eo dd{font-size:13px;line-height:1.3}
   .now-story .verdict{margin:4px 0 0;padding-top:4px;font-size:13px;line-height:1.3}
 }
+
+/* Phone: the glacier band dissolves into the page. No hard edge while it scrolls past the demo. */
+@media (max-width:760px){
+  .now-story::before{
+    -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - 160px),transparent 100%);
+    mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - 160px),transparent 100%);
+    -webkit-mask-repeat:no-repeat;
+    mask-repeat:no-repeat;
+    -webkit-mask-size:100% 100%;
+    mask-size:100% 100%;
+  }
+}
