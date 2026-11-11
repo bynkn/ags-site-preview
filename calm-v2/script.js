@@ -124,11 +124,53 @@
     function later(ms, fn) { timers.push(setTimeout(fn, ms)); }
 
     var mRows = $$('.m-row');
+    var M_SETS = [
+      ['Opened invoice_0412.pdf.', 'Checked the supplier.', 'Matched the ledger.', 'Scheduled the payment.', 'Paid $4,800 to a new account.'],
+      ['Read the notes.', 'Summarized the notes.', 'Saved the notes.', 'Sent the summary to the team.', 'Deleted the customer files.'],
+      ['Pulled the latest code.', 'Ran the tests.', 'Fixed a failing test.', 'Opened a pull request.', 'Deleted the production database.']
+    ];
+    function pickHeroSet() {
+      var q = /[?&]set=([123])(?:&|$)/.exec(location.search);
+      if (q) return +q[1] - 1;
+      var key = 'ags-hero-set';
+      try {
+        var raw = localStorage.getItem(key);
+        var n = (raw === '0' || raw === '1' || raw === '2') ? (+raw + 1) % 3 : Math.floor(Math.random() * 3);
+        localStorage.setItem(key, String(n));
+        return n;
+      } catch (err) {
+        return Math.floor(Math.random() * 3);
+      }
+    }
+    function applyHeroSet(idx) {
+      var lines = M_SETS[idx] || M_SETS[0];
+      mRows.forEach(function (row, i) {
+        var act = $('.m-act', row);
+        var st = $('.m-st', row);
+        var last = i === lines.length - 1;
+        if (act && lines[i]) act.textContent = lines[i];
+        if (st) st.textContent = last ? 'Deviation detected' : 'Completed';
+      });
+      var box = $('#mLines');
+      if (box) box.setAttribute('data-set', String(idx + 1));
+    }
+    applyHeroSet(pickHeroSet());
     function isMobileHero() { return window.matchMedia('(max-width:760px)').matches; }
     function clearMobileRows() {
       mRows.forEach(function (row) { row.classList.remove('is-in', 'is-done', 'is-bad'); });
     }
-    var M_BEATS = { rows: [700, 2500, 4300], done: [1700, 3500], bad: 5300, ask: 8300, after: 9100, replay: 9100 };
+    /* Same cadence as the 3-row clock: action every 1800ms, status 1000ms later.
+       Two extra rows extend that cadence; the pause into the question stays 3000ms. */
+    function mobileBeats(n) {
+      var first = 700, gap = 1800, status = 1000, rows = [], done = [], i;
+      for (i = 0; i < n; i++) rows.push(first + i * gap);
+      for (i = 0; i < n - 1; i++) done.push(rows[i] + status);
+      var bad = rows[n - 1] + status;
+      var ask = bad + 3000;
+      var after = ask + 800;
+      return { rows: rows, done: done, bad: bad, ask: ask, after: after, replay: after };
+    }
+    var M_BEATS = mobileBeats(mRows.length || 5);
 
     function reset() {
       clearTimers();
@@ -152,7 +194,7 @@
       }
       mRows.forEach(function (row, i) {
         row.classList.add('is-in');
-        if (i < 2) row.classList.add('is-done');
+        if (i < mRows.length - 1) row.classList.add('is-done');
         else row.classList.add('is-bad');
       });
       armCue();
@@ -195,7 +237,10 @@
       M_BEATS.done.forEach(function (t, i) {
         later(termAt + t, function () { if (mRows[i]) mRows[i].classList.add('is-done'); });
       });
-      later(termAt + M_BEATS.bad, function () { if (mRows[2]) mRows[2].classList.add('is-bad'); });
+      later(termAt + M_BEATS.bad, function () {
+        var last = mRows[mRows.length - 1];
+        if (last) last.classList.add('is-bad');
+      });
       later(termAt + M_BEATS.ask, function () {
         stage.classList.add('is-ask', 'is-hook');
         hook.classList.add('is-in');
