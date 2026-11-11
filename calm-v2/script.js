@@ -318,8 +318,8 @@
         signupInView = fr.width > 0 && fr.bottom > navH() + 4 && fr.top < window.innerHeight - 8;
       }
       root.toggleAttribute('data-nav-signup', !signupInView);
-      var bay = document.querySelector('.bay-now');
-      if (bay) root.toggleAttribute('data-nav-light', bay.getBoundingClientRect().top <= navH() + 24);
+      var fade = document.querySelector('.fade-rise');
+      if (fade) root.toggleAttribute('data-nav-light', fade.getBoundingClientRect().top <= navH());
       if (past) {
         if (btn) btn.hidden = true;
         root.classList.remove('nav-away');
