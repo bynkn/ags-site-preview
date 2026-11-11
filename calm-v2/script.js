@@ -159,15 +159,15 @@
     function clearMobileRows() {
       mRows.forEach(function (row) { row.classList.remove('is-in', 'is-done', 'is-bad'); });
     }
-    /* Same cadence as the 3-row clock: action every 1800ms, status 1000ms later.
-       Two extra rows extend that cadence; the pause into the question stays 3000ms. */
+    /* Rows start with the terminal. Action every 1.1s, status 0.7s later.
+       Question 1.4s after the break, sign-up 1.2s after the question. */
     function mobileBeats(n) {
-      var first = 700, gap = 1800, status = 1000, rows = [], done = [], i;
-      for (i = 0; i < n; i++) rows.push(first + i * gap);
+      var gap = 1100, status = 700, rows = [], done = [], i;
+      for (i = 0; i < n; i++) rows.push(i * gap);
       for (i = 0; i < n - 1; i++) done.push(rows[i] + status);
       var bad = rows[n - 1] + status;
-      var ask = bad + 3000;
-      var after = ask + 800;
+      var ask = bad + 1400;
+      var after = ask + 1200;
       return { rows: rows, done: done, bad: bad, ask: ask, after: after, replay: after };
     }
     var M_BEATS = mobileBeats(mRows.length || 5);
@@ -215,22 +215,23 @@
         return;
       }
       concealNavForOpening();
-      /* Same lede beats as desktop: in at 700, out at 3400. The terminal
-         fades in only after that fade has finished, then runs the same row clock. */
-      var termAt = BEATS.ledeOut + 700;
-      later(BEATS.lede, function () {
+      /* Phone clock: lede at 0.5s, terminal replaces it at 2.0s, then a row
+         every 1.1s with its status 0.7s later. Question 1.4s after the break,
+         sign-up 1.2s after the question. */
+      var termAt = 2000;
+      later(500, function () {
         if (lede) {
           lede.classList.remove('is-out');
           lede.classList.add('is-in');
         }
       });
-      later(BEATS.ledeOut, function () {
+      later(termAt, function () {
         if (lede) {
           lede.classList.remove('is-in');
           lede.classList.add('is-out');
         }
+        stage.classList.add('is-term');
       });
-      later(termAt, function () { stage.classList.add('is-term'); });
       M_BEATS.rows.forEach(function (t, i) {
         later(termAt + t, function () { if (mRows[i]) mRows[i].classList.add('is-in'); });
       });

@@ -1940,20 +1940,74 @@ html.instant .now-story::before,html.reduced .now-story::before{transition:none}
     text-align:left;
     opacity:0;visibility:hidden;pointer-events:none;
   }
-  .open-stage.is-ask .lede,
-  .open-stage.is-ask .m-lines{position:absolute !important;opacity:0 !important;visibility:hidden !important;pointer-events:none}
+  .open-stage.is-ask .lede{position:absolute !important;opacity:0 !important;visibility:hidden !important;pointer-events:none}
+  .open-stage.is-ask .m-lines{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:opacity .55s ease,transform .55s var(--ease-out),visibility 0s linear .55s;
+  }
   .open-stage.is-ask .open-land,
   html.reduced .open-land{
     position:relative !important;
     opacity:1 !important;visibility:visible !important;pointer-events:auto;
   }
-  .open-stage.is-ask{padding-left:0;padding-right:0}
-  .open-stage.is-ask .open-land{padding-left:16px;padding-right:16px}
-  .hook,.hook.is-in{max-width:none;width:100%;margin:0;text-align:center;text-wrap:balance;text-shadow:none !important;font-size:26px;line-height:30px}
-  .hook-l1,.hook-l2{display:block;white-space:nowrap}
-  .after-hook{width:100%;max-width:24rem;margin-top:22px}
-  .open-form{flex-direction:column;align-items:stretch;max-width:none}
+  .open-stage.is-ask{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:0 0 28px;
+    min-height:100svh;
+  }
+  .open-stage.is-ask .open-land{
+    min-height:0 !important;
+    height:auto !important;
+    width:100% !important;
+    left:auto !important;
+    top:auto !important;
+    right:auto !important;
+    margin:0;
+    padding:0 20px;
+    align-items:center;
+    text-align:center;
+  }
+  .hook,.hook.is-in{
+    max-width:none;width:100%;margin:0;
+    text-align:center;text-wrap:balance;text-shadow:none !important;
+    font-size:32px;line-height:36px;font-weight:400;color:#F2F0EA;
+  }
+  .hook-l1,.hook-l2,.hook-l3{display:block;white-space:nowrap}
+  .after-hook,.after-hook.is-in{
+    position:absolute;
+    left:20px;right:20px;top:100%;
+    width:auto;max-width:none;
+    margin:16px 0 0;
+    text-align:center;
+  }
+  .after-hook:not(.is-in){
+    opacity:0;visibility:hidden;pointer-events:none;
+    transform:translateY(8px);
+  }
+  .after-hook.is-in{
+    opacity:1;visibility:visible;pointer-events:auto;transform:none;
+    transition:opacity .55s ease,transform .55s var(--ease-out);
+  }
+  .after-hook .trust-line{
+    text-align:center;font-size:16px;line-height:22px;
+    max-width:22rem;margin-left:auto;margin-right:auto;
+  }
+  .open-form{
+    flex-direction:column;align-items:stretch;
+    width:100%;max-width:22rem;margin-left:auto;margin-right:auto;
+  }
+  .open-form input[type=email]{
+    flex:0 0 48px;width:100%;height:48px;min-height:48px;max-height:48px;font-size:16px;
+  }
+  .open-form .btn{width:100%;height:48px;min-height:48px;flex:0 0 48px}
   .open > .cue{display:block}
+}
+@media (max-width:379px){
+  .hook,.hook.is-in{font-size:30px;line-height:34px}
 }
 
 /* The blocked caption is the phone step. Desktop keeps the proof-res block. */
