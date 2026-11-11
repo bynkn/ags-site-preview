@@ -275,11 +275,10 @@
       var tick = function () {
         queued = false;
         if (!mqMob() || !track || !stage) return;
-        var nh = navH(), vh = window.innerHeight;
-        var sh = stage.offsetHeight, stick = Math.min(nh, vh - sh);
-        if (stage.style.top !== stick + 'px') stage.style.top = stick + 'px';
+        var nh = navH();
+        var sh = stage.offsetHeight;
         var r = track.getBoundingClientRect(), total = track.offsetHeight - sh;
-        var p = total > 0 ? (stick - r.top) / total : 0;
+        var p = total > 0 ? (nh - r.top) / total : 0;
         var k = Math.max(1, Math.min(N, 1 + Math.floor(p * N)));
         var gone = !bridge || bridge.getBoundingClientRect().bottom < nh + 2;
         si.classList.toggle('live', gone);
