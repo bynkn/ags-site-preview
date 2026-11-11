@@ -123,15 +123,78 @@
     }
     function later(ms, fn) { timers.push(setTimeout(fn, ms)); }
 
+    var mRows = $$('.m-row');
+    function isMobileHero() { return window.matchMedia('(max-width:760px)').matches; }
+    function clearMobileRows() {
+      mRows.forEach(function (row) { row.classList.remove('is-in', 'is-done', 'is-bad'); });
+    }
+    var M_BEATS = { rows: [700, 2500, 4300], done: [1700, 3500], bad: 5300, ask: 8300, after: 9100, replay: 9100 };
+
     function reset() {
       clearTimers();
-      stage.classList.remove('is-alive', 'is-hook', 'is-land');
+      stage.classList.remove('is-alive', 'is-hook', 'is-land', 'is-ask');
       if (lede) lede.classList.remove('is-in', 'is-out');
       hook.classList.remove('is-in');
       if (after) after.classList.remove('is-in');
       pays.forEach(function (p) { p.classList.remove('is-in', 'is-soft'); });
+      clearMobileRows();
       if (btnReplay) btnReplay.hidden = true;
       if (openCue) openCue.classList.remove('on', 'loop');
+    }
+
+    function showMobileEnd() {
+      stage.classList.add('is-ask', 'is-hook', 'is-land');
+      hook.classList.add('is-in');
+      if (after) after.classList.add('is-in');
+      if (lede) {
+        lede.classList.remove('is-out');
+        lede.classList.add('is-in');
+      }
+      mRows.forEach(function (row, i) {
+        row.classList.add('is-in');
+        if (i < 2) row.classList.add('is-done');
+        else row.classList.add('is-bad');
+      });
+      armCue();
+    }
+
+    function playMobile() {
+      var beat = root.dataset.beat;
+      var shot = root.dataset.shot;
+      reset();
+      if (RM || beat || shot === 'open-hook' || shot === 'open-after-hook') {
+        revealNav();
+        showMobileEnd();
+        if (shot === 'open-hook') {
+          stage.classList.remove('is-land', 'is-ask');
+          if (after) after.classList.remove('is-in');
+        }
+        if (btnReplay && !shot) btnReplay.hidden = false;
+        return;
+      }
+      concealNavForOpening();
+      if (lede) {
+        lede.classList.remove('is-out');
+        lede.classList.add('is-in');
+      }
+      M_BEATS.rows.forEach(function (t, i) {
+        later(t, function () { if (mRows[i]) mRows[i].classList.add('is-in'); });
+      });
+      M_BEATS.done.forEach(function (t, i) {
+        later(t, function () { if (mRows[i]) mRows[i].classList.add('is-done'); });
+      });
+      later(M_BEATS.bad, function () { if (mRows[2]) mRows[2].classList.add('is-bad'); });
+      later(M_BEATS.ask, function () {
+        stage.classList.add('is-ask', 'is-hook');
+        hook.classList.add('is-in');
+        revealNav();
+      });
+      later(M_BEATS.after, function () {
+        stage.classList.add('is-land');
+        if (after) after.classList.add('is-in');
+        armCue();
+      });
+      later(M_BEATS.replay, function () { if (btnReplay) btnReplay.hidden = false; });
     }
 
     function showPay(i, softOlder) {
@@ -159,6 +222,7 @@
     }
 
     function play() {
+      if (isMobileHero()) { playMobile(); return; }
       var beat = root.dataset.beat;
       var shot = root.dataset.shot;
       if (RM || beat || shot === 'open-hook' || shot === 'open-after-hook') {
