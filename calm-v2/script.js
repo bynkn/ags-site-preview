@@ -107,11 +107,11 @@
       ledeOut: 3400,
       pays: [3400, 3700, 4000, 4300, 4600, 4900, 5200, 5500],
       off: 6400,
-      soft: 9150,
-      hook: 9950,
-      bad: [10450, 10950, 11500],
-      after: 13550,
-      replay: 14550
+      soft: 7900,
+      hook: 8700,
+      bad: [9200, 9700, 10250],
+      after: 12300,
+      replay: 13300
     };
     var OFF_I = 8;
     var BAD_START = 9;
@@ -172,8 +172,11 @@
     }
     var M_BEATS = mobileBeats(mRows.length || 5);
 
+    function setBlocked(on){var c=$('.pay[data-i="9"]');if(!c)return;c.classList.toggle('is-blocked',on);var t=$('.pay-compromised',c);if(t)t.textContent=on?'Blocked':'Compromised';}
+
     function reset() {
       clearTimers();
+      setBlocked(false);
       stage.classList.remove('is-alive', 'is-hook', 'is-land', 'is-ask', 'is-term', 'is-term-out', 'is-settled');
       if (lede) lede.classList.remove('is-in', 'is-out');
       hook.classList.remove('is-in', 'is-out');
@@ -311,11 +314,6 @@
       }
     }
 
-    function markBlocked() {
-      var card = document.querySelector('.pay[data-i="9"]');
-      if (card) card.classList.add('is-blocked');
-    }
-
     function showAfter() {
       stage.classList.add('is-land');
       if (after) after.classList.add('is-in');
@@ -331,7 +329,7 @@
         if (shot === 'open-after-hook' || beat === 'after' || (RM && !beat && shot !== 'open-hook')) {
           stage.classList.add('is-land');
           if (after) after.classList.add('is-in');
-          markBlocked();
+          setBlocked(true);
         }
         if (beat === 'hook' || beat === 'after' || shot === 'open-hook' || shot === 'open-after-hook' || (RM && !beat)) {
           stage.classList.add('is-hook');
@@ -377,11 +375,11 @@
       later(BEATS.soft, function () { stage.classList.add('is-hook'); });
       later(BEATS.hook, function () { hook.classList.add('is-in'); });
       later(BEATS.hook + NAV_AFTER_HOOK, revealNav);
-      later(BEATS.hook + 1400, markBlocked);
       BEATS.bad.forEach(function (t, i) {
         later(t, function () { showPay(BAD_START + i, false); });
       });
       later(BEATS.after, showAfter);
+      later(BEATS.after + 900, function(){ setBlocked(true); });
       later(BEATS.replay, function () {
         if (btnReplay) btnReplay.hidden = false;
       });
@@ -657,4 +655,27 @@
     });
   }, { threshold: 0.35, rootMargin: '0px 0px -8% 0px' });
   heads.forEach(function (el) { io.observe(el); });
+})();
+
+/* Pill stays hidden until the page scrolls past 120px. A focused nav link still reveals it. */
+(function(){
+  var root=document.documentElement,T=120,nav=document.getElementById('nav');
+  function navFocused(){return !!(nav&&nav.contains(document.activeElement));}
+  function s(){root.classList.toggle('nav-top',window.scrollY<=T&&!navFocused());}
+  addEventListener('scroll',s,{passive:true});
+  s();
+  if(!nav)return;
+  nav.addEventListener('focusin',function(){root.classList.remove('nav-top');});
+  nav.addEventListener('focusout',function(){setTimeout(s,0);});
+  addEventListener('keydown',function(e){
+    if(e.key!=='Tab'||e.shiftKey||!root.classList.contains('nav-top'))return;
+    var a=document.activeElement;
+    if(a&&a!==document.body&&a!==root)return;
+    var link=nav.querySelector('a,button');
+    if(!link)return;
+    root.classList.remove('nav-top');
+    void nav.offsetWidth;
+    link.focus();
+    e.preventDefault();
+  });
 })();
