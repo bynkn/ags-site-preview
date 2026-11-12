@@ -2548,3 +2548,21 @@ html.reduced .nav-in,html.instant .nav-in{transition:none}
 #why .why-2 span{display:inline;color:inherit;font-weight:inherit}
 @media (min-width:900px){#why .why-2{white-space:nowrap}}
 @media (max-width:899px){#why .why-2{white-space:normal;max-width:24em}}
+
+/* One white rounded box holds the question, Now you can, the tagline and the demo.
+   overflow stays visible so the demo's sticky pin keeps working. */
+.now-story{padding:clamp(28px,4vw,56px) clamp(14px,2.6vw,36px) clamp(14px,2.6vw,36px)}
+.now-story .proof-box{background:#ffffff;border:1px solid rgba(255,255,255,.9);border-radius:clamp(24px,3vw,40px);padding:0 clamp(12px,2vw,24px);box-shadow:0 1px 0 #fff inset,0 30px 80px rgba(36,97,138,.16),0 2px 8px rgba(36,97,138,.08);overflow:visible;position:relative}
+.now-story .bay-ask{background:transparent !important}
+/* The page glow behind the box, visible whenever the box is on screen. */
+.now-story::before{background:linear-gradient(180deg,#F9F8F4 0%,#CFE4F0 14%,#9CC9E6 28%,#CFE4F0 48%,#F9F8F4 100%);opacity:1}
+/* Text colors inside the box. Sizes, weights and spacing stay as they were. */
+.now-story .proof-box .bay-ask .trust-ask,
+.now-story .proof-box .bay-ask .trust-ask .ask-a{color:#5c6168}
+.now-story .proof-box .bay-ask .trust-ask .ask-a strong{color:#43434b}
+.now-story .proof-box .bay-ask .trust-ask .ask-b{font-size:inherit;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:#5c6168}
+.now-story .proof-box .now-giant{color:#2F7AB0;--lt-accent:#2F7AB0;--lt-end:#2F7AB0}
+.now-story .proof-box .now-giant .lt,
+.now-story .proof-box .now-giant .lt.in{color:#2F7AB0}
+.now-story .proof-box .now-one{color:#43434b;font-weight:600}
+.now-story .proof-box .now-born{color:#6d737b;font-weight:400}
