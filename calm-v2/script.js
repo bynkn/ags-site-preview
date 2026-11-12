@@ -436,6 +436,18 @@
     var track = $('#track'), stage = $('#stage');
     if (!track || !stage) return;
     var N = 4, cur = 0, queued = false;
+    /* The white box ends just below what the demo shows now, and grows when the blocked result appears. */
+    var box = stage.closest('.proof-box');
+    if (box) box.classList.add('fit');
+    function fitBox(stick) {
+      if (!box) return;
+      var br = box.getBoundingClientRect(), sr = stage.getBoundingClientRect();
+      var ir = si.getBoundingClientRect(), tr = track.getBoundingClientRect();
+      var pad = Math.max(br.bottom - tr.bottom, window.innerWidth <= 760 ? 28 : 56);
+      var edge = Math.max(sr.top, stick) + (ir.bottom - sr.top) + pad;
+      var h = Math.round(Math.min(br.height, Math.max(0, edge - br.top)));
+      box.style.setProperty('--fit-h', h + 'px');
+    }
     var tick = function () {
       queued = false;
       var nh = navH(), vh = window.innerHeight;
@@ -452,11 +464,13 @@
       var stuck = stageR.top <= stick + 2;
       if (!stuck && r.top > 0) k = 1;
       if (k !== cur) { cur = k; setStep(si, k); }
+      fitBox(stick);
     };
     var req = function () { if (!queued) { queued = true; requestAnimationFrame(tick); } };
     window.addEventListener('scroll', req, { passive: true });
     window.addEventListener('resize', function () { placeWatcher(si); req(); });
     window.addEventListener('load', req);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(req);
     tick();
   })();
 
