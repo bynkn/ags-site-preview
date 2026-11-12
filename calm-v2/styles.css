@@ -2435,42 +2435,6 @@ html.instant .now-story::before,html.reduced .now-story::before{transition:none}
 }
 #why .why-3 p + p{margin-top:6px}
 #why .why-3 .why-3-last{color:#F2F0EA}
-.now-story{background:#050505}
-.now-story::before{top:clamp(24px,3.4vw,48px)}
-.now-story .bay-ask{
-  background:#f9f8f4;
-  color:#43434b;
-  border-radius:clamp(24px,3.4vw,48px) clamp(24px,3.4vw,48px) 0 0;
-  min-height:min(78vh,720px);
-  display:flex;
-  align-items:center;
-  padding:48px 0;
-  position:relative;
-  z-index:1;
-}
-.now-story .bay-cloud{
-  background:linear-gradient(180deg,#F9F8F4 0%,#CFE4F0 18%,#9CC9E6 36%,#CFE4F0 62%,#F9F8F4 100%);
-  min-height:min(78vh,720px);
-  display:flex;
-  align-items:center;
-  padding:72px 0 88px;
-}
-.now-story .bay-ask .trust-ask,
-.now-story .bay-ask .trust-ask .ask-a,
-.now-story .bay-ask .trust-ask .ask-a strong,
-.now-story .bay-ask .trust-ask .ask-b{
-  font-size:clamp(1.5rem,3.2vw,2.8rem);
-  line-height:1.2;
-  letter-spacing:-.03em;
-  color:#43434b;
-  font-weight:500;
-}
-.now-story .bay-ask .trust-ask .ask-a strong,
-.now-story .bay-ask .trust-ask .ask-b{font-weight:600;color:#1c1c1f}
-.now-arrive{opacity:0}
-.now-arrive.in{opacity:1;transition:opacity .9s ease}
-html.reduced .now-arrive,
-html.instant .now-arrive{opacity:1;transition:none}
 .now-story .now-giant,
 .now-giant{
   font-weight:800;
