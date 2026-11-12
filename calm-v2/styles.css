@@ -1780,6 +1780,14 @@ html[data-world="light"] .now-story::before{opacity:1}
   max-width:none;
 }
 .now-story .cap-row{margin-bottom:12px}
+/* Desktop pin: the stage sticks under the nav while the track scrolls past the four steps. */
+@media (min-width:761px){
+  .now-story .proof .track{height:calc(100vh - var(--nav) + 5 * 24vh)}
+  .now-story .stage{position:sticky;top:var(--nav)}
+}
+/* Captions share one grid cell, so the row keeps its height and the terminal never moves. */
+.now-story .caps{display:grid;align-items:start}
+.now-story .cap{grid-area:1/1;position:relative;inset:auto}
 @media (max-width:800px){
   .now-story::before{height:640px}
   .now-story .bay-ask{padding:74px 0 0}
@@ -2236,6 +2244,7 @@ html.instant .now-story::before,html.reduced .now-story::before{transition:none}
     pointer-events:auto;
   }
   .now-story .stage-in[data-step="5"] .caps{height:44px;min-height:44px}
+  .now-story .stage-in[data-step="5"] .cap-row{margin-bottom:8px}
 
   .now-story .cb-grid{
     display:flex;

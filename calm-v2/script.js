@@ -394,7 +394,7 @@
     }
   })();
 
-  /* ---------- 3 · proof plays once when the demo enters ---------- */
+  /* ---------- 3 · proof sticky steps, scrubbed by scroll ---------- */
   (function () {
     var si = $('#stageIn');
     if (!si) return;
@@ -432,64 +432,32 @@
       return;
     }
 
-    function mqMob() { return window.matchMedia('(max-width:760px)').matches; }
-    if (mqMob()) {
-      var track = $('#track'), stage = $('#stage');
-      var N = 4, cur = 0, queued = false;
-      var tick = function () {
-        queued = false;
-        if (!mqMob() || !track || !stage) return;
-        var nh = navH();
-        var sh = stage.offsetHeight;
-        var r = track.getBoundingClientRect(), total = track.offsetHeight - sh;
-        var p = total > 0 ? (nh - r.top) / total : 0;
-        var k = Math.max(1, Math.min(N, 1 + Math.floor(p * N)));
-        var stageR = stage.getBoundingClientRect();
-        var peek = stageR.top < window.innerHeight - 8;
-        si.classList.toggle('live', peek);
-        var stuck = stageR.top <= nh + 2;
-        if (!stuck) k = 1;
-        if (k !== cur) { cur = k; setStep(si, k); }
-      };
-      var req = function () { if (!queued) { queued = true; requestAnimationFrame(tick); } };
-      window.addEventListener('scroll', req, { passive: true });
-      window.addEventListener('resize', function () { placeWatcher(si); req(); });
-      tick();
-      return;
-    }
-
-    var i = 0, paused = true, done = false, timer = null;
-    var delays = [800, 800, 800, 900];
-    function go() {
-      if (done) return;
-      paused = false;
-      setStep(si, i);
-      si.classList.add('live');
-      if (i >= 4) {
-        done = true;
-        timer = null;
-        io.disconnect();
-        return;
-      }
-      i += 1;
-      timer = setTimeout(function () {
-        timer = null;
-        if (!paused && !done) go();
-      }, delays[i - 1]);
-    }
-    var io = new IntersectionObserver(function (ents) {
-      ents.forEach(function (en) {
-        if (en.isIntersecting) {
-          paused = false;
-          if (!done && !timer) go();
-        } else if (!done && i > 0) {
-          paused = true;
-          if (timer) { clearTimeout(timer); timer = null; }
-        }
-      });
-    }, { threshold: 0.35, rootMargin: '0px 0px -10% 0px' });
-    io.observe(si);
-    window.addEventListener('resize', function () { placeWatcher(si); });
+    /* Desktop and phone: the stage sticks under the nav while the track scrolls; scroll picks the step. */
+    var track = $('#track'), stage = $('#stage');
+    if (!track || !stage) return;
+    var N = 4, cur = 0, queued = false;
+    var tick = function () {
+      queued = false;
+      var nh = navH(), vh = window.innerHeight;
+      var sh = stage.offsetHeight;
+      var stick = window.innerWidth <= 760 ? nh : Math.min(nh, vh - sh);
+      var want = window.innerWidth <= 760 ? '' : stick + 'px';
+      if (stage.style.top !== want) stage.style.top = want;
+      var r = track.getBoundingClientRect(), total = track.offsetHeight - sh;
+      var p = total > 0 ? (stick - r.top) / total : 0;
+      var k = Math.max(1, Math.min(N, 1 + Math.floor(p * N)));
+      var stageR = stage.getBoundingClientRect();
+      var peek = stageR.top < vh - 8;
+      si.classList.toggle('live', peek);
+      var stuck = stageR.top <= stick + 2;
+      if (!stuck && r.top > 0) k = 1;
+      if (k !== cur) { cur = k; setStep(si, k); }
+    };
+    var req = function () { if (!queued) { queued = true; requestAnimationFrame(tick); } };
+    window.addEventListener('scroll', req, { passive: true });
+    window.addEventListener('resize', function () { placeWatcher(si); req(); });
+    window.addEventListener('load', req);
+    tick();
   })();
 
   /* ---------- hide open replay once past hero; nav signup only after hero form leaves ---------- */
