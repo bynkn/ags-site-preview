@@ -8,7 +8,7 @@
   var RM = root.classList.contains('reduced') || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
   function $(s, c) { return (c || document).querySelector(s); }
   function $$(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
-  function navH() { return window.innerWidth <= 760 ? 56 : 64; }
+  function navH() { return window.innerWidth <= 760 ? 64 : 72; }
 
   function wireEmailForm(form, opts) {
     if (!form) return;
@@ -594,6 +594,24 @@
       }, { threshold: [0, 0.01, 1], rootMargin: '0px 0px -2% 0px' });
       io.observe(cue);
     });
+  })();
+
+  /* "Now you can." fades in after the question screen. Opacity only. */
+  (function () {
+    var arrive = $('#nowArrive');
+    if (!arrive) return;
+    if (INSTANT || RM) {
+      arrive.classList.add('in');
+      return;
+    }
+    var io = new IntersectionObserver(function (ents) {
+      ents.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        arrive.classList.add('in');
+        io.disconnect();
+      });
+    }, { threshold: 0.55, rootMargin: '0px 0px -32% 0px' });
+    io.observe(arrive);
   })();
 
 })();
