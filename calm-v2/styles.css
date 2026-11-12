@@ -2582,3 +2582,9 @@ html.reduced .nav-in,html.instant .nav-in{transition:none}
   .now-story .proof-box.fit .proof .track::after{content:"";display:block;height:calc(4 * 30svh)}
   .now-story .proof-box.fit .stage{height:auto;min-height:0;max-height:none;overflow:visible;contain:none}
 }
+/* Scroll cue under the demo: fully below the white box, 24px clear of its edge, ending on the divider below.
+   The gap under the box grows to fit it. Phone hides this cue already. */
+@media (min-width:761px){
+  .now-story{padding-bottom:calc(24px + var(--spine))}
+  .now-story .sec.proof > .cue{top:calc(100% + 1px + 24px);bottom:auto}
+}
