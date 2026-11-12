@@ -85,6 +85,8 @@ a{color:inherit}
 html.nav-away .nav{
   opacity:0;visibility:hidden;pointer-events:none;
 }
+html.nav-top .nav{opacity:0!important;visibility:hidden!important;pointer-events:none!important}
+html.nav-top .nav:focus-within{opacity:1!important;visibility:visible!important;pointer-events:auto!important}
 html.reduced .nav,
 html.instant .nav,
 html[data-beat] .nav,
@@ -330,21 +332,12 @@ html.js:not(.reduced) .brand-dot{animation:pip 2.6s ease-out infinite}
 .pay-bad .pay-note + .pay-compromised{
   margin-top:6px;padding-top:0;border-top:0;
 }
-/* The $12,400 card. Compromised crossfades to Blocked once, over a second. */
-.pay-blocked{
-  grid-column:1 / -1;
-  margin-top:6px;
-  font-family:var(--mono);font-size:10px;font-weight:500;
-  letter-spacing:.14em;text-transform:uppercase;
-  color:var(--stop);
-  opacity:0;
-}
-.pay[data-i="9"] .pay-compromised,
-.pay[data-i="9"] .pay-blocked{grid-column:1 / -1;grid-row:4}
-.pay.is-blocked .pay-compromised{opacity:0;transition:opacity 1s var(--ease)}
-.pay.is-blocked .pay-blocked{opacity:1;transition:opacity 1s var(--ease)}
-html.reduced .pay.is-blocked .pay-compromised,
-html.reduced .pay.is-blocked .pay-blocked{transition:none}
+.pay-stopped{display:none;grid-column:1 / -1;margin-top:6px;font-family:var(--sans);font-size:11px;letter-spacing:.02em;color:var(--mu)}
+.pay-bad.is-blocked .pay-amt{color:var(--mu);text-decoration:none}
+.pay-bad.is-blocked .pay-note,.pay-bad.is-blocked .pay-who{color:var(--mu2)}
+.pay-bad.is-blocked .pay-note{border-top-color:var(--ln)}
+.pay-bad.is-blocked .pay-compromised{color:var(--stop);font-weight:600}
+.pay-bad.is-blocked .pay-stopped{display:block}
 .pay[data-i="9"]{--i:12}
 .pay[data-i="10"]{--i:13}
 .pay[data-i="11"]{--i:14}
@@ -357,9 +350,7 @@ html.reduced .pay.is-blocked .pay-blocked{transition:none}
     top 1.15s var(--ease);
 }
 .pay-bad.is-soft{opacity:.55}
-.pay.is-blocked{
-  transition:opacity 1s var(--ease-out),transform .85s var(--ease-out);
-}
+.pay-bad.is-blocked{border-color:var(--ln2);background:var(--card);box-shadow:0 1px 0 color-mix(in srgb,#fff 4%,transparent) inset,0 18px 48px rgba(0,0,0,.35);opacity:.95;transition:opacity .85s var(--ease-out),transform .95s var(--ease-out),left 1.15s var(--ease),top 1.15s var(--ease),border-color .7s ease,box-shadow .7s ease}
 
 .lede{
   position:absolute;left:50%;top:48%;
@@ -432,46 +423,29 @@ html.reduced .pay.is-blocked .pay-blocked{transition:none}
 @media (min-width:761px){
   .after-hook .desk-trust,
   .after-hook .m-do{display:none}
+  .after-hook{width:min(820px,92vw)}
   .desk-beats{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    max-width:520px;
+    display:block;
+    max-width:780px;
     margin:0 auto;
     text-align:center;
   }
-  .desk-k{
-    margin:0;
-    font-family:var(--mono);
-    font-size:12px;
-    font-weight:400;
-    line-height:1.45;
-    letter-spacing:.04em;
-    color:#8A8882;
-  }
-  .desk-aha{
-    margin:16px 0 0;
-    max-width:34rem;
-    font-family:var(--sans);
-    font-size:clamp(1.55rem,1.15rem + 1.05vw,2rem);
-    line-height:1.28;
-    letter-spacing:-.024em;
-    text-wrap:balance;
-  }
-  .desk-soft{color:#8A8882;font-weight:400}
-  .desk-hard{color:#F2F0EA;font-weight:600}
-  .desk-peak{color:#FFFFFF;font-weight:800}
-  .desk-math{
-    margin:22px 0 0;
-    font-family:var(--mono);
-    font-size:13px;
-    font-weight:400;
-    line-height:1.4;
-    letter-spacing:.02em;
-    color:#C9C7C1;
-  }
-  .after-hook .open-form{margin-top:24px}
+  .desk-label{margin:0 auto;font-family:var(--sans);font-size:clamp(1rem,1.2vw,1.12rem);font-weight:500;letter-spacing:-.005em;text-transform:none;color:#F2F0EA}
+  .desk-label b{font-weight:700;color:#F2F0EA}
+  .desk-big{margin:22px 0 0;font-size:clamp(1.35rem,2.05vw,1.8rem);line-height:1.22;letter-spacing:-.025em;text-wrap:balance}
+  .db-soft{font-weight:400}
+  .db-strong{white-space:nowrap;font-weight:700}
+  .db-soft,.db-strong,.db-strong em{color:#B2D3E7}
+  .db-strong em{font-style:normal;font-weight:700}
+  .desk-b3{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:38px;font-size:clamp(.95rem,1.2vw,1.08rem);font-weight:700;text-transform:uppercase;letter-spacing:.22em;color:#F2F0EA}
+  .desk-b3 b{color:#F2F0EA;font-weight:700}
+  .nm-rule{flex:1 1 0;max-width:150px;height:1px;background:linear-gradient(90deg,transparent,rgba(242,240,234,.45))}
+  .nm-rule:last-child{transform:scaleX(-1)}
+  .nm-txt{white-space:nowrap}
+  .desk-facts{margin-top:14px;font-size:13px;letter-spacing:.03em;color:#a9a7a1}
+  .after-hook .open-form{margin-top:64px}
 }
+@media (max-width:1100px) and (min-width:761px){.db-strong{white-space:normal}}
 .trust-line{
   margin:0 auto;max-width:34rem;
   font-size:clamp(1.02rem,.9rem + .4vw,1.22rem);line-height:1.45;
@@ -664,6 +638,11 @@ html[data-beat="after"] .open-land{transform:translate(-50%,-66%)}
     --x:50% !important;top:auto !important;bottom:100px !important;
     transform:translate(-50%,0) !important;
   }
+}
+@media (min-width:761px) and (max-width:1320px){
+  .open-stage.is-land .pay-bad:not(.is-blocked){opacity:.3;transition:opacity .8s var(--ease-out)}
+  .open-stage.is-land .pay[data-i="9"]{--x:12% !important;--y:60% !important}
+  .pay-bad.is-blocked{min-width:220px;padding:16px 18px 14px}
 }
 @media (max-width:520px){
   .brand-name{font-size:12px}
@@ -2499,7 +2478,7 @@ html.instant .now-arrive{opacity:1;transition:none}
   color:#43434b;
   margin:0;
 }
-.now-one{
+.now-story .now-one{
   margin:22px 0 0;
   font-family:var(--sans);
   font-weight:600;
@@ -2508,7 +2487,7 @@ html.instant .now-arrive{opacity:1;transition:none}
   letter-spacing:-.03em;
   color:#43434b;
 }
-.now-born{
+.now-story .now-born{
   margin:10px 0 0;
   font-family:var(--sans);
   font-weight:400;
@@ -2584,5 +2563,5 @@ html.reduced .nav-in,html.instant .nav-in{transition:none}
   .nav-in{height:52px;padding:0 6px 0 16px}
   .nav .btn-primary{height:38px;padding:0 12px}
   .nav-link{display:none}
-  .now-one{font-size:clamp(1.35rem,6vw,1.8rem)}
+  .now-story .now-one{font-size:clamp(1.35rem,6vw,1.8rem)}
 }
