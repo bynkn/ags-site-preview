@@ -2449,7 +2449,7 @@ html.instant .now-story::before,html.reduced .now-story::before{transition:none}
   z-index:1;
 }
 .now-story .bay-cloud{
-  background:#f9f8f4;
+  background:linear-gradient(180deg,#F9F8F4 0%,#CFE4F0 18%,#9CC9E6 36%,#CFE4F0 62%,#F9F8F4 100%);
   min-height:min(78vh,720px);
   display:flex;
   align-items:center;
