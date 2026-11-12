@@ -4,11 +4,12 @@
    Tools = Main.dc. Close = industry + mic-drops + stronger signup.
    No How / no math echo / no envelope. Local fonts. */
 
-@font-face{font-family:'Outfit';font-style:normal;font-weight:300;font-display:swap;src:url('fonts/outfit-latin-300-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:'Outfit';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/outfit-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:'Outfit';font-style:normal;font-weight:500;font-display:swap;src:url('fonts/outfit-latin-500-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:'Outfit';font-style:normal;font-weight:600;font-display:swap;src:url('fonts/outfit-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:'Outfit';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/outfit-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Figtree';font-style:normal;font-weight:300;font-display:swap;src:url('fonts/figtree-latin-300-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Figtree';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/figtree-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Figtree';font-style:normal;font-weight:500;font-display:swap;src:url('fonts/figtree-latin-500-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Figtree';font-style:normal;font-weight:600;font-display:swap;src:url('fonts/figtree-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Figtree';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/figtree-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Figtree';font-style:normal;font-weight:800;font-display:swap;src:url('fonts/figtree-latin-800-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Newsreader';font-style:normal;font-weight:400;font-display:swap;src:local('New York'),local('NewYork'),url('fonts/newsreader-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Inter Tight';font-style:normal;font-weight:300;font-display:swap;src:url('fonts/inter-tight-latin-300-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Inter Tight';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/inter-tight-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -35,7 +36,7 @@
   --red:#E30613;
   --redt:#FF4A3D;
   --serif:'Newsreader',ui-serif,Georgia,'Iowan Old Style','Palatino Linotype',Palatino,serif;
-  --sans:'Outfit',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+  --sans:'Figtree',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
   --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
   --disp:var(--sans);
   --ease:cubic-bezier(.2,.7,.2,1);
@@ -329,6 +330,21 @@ html.js:not(.reduced) .brand-dot{animation:pip 2.6s ease-out infinite}
 .pay-bad .pay-note + .pay-compromised{
   margin-top:6px;padding-top:0;border-top:0;
 }
+/* The $12,400 card. Compromised crossfades to Blocked once, over a second. */
+.pay-blocked{
+  grid-column:1 / -1;
+  margin-top:6px;
+  font-family:var(--mono);font-size:10px;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--stop);
+  opacity:0;
+}
+.pay[data-i="9"] .pay-compromised,
+.pay[data-i="9"] .pay-blocked{grid-column:1 / -1;grid-row:4}
+.pay.is-blocked .pay-compromised{opacity:0;transition:opacity 1s var(--ease)}
+.pay.is-blocked .pay-blocked{opacity:1;transition:opacity 1s var(--ease)}
+html.reduced .pay.is-blocked .pay-compromised,
+html.reduced .pay.is-blocked .pay-blocked{transition:none}
 .pay[data-i="9"]{--i:12}
 .pay[data-i="10"]{--i:13}
 .pay[data-i="11"]{--i:14}
@@ -341,6 +357,9 @@ html.js:not(.reduced) .brand-dot{animation:pip 2.6s ease-out infinite}
     top 1.15s var(--ease);
 }
 .pay-bad.is-soft{opacity:.55}
+.pay.is-blocked{
+  transition:opacity 1s var(--ease-out),transform .85s var(--ease-out);
+}
 
 .lede{
   position:absolute;left:50%;top:48%;
@@ -414,21 +433,42 @@ html.js:not(.reduced) .brand-dot{animation:pip 2.6s ease-out infinite}
   .after-hook .desk-trust,
   .after-hook .m-do{display:none}
   .desk-beats{
-    display:block;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
     max-width:520px;
     margin:0 auto;
     text-align:center;
   }
-  .desk-beats .trust-line{max-width:none}
-  .desk-beats .trust-line + .trust-line{margin-top:16px}
-  .desk-b3{
-    margin:16px 0 0;
-    font-family:var(--sans);
-    font-weight:600;
-    font-size:calc(clamp(1.02rem,.9rem + .4vw,1.22rem) + 1px);
+  .desk-k{
+    margin:0;
+    font-family:var(--mono);
+    font-size:12px;
+    font-weight:400;
     line-height:1.45;
-    letter-spacing:-.012em;
-    color:#F2F0EA;
+    letter-spacing:.04em;
+    color:#8A8882;
+  }
+  .desk-aha{
+    margin:16px 0 0;
+    max-width:34rem;
+    font-family:var(--sans);
+    font-size:clamp(1.55rem,1.15rem + 1.05vw,2rem);
+    line-height:1.28;
+    letter-spacing:-.024em;
+    text-wrap:balance;
+  }
+  .desk-soft{color:#8A8882;font-weight:400}
+  .desk-hard{color:#F2F0EA;font-weight:600}
+  .desk-peak{color:#FFFFFF;font-weight:800}
+  .desk-math{
+    margin:22px 0 0;
+    font-family:var(--mono);
+    font-size:13px;
+    font-weight:400;
+    line-height:1.4;
+    letter-spacing:.02em;
+    color:#C9C7C1;
   }
   .after-hook .open-form{margin-top:24px}
 }
@@ -579,7 +619,10 @@ html[data-beat="after"] .open-land{transform:translate(-50%,-66%)}
   html[data-beat="after"] .pay[data-i="7"]{--x:84% !important; --y:90% !important}
   .open-stage.is-hook .pay[data-i="8"],
   html[data-beat="hook"] .pay[data-i="8"],
-  html[data-beat="after"] .pay[data-i="8"]{--x:50% !important; --y:6% !important}
+  html[data-beat="after"] .pay[data-i="8"]{
+    --x:50% !important; --y:6% !important;
+    transform:translate(-50%,-40%) translateY(-4px) scale(1) !important;
+  }
   .open-stage.is-hook .pay[data-i="9"],
   html[data-beat="hook"] .pay[data-i="9"],
   html[data-beat="after"] .pay[data-i="9"]{--x:15% !important; --y:54% !important}
@@ -594,6 +637,17 @@ html[data-beat="after"] .open-land{transform:translate(-50%,-66%)}
   }
   .open-stage:has(.hook.is-in) .pay[data-i="4"]{
     opacity:0 !important;visibility:hidden;
+  }
+}
+/* Narrower desktops: keep the field outside the question and the form. */
+@media (min-width:761px) and (max-width:1399px){
+  .open-stage.is-hook .pay,
+  html[data-beat="hook"] .pay,
+  html[data-beat="after"] .pay,
+  html.reduced:not([data-beat]) .pay{
+    min-width:0;
+    width:min(230px, calc(50vw - 390px));
+    max-width:min(230px, calc(50vw - 390px));
   }
 }
 @media (min-width:521px) and (max-width:900px){
@@ -669,10 +723,42 @@ html.reduced:not([data-beat]) .open-land::before{
   html.reduced:not([data-beat]) .pay[data-i="5"]{--x:90% !important; --y:72% !important}
   html.reduced:not([data-beat]) .pay[data-i="6"]{--x:16% !important; --y:88% !important}
   html.reduced:not([data-beat]) .pay[data-i="7"]{--x:84% !important; --y:90% !important}
-  html.reduced:not([data-beat]) .pay[data-i="8"]{--x:50% !important; --y:6% !important}
+  html.reduced:not([data-beat]) .pay[data-i="8"]{
+    --x:50% !important; --y:6% !important;
+    transform:translate(-50%,-40%) translateY(-4px) scale(1) !important;
+  }
   html.reduced:not([data-beat]) .pay[data-i="9"]{--x:15% !important; --y:54% !important}
   html.reduced:not([data-beat]) .pay[data-i="10"]{--x:85% !important; --y:54% !important}
   html.reduced:not([data-beat]) .pay[data-i="11"]{--x:50% !important;top:auto !important;bottom:108px !important;transform:translate(-50%,0) !important}
+}
+@media (min-width:761px) and (max-height:860px){
+  .open-stage.is-hook .pay[data-i="8"],
+  html[data-beat="hook"] .pay[data-i="8"],
+  html[data-beat="after"] .pay[data-i="8"],
+  html.reduced:not([data-beat]) .pay[data-i="8"]{
+    --x:9% !important; --y:32% !important;
+    transform:translate(-50%,-40%) translateY(0) scale(1) !important;
+  }
+  .open-stage.is-hook .pay[data-i="11"],
+  html[data-beat="hook"] .pay[data-i="11"],
+  html[data-beat="after"] .pay[data-i="11"],
+  html.reduced:not([data-beat]) .pay[data-i="11"]{
+    bottom:72px !important;
+  }
+}
+@media (min-width:761px) and (max-width:1200px){
+  .open-stage.is-hook .pay[data-i="0"],
+  html[data-beat="hook"] .pay[data-i="0"],
+  html[data-beat="after"] .pay[data-i="0"],
+  html.reduced:not([data-beat]) .pay[data-i="0"]{--x:8% !important}
+  .open-stage.is-hook .pay[data-i="1"],
+  html[data-beat="hook"] .pay[data-i="1"],
+  html[data-beat="after"] .pay[data-i="1"],
+  html.reduced:not([data-beat]) .pay[data-i="1"]{--x:92% !important}
+  .open-stage.is-hook .pay[data-i="11"],
+  html[data-beat="hook"] .pay[data-i="11"],
+  html[data-beat="after"] .pay[data-i="11"],
+  html.reduced:not([data-beat]) .pay[data-i="11"]{bottom:60px !important}
 }
 
 /* ========== 2 · REALITY (Main.dc .real/.w frame, dark wash) ========== */
@@ -2000,7 +2086,7 @@ html.instant .now-story::before,html.reduced .now-story::before{transition:none}
     pointer-events:auto;
   }
   .open-stage.is-ask .hook{
-    font-family:"Inter Tight","Outfit",sans-serif;
+    font-family:"Inter Tight","Figtree",sans-serif;
     font-weight:700;
     font-size:44px;
     line-height:46px;
@@ -2051,17 +2137,17 @@ html.instant .now-story::before,html.reduced .now-story::before{transition:none}
   .desk-trust{display:none}
   .m-trust{
     display:block;margin:20px 0 0;
-    font-family:"Inter Tight","Outfit",sans-serif;font-weight:700;
+    font-family:"Inter Tight","Figtree",sans-serif;font-weight:700;
     font-size:26px;line-height:32px;letter-spacing:-.025em;color:#B2D3E7;
   }
   .m-do{
     display:block;margin:28px auto 0;max-width:22rem;
-    font-family:"Inter Tight","Outfit",sans-serif;font-weight:300;
+    font-family:"Inter Tight","Figtree",sans-serif;font-weight:300;
     font-size:17px;line-height:26px;color:#C9C7C1;text-align:center;
   }
   .m-offer{
     display:block;margin:32px 0 8px;
-    font-family:"Inter Tight","Outfit",sans-serif;font-weight:400;
+    font-family:"Inter Tight","Figtree",sans-serif;font-weight:400;
     font-size:15px;line-height:20px;color:#C9C7C1;
   }
   .open-stage.is-ask .open-form{
@@ -2082,7 +2168,7 @@ html.instant .now-story::before,html.reduced .now-story::before{transition:none}
   }
   .m-re{
     display:block;margin:16px 0 0;
-    font-family:"Inter Tight","Outfit",sans-serif;font-weight:300;
+    font-family:"Inter Tight","Figtree",sans-serif;font-weight:300;
     font-size:13px;line-height:18px;color:#8A8882;
   }
   .open > .cue{display:block}

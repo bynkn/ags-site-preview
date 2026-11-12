@@ -180,7 +180,7 @@
       canSkip = false;
       skipped = false;
       if (after) after.classList.remove('is-in');
-      pays.forEach(function (p) { p.classList.remove('is-in', 'is-soft'); });
+      pays.forEach(function (p) { p.classList.remove('is-in', 'is-soft', 'is-blocked'); });
       clearMobileRows();
       if (btnReplay) btnReplay.hidden = true;
       if (openCue) openCue.classList.remove('on', 'loop');
@@ -311,6 +311,11 @@
       }
     }
 
+    function markBlocked() {
+      var card = document.querySelector('.pay[data-i="9"]');
+      if (card) card.classList.add('is-blocked');
+    }
+
     function showAfter() {
       stage.classList.add('is-land');
       if (after) after.classList.add('is-in');
@@ -326,6 +331,7 @@
         if (shot === 'open-after-hook' || beat === 'after' || (RM && !beat && shot !== 'open-hook')) {
           stage.classList.add('is-land');
           if (after) after.classList.add('is-in');
+          markBlocked();
         }
         if (beat === 'hook' || beat === 'after' || shot === 'open-hook' || shot === 'open-after-hook' || (RM && !beat)) {
           stage.classList.add('is-hook');
@@ -371,6 +377,7 @@
       later(BEATS.soft, function () { stage.classList.add('is-hook'); });
       later(BEATS.hook, function () { hook.classList.add('is-in'); });
       later(BEATS.hook + NAV_AFTER_HOOK, revealNav);
+      later(BEATS.hook + 1400, markBlocked);
       BEATS.bad.forEach(function (t, i) {
         later(t, function () { showPay(BAD_START + i, false); });
       });
