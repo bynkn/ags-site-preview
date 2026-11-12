@@ -2565,3 +2565,13 @@ html.reduced .nav-in,html.instant .nav-in{transition:none}
   .nav-link{display:none}
   .now-story .now-one{font-size:clamp(1.35rem,6vw,1.8rem)}
 }
+
+/* Reality ladder. The opener also has .big, so both selectors are set or the older rule wins. */
+#why{padding-bottom:clamp(160px,22vw,300px)}
+#why .why-open,
+#why .big.why-open{font-size:clamp(1.15rem,2vw,1.6rem);margin-bottom:clamp(40px,6vw,64px)}
+#why .why-1{font-size:clamp(2.2rem,6.4vw,5.4rem);margin-top:0;max-width:14em;color:#B2D3E7}
+#why .why-2{display:block;margin-top:clamp(24px,3vw,36px);font-size:clamp(1.1rem,2.1vw,1.7rem);line-height:1.25;font-weight:400;color:#F2F0EA;max-width:none}
+#why .why-2 span{display:inline;color:inherit;font-weight:inherit}
+@media (min-width:900px){#why .why-2{white-space:nowrap}}
+@media (max-width:899px){#why .why-2{white-space:normal;max-width:24em}}
