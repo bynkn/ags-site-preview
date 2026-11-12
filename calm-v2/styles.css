@@ -2566,3 +2566,4 @@ html.reduced .nav-in,html.instant .nav-in{transition:none}
 .now-story .proof-box .now-giant .lt.in{color:#2F7AB0}
 .now-story .proof-box .now-one{color:#43434b;font-weight:600}
 .now-story .proof-box .now-born{color:#6d737b;font-weight:400}
+@media (min-width:761px){.now-story .proof-box{max-width:1180px;margin-left:auto;margin-right:auto}}
