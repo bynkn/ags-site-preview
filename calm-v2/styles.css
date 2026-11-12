@@ -409,7 +409,29 @@ html.js:not(.reduced) .brand-dot{animation:pip 2.6s ease-out infinite}
   opacity:1;transform:none;pointer-events:auto;
   transition:opacity .85s var(--ease-out),transform .95s var(--ease-out);
 }
-.m-brand,.m-trust,.m-offer,.m-re{display:none}
+.m-brand,.m-trust,.m-offer,.m-re,.desk-beats{display:none}
+@media (min-width:761px){
+  .after-hook .desk-trust,
+  .after-hook .m-do{display:none}
+  .desk-beats{
+    display:block;
+    max-width:520px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .desk-beats .trust-line{max-width:none}
+  .desk-beats .trust-line + .trust-line{margin-top:16px}
+  .desk-b3{
+    margin:16px 0 0;
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:calc(clamp(1.02rem,.9rem + .4vw,1.22rem) + 1px);
+    line-height:1.45;
+    letter-spacing:-.012em;
+    color:#F2F0EA;
+  }
+  .after-hook .open-form{margin-top:24px}
+}
 .trust-line{
   margin:0 auto;max-width:34rem;
   font-size:clamp(1.02rem,.9rem + .4vw,1.22rem);line-height:1.45;
