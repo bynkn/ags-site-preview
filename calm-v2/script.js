@@ -668,3 +668,19 @@
     e.preventDefault();
   });
 })();
+
+/* Today's tools: "Only Math can." follows "Because AI can't police AI." about 1.1s after it shows, never before. */
+(function () {
+  var root = document.documentElement;
+  var a = document.querySelector('.tools.blind .bs-a'), b = document.querySelector('.tools.blind .bs-b');
+  if (!a || !b) return;
+  if (root.classList.contains('reduced') || root.classList.contains('instant') || !('MutationObserver' in window)) {
+    a.classList.add('in'); b.classList.add('in'); return;
+  }
+  function follow() { setTimeout(function () { if (a.classList.contains('in')) b.classList.add('in'); }, 1100); }
+  if (a.classList.contains('in')) { follow(); return; }
+  var mo = new MutationObserver(function () {
+    if (a.classList.contains('in')) { mo.disconnect(); follow(); }
+  });
+  mo.observe(a, { attributes: true, attributeFilter: ['class'] });
+})();

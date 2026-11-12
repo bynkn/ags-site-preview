@@ -13,7 +13,7 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/figtree-latin-700-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/newsreader-latin-400-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/inter-tight-latin-700-normal.woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=copy2">
+<link rel="stylesheet" href="styles.css?v=blind1">
 <script>
 (function(){
   var r=document.documentElement,q=location.search;
@@ -337,17 +337,25 @@
 
   <div class="band" aria-hidden="true"></div>
 
-  <section class="sec tools" aria-label="Today's tools">
+  <section class="sec tools blind" aria-label="Today's tools">
     <span class="node" aria-hidden="true"></span>
     <div class="frame">
-      <h2 class="tools-lead">
-        <span class="tools-they lt-h on-dark">Today&rsquo;s tools check who the agent is, what it says, or what already happened.</span>
-        <span class="tools-we">Not behavior or intent. Not what it&rsquo;s about to do.</span>
-      </h2>
-      <div class="mic">
-        <p class="mic-line">The industry&rsquo;s answer: AI to guard AI.<span class="ind-line">More models.</span><span class="ind-line">More tokens.</span><span class="ind-line">More GPUs.</span></p>
-        <p class="mic-line mic-2"><b>The same injection can fool the guard too.</b></p>
+      <h2 class="bs-title rv">The industry&rsquo;s blind spots</h2>
+      <div class="bs-cards">
+        <article class="bs-card rv">
+          <span class="bs-num" aria-hidden="true">1</span>
+          <h3 class="bs-h">It checks the wrong things.</h3>
+          <p class="bs-body">Today&rsquo;s tools check who the agent is, what it says, or what already happened.</p>
+          <p class="bs-key">Not behavior or intent. Not what it&rsquo;s about to do.</p>
+        </article>
+        <article class="bs-card rv" style="--d:2">
+          <span class="bs-num" aria-hidden="true">2</span>
+          <h3 class="bs-h">It uses AI to guard AI.</h3>
+          <p class="bs-body bs-cost">Which means<span class="bs-c1"> more models.</span><span class="bs-c2"> More tokens.</span><span class="bs-c3"> More GPUs.</span></p>
+          <p class="bs-key">And the same injection that fools the agent can fool the guard too.</p>
+        </article>
       </div>
+      <p class="bs-thesis"><span class="bs-a rv">Because AI can&rsquo;t police AI.</span> <span class="bs-b">Only Math can.</span></p>
     </div>
     <span class="cue" aria-hidden="true"></span>
   </section>
@@ -405,6 +413,6 @@
   </div>
 </main>
 
-<script src="script.js?v=copy2"></script>
+<script src="script.js?v=blind1"></script>
 </body>
 </html>
