@@ -2568,7 +2568,17 @@ html.reduced .nav-in,html.instant .nav-in{transition:none}
 .now-story .proof-box .now-born{color:#6d737b;font-weight:400}
 @media (min-width:761px){.now-story .proof-box{max-width:1180px;margin-left:auto;margin-right:auto}}
 
-/* Demo playing: the white sheet ends below what the demo shows now; JS sets --fit-h.
+/* Demo playing: the white sheet is the pinned stage's ::before, so it rides the pin and never jitters.
+   It reaches up to the box top and out to the box sides (JS sets the --sheet-* offsets on load and resize),
+   and ends the box's bottom padding below the stage, so it grows only when the demo content grows.
    Without JS, or with reduced motion, the box keeps its plain white background. */
 .now-story .proof-box.fit{background:transparent;border-color:transparent;box-shadow:none}
-.now-story .proof-box.fit::before{content:"";position:absolute;left:-1px;right:-1px;top:-1px;height:var(--fit-h,100%);background:#ffffff;border:1px solid rgba(255,255,255,.9);border-radius:inherit;box-shadow:0 1px 0 #fff inset,0 30px 80px rgba(36,97,138,.16),0 2px 8px rgba(36,97,138,.08);z-index:-1;pointer-events:none;box-sizing:border-box}
+.now-story .proof-box.fit .bay-now{position:relative;z-index:1}
+.now-story .proof-box.fit .stage::before{content:"";position:absolute;top:calc(-1 * var(--sheet-t,0px));left:calc(-1 * var(--sheet-l,0px));right:calc(-1 * var(--sheet-r,0px));bottom:calc(-1 * var(--sheet-b,0px));background:#ffffff;border-radius:clamp(24px,3vw,40px);box-shadow:0 1px 0 #fff inset,0 30px 80px rgba(36,97,138,.16),0 2px 8px rgba(36,97,138,.08);z-index:-1;pointer-events:none}
+/* Phone: the stage is as tall as what it shows (not a full-screen frame), and a spacer keeps the same 4 x 30svh of scroll for the steps. */
+@media (max-width:760px){
+  .now-story .proof-box.fit .sec.proof{padding-bottom:28px}
+  .now-story .proof-box.fit .proof .track{height:auto}
+  .now-story .proof-box.fit .proof .track::after{content:"";display:block;height:calc(4 * 30svh)}
+  .now-story .proof-box.fit .stage{height:auto;min-height:0;max-height:none;overflow:visible;contain:none}
+}

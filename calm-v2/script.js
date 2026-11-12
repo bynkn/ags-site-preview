@@ -436,17 +436,24 @@
     var track = $('#track'), stage = $('#stage');
     if (!track || !stage) return;
     var N = 4, cur = 0, queued = false;
-    /* The white box ends just below what the demo shows now, and grows when the blocked result appears. */
+    /* The white box ends just below what the demo shows now, and grows when the blocked result appears.
+       The white sheet is the pinned stage's own ::before, so it moves with the pin instead of chasing the scroll.
+       These offsets are layout constants; they are set on load and resize, never per scroll. */
     var box = stage.closest('.proof-box');
     if (box) box.classList.add('fit');
-    function fitBox(stick) {
+    function fitBox() {
       if (!box) return;
-      var br = box.getBoundingClientRect(), sr = stage.getBoundingClientRect();
-      var ir = si.getBoundingClientRect(), tr = track.getBoundingClientRect();
-      var pad = Math.max(br.bottom - tr.bottom, window.innerWidth <= 760 ? 28 : 56);
-      var edge = Math.max(sr.top, stick) + (ir.bottom - sr.top) + pad;
-      var h = Math.round(Math.min(br.height, Math.max(0, edge - br.top)));
-      box.style.setProperty('--fit-h', h + 'px');
+      var br = box.getBoundingClientRect(), tr = track.getBoundingClientRect(), sr = stage.getBoundingClientRect();
+      var v = {
+        '--sheet-t': Math.round(tr.top - br.top),
+        '--sheet-l': Math.round(sr.left - br.left),
+        '--sheet-r': Math.round(br.right - sr.right),
+        '--sheet-b': Math.round(br.bottom - tr.bottom)
+      };
+      Object.keys(v).forEach(function (k) {
+        var val = v[k] + 'px';
+        if (stage.style.getPropertyValue(k) !== val) stage.style.setProperty(k, val);
+      });
     }
     var tick = function () {
       queued = false;
@@ -464,14 +471,14 @@
       var stuck = stageR.top <= stick + 2;
       if (!stuck && r.top > 0) k = 1;
       if (k !== cur) { cur = k; setStep(si, k); }
-      fitBox(stick);
     };
     var req = function () { if (!queued) { queued = true; requestAnimationFrame(tick); } };
     window.addEventListener('scroll', req, { passive: true });
-    window.addEventListener('resize', function () { placeWatcher(si); req(); });
-    window.addEventListener('load', req);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(req);
+    window.addEventListener('resize', function () { placeWatcher(si); fitBox(); req(); });
+    window.addEventListener('load', function () { fitBox(); req(); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fitBox(); req(); });
     tick();
+    fitBox();
   })();
 
   /* ---------- hide open replay once past hero; nav signup only after hero form leaves ---------- */
