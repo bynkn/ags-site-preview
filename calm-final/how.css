@@ -204,3 +204,30 @@ body.how .ending.endp .endp-bridge .endp-b1,body.how .ending.endp .endp-bridge .
   body.how .s-n{width:36px;height:36px;font-size:15px}
   body.how .h-steps::before{left:17px}
 }
+
+/* v2: denser page */
+body.how .h-h1{margin:0;font-weight:700;font-size:clamp(2.4rem,1.3rem + 3.8vw,4.8rem);line-height:1.04;letter-spacing:-.035em;color:#43434B;text-wrap:balance;max-width:17ch}
+body.how .h-facts{margin:clamp(40px,5vw,64px) 0 0;display:grid;grid-template-columns:repeat(5,1fr);background:#fff;border:1px solid rgba(67,97,138,.10);border-radius:20px;box-shadow:0 30px 80px rgba(36,97,138,.10),0 2px 10px rgba(36,97,138,.05);overflow:hidden}
+body.how .h-facts > div{padding:24px 22px;border-left:1px solid rgba(67,67,75,.07);min-width:0}
+body.how .h-facts > div:first-child{border-left:0}
+body.how .h-facts dt{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#2F7AB0;margin-bottom:8px}
+body.how .h-facts dd{margin:0;font-size:17px;font-weight:600;line-height:1.35;letter-spacing:-.01em;color:#43434B}
+body.how .h-p + .h-p{margin-top:16px}
+body.how #why .h-frame + .h-frame{margin-top:0}
+body.how .h-steps2 h3{margin:0;padding-top:6px;font-size:clamp(1.15rem,1rem + .6vw,1.45rem);font-weight:700;letter-spacing:-.02em;color:#43434B}
+body.how .h-steps2 p{padding-top:6px;font-size:clamp(1.02rem,.95rem + .3vw,1.15rem);max-width:40em}
+body.how .h-steps2 code{font-family:var(--mono);font-size:.86em;color:#24618A;background:#EEF5FA;border-radius:6px;padding:2px 6px;white-space:nowrap}
+body.how .h-walk{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.6vw,20px)}
+body.how .h-walk li{padding:22px 24px;background:#fff;border:1px solid rgba(67,97,138,.10);border-radius:18px;font-size:16px;line-height:1.5;color:#5C6168}
+body.how .h-walk b{color:#43434B}
+@media (max-width:900px){
+  body.how .h-facts{grid-template-columns:1fr 1fr}
+  body.how .h-facts > div{border-left:0;border-top:1px solid rgba(67,67,75,.07)}
+  body.how .h-walk{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  body.how .h-facts{grid-template-columns:1fr}
+  body.how .h-facts > div{padding:16px 18px}
+  body.how .h-facts > div:first-child{border-top:0}
+  body.how .h-steps2 code{white-space:normal;overflow-wrap:anywhere}
+}
