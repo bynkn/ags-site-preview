@@ -2738,3 +2738,8 @@ html body .replay{display:none !important}
   .now-story .bay-ask .trust-ask .ask-b{display:inline}
   .now-story .bay-ask .trust-ask .ask-b{white-space:nowrap;margin-top:0}
 }
+
+/* drive2: bold "And only that?", smaller "optional", square-ish chips like the inputs */
+.now-story .proof-box .bay-ask .trust-ask .ask-b{font-weight:600;color:#43434b}
+.ending.endp .endp-form .fld-l .opt{font-size:.8em}
+.ending.endp .endp-form .who label{border-radius:10px}
