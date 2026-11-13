@@ -2726,5 +2726,5 @@ html.reduced .tools.blind .bs-b,html.instant .tools.blind .bs-b{opacity:1 !impor
 .consent br{display:none}
 @media (max-width:760px){.consent br{display:inline}.consent{font-size:11.5px;line-height:1.5}}
 
-/* Phone: no Replay button */
-@media (max-width:760px){html body .replay{display:none !important}}
+/* No Replay button */
+html body .replay{display:none !important}
