@@ -1,0 +1,29 @@
+@font-face{font-family:'Figtree';font-weight:400;font-display:swap;src:url('fonts/figtree-latin-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Figtree';font-weight:600;font-display:swap;src:url('fonts/figtree-latin-600-normal.woff2') format('woff2')}
+@font-face{font-family:'Figtree';font-weight:700;font-display:swap;src:url('fonts/figtree-latin-700-normal.woff2') format('woff2')}
+*{box-sizing:border-box}
+html{background:#F9F8F4}
+body{margin:0;font-family:'Figtree',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;color:#43434B;line-height:1.65;font-size:17px;-webkit-font-smoothing:antialiased}
+.lg-top{max-width:960px;margin:0 auto;padding:18px 20px 0}
+.lg-pill{display:flex;align-items:center;justify-content:space-between;gap:16px;background:#fff;border-radius:999px;padding:10px 12px 10px 22px;box-shadow:0 6px 24px rgba(40,60,80,.08),0 1px 3px rgba(40,60,80,.08)}
+.lg-nav{display:flex;align-items:center;gap:18px}
+.lg-back{font-size:14px;color:#5C6168;text-decoration:none}
+.lg-back:hover{text-decoration:underline}
+.lg-btn{background:#24618A;color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:9px 16px;border-radius:999px;white-space:nowrap}
+.lg-btn:hover{background:#1d5073}
+@media (max-width:520px){.lg-back{display:none}.lg-pill{padding-left:16px}.lg-brand{font-size:16px}.lg-btn{padding:8px 13px}}
+.lg-brand{white-space:nowrap;font-size:18px;color:#43434B;text-decoration:none;letter-spacing:-.01em}
+.lg-brand b{font-weight:700}
+.lg-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#4fae8a;margin-left:6px;vertical-align:middle}
+main{max-width:720px;margin:0 auto;padding:40px 24px 72px}
+h1{font-size:40px;line-height:1.15;letter-spacing:-.02em;margin:0 0 6px;font-weight:700;color:#2b2b31}
+.lg-date{margin:0 0 36px;color:#6D737B;font-size:15px}
+h2{font-size:21px;margin:36px 0 8px;font-weight:600;color:#2b2b31;letter-spacing:-.01em}
+p,li{margin:0 0 12px}
+ul{padding-left:22px;margin:0 0 12px}
+a{color:#24618A;text-underline-offset:2px}
+.lg-foot{max-width:720px;margin:0 auto;padding:0 24px 48px;font-size:14px;color:#6D737B;display:flex;gap:20px;flex-wrap:wrap}
+.lg-foot a{color:#6D737B}
+.nf{min-height:60vh;display:flex;flex-direction:column;justify-content:center}
+@media (max-width:600px){h1{font-size:32px}body{font-size:16px}}
+@media (max-width:520px){.lg-brand{font-size:16px}}

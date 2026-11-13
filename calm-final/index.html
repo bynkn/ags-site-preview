@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trust, by math. Not another AI. | Agentic GUARDIANS</title>
+<meta name="description" content="The trust layer for AI agents, built on math, not another AI. We learn what your agent normally does and stop what doesn&rsquo;t fit, before it runs.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Agentic GUARDIANS">
+<meta property="og:title" content="Trust, by math. Not another AI. | Agentic GUARDIANS">
+<meta property="og:description" content="The trust layer for AI agents, built on math, not another AI.">
+<meta property="og:image" content="https://agenticguardians.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://agenticguardians.com/og-image.png">
+<meta name="theme-color" content="#050505">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%23050505%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%276%27 fill=%27%23A8D5C2%27/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="fonts/figtree-latin-400-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/figtree-latin-600-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/figtree-latin-700-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/newsreader-latin-400-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/inter-tight-latin-700-normal.woff2" crossorigin>
+<link rel="stylesheet" href="styles.css?v=end1">
+<script>
+(function(){
+  var r=document.documentElement,q=location.search;
+  r.classList.add('js','nav-top');
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches) r.classList.add('reduced');
+  if(/[?&]static=1/.test(q)) r.classList.add('reduced','static','instant');
+  if(/[?&]beat=(\w+)/.test(q)) r.dataset.beat=RegExp.$1;
+  if(/[?&]shot=(\w+)/.test(q)) r.dataset.shot=RegExp.$1;
+  if(!r.classList.contains('reduced')&&!r.dataset.beat&&!r.dataset.shot) r.classList.add('nav-away');
+})();
+</script>
+</head>
+<body id="top">
+
+<header class="nav" id="nav" aria-label="Site">
+  <div class="nav-in">
+    <a class="brand" href="#top" aria-label="Agentic GUARDIANS, back to top">
+      <span class="wm"><span class="wm-a">Agentic</span> <span class="wm-g">GUARDIANS</span><i class="wm-dot" aria-hidden="true"></i></span>
+    </a>
+    <div class="nav-r">
+      <a class="btn btn-primary btn-sm nav-signup" href="#contact">Get early access</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- 1 · OPEN &mdash; stitch / first-screen DNA + after-hook trust + signup -->
+  <section class="open dw" id="open" aria-label="Opening" aria-live="polite">
+    <div class="open-stage" id="openStage">
+      <div class="field" id="field" aria-label="Agent activity">
+        <article class="pay" data-i="0">
+          <span class="pay-who mono">agent · eng-07</span>
+          <span class="pay-act">Opened pull request <span class="acct">#482</span></span>
+          <span class="pay-amt">review</span>
+        </article>
+        <article class="pay" data-i="1">
+          <span class="pay-who mono">agent · finance-02</span>
+          <span class="pay-act">Paid supplier invoice <span class="acct">••2290</span></span>
+          <span class="pay-amt">$890</span>
+        </article>
+        <article class="pay" data-i="2">
+          <span class="pay-who mono">agent · desk-11</span>
+          <span class="pay-act">Booked Tuesday standup room</span>
+          <span class="pay-amt">cal</span>
+        </article>
+        <article class="pay" data-i="3">
+          <span class="pay-who mono">agent · ops-04</span>
+          <span class="pay-act">Deployed staging build <span class="acct">v0.9.4</span></span>
+          <span class="pay-amt">live</span>
+        </article>
+        <article class="pay" data-i="4">
+          <span class="pay-who mono">agent · support-03</span>
+          <span class="pay-act">Summarized 14 support tickets</span>
+          <span class="pay-amt">done</span>
+        </article>
+        <article class="pay" data-i="5">
+          <span class="pay-who mono">agent · ops-04</span>
+          <span class="pay-act">Paid electricity bill</span>
+          <span class="pay-amt">$142</span>
+        </article>
+        <article class="pay" data-i="6">
+          <span class="pay-who mono">agent · eng-07</span>
+          <span class="pay-act">Created ticket <span class="acct">ENG-1904</span></span>
+          <span class="pay-amt">jira</span>
+        </article>
+        <article class="pay" data-i="7">
+          <span class="pay-who mono">agent · finance-02</span>
+          <span class="pay-act">Sent weekly digest to finance@</span>
+          <span class="pay-amt">sent</span>
+        </article>
+        <article class="pay pay-off" data-i="8">
+          <span class="pay-who mono">agent · payments-01</span>
+          <span class="pay-act">Paid <span class="acct">••7731</span></span>
+          <span class="pay-amt">$4,800</span>
+          <span class="pay-note">new account</span>
+        </article>
+      </div>
+      <div class="field-bad" id="fieldBad" aria-hidden="true">
+        <article class="pay pay-bad" data-i="9">
+          <span class="pay-who mono">agent · payments-01</span>
+          <span class="pay-act">Paid <span class="acct">••8814</span></span>
+          <span class="pay-amt">$12,400</span>
+          <span class="pay-note">new vendor</span>
+          <span class="pay-compromised">Compromised</span>
+          <span class="pay-stopped">Stopped before it ran.</span>
+        </article>
+        <article class="pay pay-bad" data-i="10">
+          <span class="pay-who mono">agent · data-06</span>
+          <span class="pay-act">Exported customer DB</span>
+          <span class="pay-amt">done</span>
+          <span class="pay-compromised">Compromised</span>
+        </article>
+        <article class="pay pay-bad" data-i="11">
+          <span class="pay-who mono">agent · iam-02</span>
+          <span class="pay-act">Disabled 2FA for admin</span>
+          <span class="pay-amt">ok</span>
+          <span class="pay-compromised">Compromised</span>
+        </article>
+      </div>
+      <p class="lede" id="lede"><span class="lede-l1">Your AI agent</span> <span class="lede-l2">is already out there.</span></p>
+      <div class="m-lines" id="mLines">
+        <div class="m-bar" aria-hidden="true"><span class="m-dots"><i></i><i></i><i></i></span><span class="m-title">agent</span></div>
+        <p class="m-row" data-row="0"><span class="m-line"><span class="m-prompt">$</span><span class="m-cmd"><span class="m-act">Opened invoice_0412.pdf.</span><i class="m-cur" aria-hidden="true"></i></span></span><span class="m-st">Completed</span></p>
+        <p class="m-row" data-row="1"><span class="m-line"><span class="m-prompt">$</span><span class="m-cmd"><span class="m-act">Checked the supplier.</span><i class="m-cur" aria-hidden="true"></i></span></span><span class="m-st">Completed</span></p>
+        <p class="m-row" data-row="2"><span class="m-line"><span class="m-prompt">$</span><span class="m-cmd"><span class="m-act">Matched the ledger.</span><i class="m-cur" aria-hidden="true"></i></span></span><span class="m-st">Completed</span></p>
+        <p class="m-row" data-row="3"><span class="m-line"><span class="m-prompt">$</span><span class="m-cmd"><span class="m-act">Scheduled the payment.</span><i class="m-cur" aria-hidden="true"></i></span></span><span class="m-st">Completed</span></p>
+        <p class="m-row" data-row="4"><span class="m-line"><span class="m-prompt">$</span><span class="m-cmd"><span class="m-act">Paid $4,800 to a new account.</span><i class="m-cur" aria-hidden="true"></i></span></span><span class="m-st">Deviation detected</span></p>
+        <p class="m-live" aria-hidden="true"><span class="m-prompt">$</span><i class="m-cur"></i></p>
+      </div>
+      <div class="open-land" id="openLand">
+        <h1 class="hook" id="hook">
+          <span class="hook-l1">Do you know</span> <span class="hook-l2">what your agent</span> <span class="hook-l3">is doing <span class="nw">right now?</span></span>
+        </h1>
+        <div class="after-hook" id="afterHook">
+          <p class="m-brand"><span class="wm"><span class="wm-a">Agentic</span> <span class="wm-g">GUARDIANS</span><i class="wm-dot" aria-hidden="true"></i></span></p>
+          <p class="trust-line desk-trust"><b>Agentic GUARDIANS</b> is the trust layer for AI agents.</p>
+          <p class="m-trust">The trust layer for AI agents.</p>
+          <p class="trust-line m-do">We learn how your agent behaves and stop what shouldn&rsquo;t happen, before it runs.</p>
+          <p class="m-math"><span class="nm-rule" aria-hidden="true"></span><span class="nm-txt">No AI in the loop. <b>Just math.</b></span><span class="nm-rule" aria-hidden="true"></span></p>
+          <div class="desk-beats">
+            <p class="desk-label"><b>Agentic GUARDIANS</b> is the trust layer for AI agents.</p>
+            <p class="desk-big"><span class="db-soft">We learn how your agent behaves</span> <span class="db-strong">and stop what shouldn&rsquo;t happen, <em>before it runs.</em></span></p>
+            <p class="desk-b3"><span class="nm-rule" aria-hidden="true"></span><span class="nm-txt">No AI in the loop. <b>Just math.</b></span><span class="nm-rule" aria-hidden="true"></span></p>
+            
+          </div>
+          <form class="open-form" id="openForm" novalidate>
+            <label class="sr-only" for="openEmail">Work email</label>
+            <input type="email" name="email" id="openEmail" required autocomplete="email" placeholder="you@company.com">
+            <button class="btn btn-primary" type="submit">Get early access</button>
+            <p class="consent">We&rsquo;ll email you about early access. <br>Unsubscribe anytime. <a href="privacy.html">Privacy Policy</a></p>
+            <p class="open-form-ok" id="openFormOk" role="status" hidden><i class="brand-dot form-dot" aria-hidden="true"></i>You&rsquo;re on the list.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="replay" id="btnReplay" hidden title="Replay opening">Replay</button>
+    <span class="cue" id="openCue" aria-hidden="true"></span>
+  </section>
+
+  <!-- 2 · THE REALITY &mdash; one-pager stacked + stitch wording -->
+  <section class="sec why dw" id="why" aria-label="The reality">
+    <span class="node" aria-hidden="true"></span>
+    <div class="why-stack">
+      <p class="why-k rv">The reality is...</p>
+      <p class="big why-open rv" style="--d:0">Agents don&rsquo;t just answer anymore. They act on their own, with real access to your code, data and systems.</p>
+      <p class="big m1 rv" style="--d:0"><strong>Agents drift.</strong></p>
+      <p class="big m2 rv" style="--d:1">They make things up.</p>
+      <p class="big m3 rv" style="--d:2">They forget rules.</p>
+      <p class="big m4 rv" style="--d:3">They get weaponized.</p>
+      <p class="why-line why-1 rv" style="--d:0">A compromised agent doesn&rsquo;t look compromised.</p>
+      <p class="why-line why-2 rv" style="--d:1">Same keys. Same access. Weaponized with someone else&rsquo;s intent.</p>
+    </div>
+  </section>
+
+  <div class="now-story day">
+  <div class="proof-box">
+  <section class="bay-now" id="proof" aria-label="Now you can">
+    <div class="bay-ask">
+      <div class="frame">
+        <p class="trust-ask rv"><span class="ask-a">So, can you <strong>trust</strong> your agent to do what it&rsquo;s told?</span> <span class="ask-b">And only that?</span></p>
+      </div>
+    </div>
+    <div class="bay-cloud">
+      <div class="frame">
+        <div class="now-arrive" id="nowArrive">
+          <h2 class="now-giant lt-h">Now you can.</h2>
+          <p class="now-one">One guardian per agent.</p>
+          <p class="now-born">Born from its behavior.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec proof" aria-label="Demo">
+    <div class="track" id="track">
+      <div class="stage" id="stage">
+        <div class="stage-in" id="stageIn" data-step="1">
+          <div class="cap-row">
+            <p class="step-k" aria-hidden="true"><span class="pips"><i></i><i></i><i></i><i></i><i></i></span></p>
+            <div class="caps">
+              <p class="cap" data-c="1">Agentic <span class="wm-g">GUARDIANS</span> is watching.</p>
+              <p class="cap" data-c="2">We&rsquo;ve learned this agent&rsquo;s baseline behavior.</p>
+              <p class="cap" data-c="3">Then it does something it never has.</p>
+              <p class="cap" data-c="4">Blocked before it ran.<span class="cap-math">Decided by math. No AI.</span></p>
+            </div>
+          </div>
+          <div class="cb-grid">
+            <div class="term term-demo" id="demoTerm">
+              <div class="term-bar"><span class="lights"><i></i><i></i><i></i></span><span class="term-title">ops@payments-01 &mdash; agent &mdash; 120×12</span></div>
+              <div class="term-body">
+                <i class="watcher" aria-hidden="true" hidden></i>
+                <div class="ln"><span class="ts">14:02:07</span><span><span class="pr">%</span> agent run pay-invoices</span></div>
+                <div class="ln f2"><span class="ts">14:02:08</span><span><span class="k">task</span>Pay supplier invoices <span class="ok">✓</span></span></div>
+                <div class="ln f2"><span class="ts">14:02:09</span><span><span class="k">open</span>invoice_0412.pdf <span class="ok">✓</span></span></div>
+                <div class="ln f3"><span class="ts">14:02:10</span><span><span class="k">verify</span>supplier · on file ••2290 <span class="ok">✓</span></span></div>
+                <div class="ln f4 ml2"><span class="ts">14:02:11</span><span><span class="k">match</span>ledger · october <span class="ok">✓</span></span></div>
+                <div class="ln f4"><span class="ts">14:02:12</span><span><span class="k">transfer</span>payments-api amount=$4,800 to="acct ••7731"</span></div>
+                <div class="ln f4 u4"><span class="ts">14:02:12</span><span><span class="k">check</span>checking…</span></div>
+                <div class="ln f5 blk-l"><span class="ts">14:02:13</span><span><span class="k x">blocked</span><span class="x">✖ Blocked by Agentic GUARDIANS · not executed</span></span></div>
+                <div class="ln st-l"><span class="ts">14:02:13</span><span><span class="k">status</span><span class="d">balance $52,300 · unchanged</span><span class="d f5r"> · transfer blocked</span></span></div>
+                <div class="ln ln-cur"><span class="ts">14:02:13</span><span><span class="pr">%</span> <span class="cur" aria-hidden="true"></span></span></div>
+              </div>
+            </div>
+            <div class="cb-side">
+              <div class="side-a">
+                <div class="pnl pnl-cur agp">
+                  <div class="pnl-top ph-top"><span class="pip pip-cur mono"><i></i>current action</span><span class="ph">
+                    <span class="phk s2"><i></i>Learning</span><span class="phk s3"><i></i>Behavior locked</span><span class="phk s4"><i></i>Checking</span><span class="phk s5"><i></i>Blocked</span></span></div>
+                  <div class="ph-sub"><span class="s2">3 of 5 runs</span><span class="s3"></span><span class="s4"></span><span class="s5">1 action blocked</span></div>
+                  <ul class="ag-acts mono">
+                    <li class="f2 r1"><span class="an">task <span class="aa">pay-invoices</span></span><span class="tg">Learning</span></li>
+                    <li class="f2 r2"><span class="an">open <span class="aa">invoice_0412.pdf</span></span><span class="tg">Learning</span></li>
+                    <li class="f3 r3"><span class="an">verify <span class="aa">supplier ••2290</span></span><span class="tg">Allowed</span></li>
+                    <li class="f4 r35"><span class="an">match <span class="aa">ledger</span></span><span class="tg">Allowed</span></li>
+                    <li class="f4 r4"><span class="an">transfer <span class="aa">$4,800 → ••7731</span></span><span class="tg tg4">Checking</span><span class="tg tg5">Blocked</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="pnl pnl-ok rc">
+                <div class="pnl-top mono"><span class="pip"><i></i>baseline behavior</span><span class="muted">payments-01</span></div>
+                <p class="pnl-p">Normal sequence:</p>
+                <p class="seq mono"><span class="tok">open</span><span class="ar">→</span><span class="tok">verify</span><span class="ar">→</span><span class="tok">match</span><span class="ar">→</span><span class="tok exp">pay ••2290</span></p>
+              </div>
+              <div class="pnl pnl-dev rc">
+                <div class="pnl-top mono"><span class="pip pip-dev"><i></i>deviation detected</span><span class="muted">blocked</span></div>
+                <dl class="eo">
+                  <div><dt class="mono">Expected</dt><dd class="mono">pay supplier ••2290</dd></div>
+                  <div><dt class="mono">Observed</dt><dd><span class="mono">transfer $4,800 → ••7731</span>, an account it has never paid.</dd></div>
+                </dl>
+                <p class="verdict">Not the supplier. Balance unchanged at $52,300.</p>
+              </div>
+            </div>
+          </div>
+          <div class="proof-res" aria-live="polite">
+            <div class="res">
+              <div class="res-l">
+                <p class="blk">Blocked<br>before it ran.</p>
+                <p class="nomove">$4,800 never moved.</p>
+              </div>
+              <div class="res-r">
+                <dl class="ledger">
+                  <div><dt>History</dt><dd>It has paid ••2290 every month. <span>It has never paid ••7731.</span></dd></div>
+                  <div><dt>Why</dt><dd>A hidden instruction in <i>invoice_0412.pdf</i> tried to change the payee.</dd></div>
+                  <div class="dec"><dt>Decided by</dt><dd>Math. No AI.</dd></div>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="cue" aria-hidden="true"></span>
+  </section>
+  </div>
+  </div>
+
+  <div class="day">
+  <div class="band" aria-hidden="true"></div>
+
+  <section class="sec b3" id="learns" aria-label="Learns">
+    <span class="node" aria-hidden="true"></span>
+    <div class="frame">
+      <nav class="beat-nav" aria-label="Learns, Blocks, Signs"><a class="on" href="#learns">Learns</a><a href="#blocks">Blocks</a><a href="#signs">Signs</a></nav>
+      <div class="b3-grid">
+        <div>
+          <h2 class="beat-l lt-h on-dark">Learns your agent.</h2>
+          <p class="beat-s rv" style="--d:1">From its own behavior and work. No rules to write.</p>
+        </div>
+        <div class="gcard ok rv" style="--d:2">
+          <div class="g-top"><span class="g-pl"><i></i>baseline behavior</span><span class="g-mu">payments-01</span></div>
+          <p class="g-np">Normal sequence:</p>
+          <div class="g-sq">open<span class="g-a">→</span>verify<span class="g-a">→</span>match<span class="g-a">→</span><u>pay ••2290</u></div>
+          <div class="g-ft">Baseline learned.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sec b3" id="blocks" aria-label="Blocks">
+    <div class="frame">
+      <nav class="beat-nav" aria-label="Learns, Blocks, Signs"><a href="#learns">Learns</a><a class="on" href="#blocks">Blocks</a><a href="#signs">Signs</a></nav>
+      <div class="b3-grid">
+        <div>
+          <h2 class="beat-l lt-h on-dark">Blocks the deviation.</h2>
+          <p class="beat-s rv" style="--d:1">Checked before it runs. Normal behavior goes through. The rest is held or blocked.</p>
+        </div>
+        <div class="gcard dev rv" style="--d:2">
+          <div class="g-top"><span class="g-pl"><i></i>deviation detected</span><span class="g-mu">blocked</span></div>
+          <dl class="g-eo">
+            <dt>Expected</dt><dd>pay supplier ••2290</dd>
+            <dt>Observed</dt><dd>transfer $4,800 → ••7731,<small>an account it has never paid.</small></dd>
+          </dl>
+          <div class="g-ft">Not the supplier. Balance unchanged at $52,300.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sec b3" id="signs" aria-label="Signs">
+    <div class="frame">
+      <nav class="beat-nav" aria-label="Learns, Blocks, Signs"><a href="#learns">Learns</a><a href="#blocks">Blocks</a><a class="on" href="#signs">Signs</a></nav>
+      <div class="b3-grid">
+        <div>
+          <h2 class="beat-l lt-h on-dark">Signs the record.</h2>
+          <p class="beat-s rv" style="--d:1">Blocks and holds can carry a signed record. Verify it with our public key.</p>
+        </div>
+        <div class="gcard cert rv" style="--d:2">
+          <div class="g-ch"><span class="g-cn">Agentic GUARDIANS Detection Certificate</span><span class="g-sg"><i></i>SIGNED</span></div>
+          <div class="g-cg">
+            <div><b>Decision</b><span class="g-deny">Blocked · DENY</span></div>
+            <div><b>Agent</b><span>payments-01</span></div>
+            <div><b>Action</b><span>transfer $4,800 → ••7731</span></div>
+            <div><b>Certificate ID</b><span>AG-2026-000417</span></div>
+            <div><b>Chain</b><span>seq 17 · prev 9c1e…a04f</span></div>
+            <div><b>Signature (Ed25519)</b><span>a543…bd5a</span></div>
+            <div class="g-w"><b>Summary</b><span class="g-sm">Transfer to an account this agent has never paid. Blocked before it ran.</span></div>
+          </div>
+          <div class="g-ft">Verify it with our public key. <span class="g-v">✓ valid</span></div>
+        </div>
+      </div>
+    </div>
+    <span class="cue" aria-hidden="true"></span>
+  </section>
+
+  <div class="band" aria-hidden="true"></div>
+
+  <section class="sec tools blind" aria-label="Today's tools">
+    <span class="node" aria-hidden="true"></span>
+    <div class="frame">
+      <h2 class="bs-title rv">The industry&rsquo;s blind spots</h2>
+      <div class="bs-cards">
+        <article class="bs-card rv">
+          <span class="bs-num" aria-hidden="true">1</span>
+          <h3 class="bs-h">It checks the wrong things.</h3>
+          <p class="bs-body">Today&rsquo;s tools check who the agent is, what it says, or what already happened.</p>
+          <p class="bs-key">Not behavior or intent. Not what it&rsquo;s about to do.</p>
+        </article>
+        <article class="bs-card rv" style="--d:2">
+          <span class="bs-num" aria-hidden="true">2</span>
+          <h3 class="bs-h">It uses AI to guard AI.</h3>
+          <p class="bs-body">Which means more models. More tokens. More GPUs.</p>
+          <p class="bs-key">And the same injection that fools the agent can fool the guard too.</p>
+        </article>
+      </div>
+      <p class="bs-thesis"><span class="bs-a rv">Because AI can&rsquo;t police AI.</span> <span class="bs-b">Only Math can.</span></p>
+      <p class="bs-resolve rv" style="--d:3">That&rsquo;s the <b>trust layer.</b></p>
+    </div>
+    <span class="cue" aria-hidden="true"></span>
+  </section>
+
+  <div class="ending endp">
+  <div class="spine-meet" aria-hidden="true"><span class="node"></span></div>
+  <section class="end-glow" id="contact" aria-label="Your agent">
+    <div class="endp-wrap">
+      <div class="endp-panel rv">
+        <div class="endp-l">
+          <h2 class="endp-pay">Trust the<br>behavior.<br>Block the rest.</h2>
+          <p class="endp-tag"><span class="endp-t1">One guardian per agent.</span><span class="endp-t2">Born from its behavior.</span></p>
+        </div>
+        <div class="endp-r">
+          <p class="endp-bridge"><span class="endp-b1">Your agent is running right now.</span> <span class="endp-b2">Nobody is watching it yet.</span></p>
+          <form class="endp-form" id="accessForm" novalidate>
+            <div class="form-body">
+              <fieldset class="who">
+                <legend class="fld-l">I&rsquo;m… <span class="opt">optional</span></legend>
+                <div class="who-opts">
+                  <input type="radio" name="who" id="w1" value="using"><label for="w1">Using agents</label>
+                  <input type="radio" name="who" id="w2" value="investing"><label for="w2">Investing</label>
+                  <input type="radio" name="who" id="w3" value="curious"><label for="w3">Curious</label>
+                </div>
+              </fieldset>
+              <label class="fld">
+                <span class="fld-l">Work email</span>
+                <input type="email" name="email" id="email" required autocomplete="email" placeholder="you@company.com">
+              </label>
+              <label class="fld">
+                <span class="fld-l">What do you run? <span class="opt">optional</span></span>
+                <input type="text" name="what-run" id="what-run" autocomplete="off" placeholder="coding agents, support bots…">
+              </label>
+              <div class="form-act">
+                <button class="endp-btn" type="submit">Get early access</button>
+                <p class="form-err" id="formErr" role="alert"></p>
+              </div>
+              <p class="early-note">Be first in when it opens.</p>
+              <p class="consent">We&rsquo;ll email you about early access. <br>Unsubscribe anytime. <a href="privacy.html">Privacy Policy</a></p>
+              <p class="form-ok" id="formOk" role="status" hidden><i class="brand-dot form-dot" aria-hidden="true"></i>We&rsquo;ll be in touch.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer class="foot end-foot">
+      <div class="end-top">
+        <p class="end-brand"><span class="wm-a">Agentic</span> <span class="wm-g">GUARDIANS</span></p>
+        <nav class="end-links" aria-label="Footer">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </nav>
+      </div>
+      <p class="end-legal"><span>© 2026 Agentic GUARDIANS</span><a href="mailto:founders@agenticguardians.com">founders@agenticguardians.com</a></p>
+    </footer>
+  </section>
+  </div>
+  </div>
+</main>
+
+<script src="script.js?v=end1"></script>
+</body>
+</html>
