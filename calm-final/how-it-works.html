@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How it works | Agentic GUARDIANS</title>
-<meta name="description" content="How Agentic GUARDIANS works: we learn each agent&rsquo;s behavioral fingerprint and score every action before it runs, with math, not another AI.">
+<meta name="description" content="How Agentic GUARDIANS works: we score every action your agent takes before it runs, against that agent&rsquo;s own baseline. Math, not another AI.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Agentic GUARDIANS">
 <meta property="og:title" content="How it works | Agentic GUARDIANS">
-<meta property="og:description" content="We learn each agent&rsquo;s behavior and score every action before it runs. No language model in the decision.">
+<meta property="og:description" content="We decide before your agent acts: allow, hold for a person, or block. We read actions, not prompts. No AI in the decision.">
 <meta property="og:image" content="https://agenticguardians.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -21,7 +21,7 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/figtree-latin-600-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/figtree-latin-700-normal.woff2" crossorigin>
 <link rel="stylesheet" href="styles.css?v=drive3">
-<link rel="stylesheet" href="how.css?v=how2">
+<link rel="stylesheet" href="how.css?v=how4">
 <script>
 (function(){
   var r=document.documentElement,q=location.search;
@@ -46,47 +46,151 @@
 
 <main>
 
-  <!-- 1 · What it is -->
+  <!-- 1 · Hero -->
   <section class="h-sec h-reality" id="what" aria-labelledby="h-title">
     <div class="h-frame">
       <p class="h-k">How it works</p>
-      <h1 class="h-h1 rv" id="h-title">We watch what your agent does, and stop what doesn&rsquo;t fit.</h1>
-      <p class="h-lead rv" style="--d:1">Agentic GUARDIANS learns each agent&rsquo;s behavioral fingerprint from its own work. It scores every action before it runs. When an action doesn&rsquo;t fit, it holds it for a person or blocks it, and says why.</p>
+      <h1 class="h-h1 rv" id="h-title">We decide before your agent acts.</h1>
+      <p class="h-lead rv" style="--d:1">Every time your agent reaches for a tool, its platform pauses the call and asks us first. We score the action against how that agent normally works. Then we allow it, hold it for a person, or block it. The tool runs only if we say yes.</p>
       <dl class="h-facts rv" style="--d:2">
-        <div><dt>Watches</dt><dd>Tool calls: which tool, in what order.</dd></div>
-        <div><dt>Compares against</dt><dd>That agent&rsquo;s own history.</dd></div>
-        <div><dt>Decides with</dt><dd>Math. No language model.</dd></div>
-        <div><dt>Acts</dt><dd>Before the tool runs.</dd></div>
-        <div><dt>Runs on</dt><dd>CPU. No GPU.</dd></div>
+        <div><dt>Checks</dt><dd>Every action, before it runs.</dd></div>
+        <div><dt>Reads</dt><dd>Actions, not prompts.</dd></div>
+        <div><dt>Compares against</dt><dd>That agent&rsquo;s own baseline.</dd></div>
+        <div><dt>Decides with</dt><dd>Math. No AI.</dd></div>
+        <div><dt>Runs on</dt><dd>Your machine, on CPU. Nothing leaves it.</dd></div>
       </dl>
     </div>
   </section>
 
-  <!-- 2 · Why -->
-  <section class="h-sec" id="why" aria-labelledby="why-h">
+  <!-- 2 · The hook, as a diagram -->
+  <section class="h-sec" id="hook" aria-labelledby="hook-h">
     <span class="h-node" aria-hidden="true"></span>
-    <div class="h-frame h-split">
-      <div class="h-copy">
-        <p class="h-k rv">Why</p>
-        <h2 class="h-h2 rv" id="why-h">A compromised agent doesn&rsquo;t look compromised.</h2>
-        <p class="h-p rv" style="--d:1">Same keys. Same access. Someone else&rsquo;s intent.</p>
-        <p class="h-p rv" style="--d:2">A hidden instruction in a file can change what an agent does. Every credential is still valid, so every system says yes. Checks on who the agent is pass. Logs show the damage after it happened.</p>
-      </div>
-      <figure class="h-term rv" style="--d:2" aria-label="Example: every step of a payments run was allowed">
-        <div class="h-term-bar"><span class="h-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="h-term-title">ops@payments-01 &mdash; agent</span><span class="h-ex">Example</span></div>
-        <ol class="h-term-body">
-          <li><span class="t-k">task</span><span class="t-v">pay-invoices</span><span class="t-s">allowed</span></li>
-          <li><span class="t-k">open</span><span class="t-v">invoice_0412.pdf</span><span class="t-s">allowed</span></li>
-          <li><span class="t-k">verify</span><span class="t-v">supplier · on file ••2290</span><span class="t-s">allowed</span></li>
-          <li><span class="t-k">match</span><span class="t-v">ledger · october</span><span class="t-s">allowed</span></li>
-          <li class="t-bad"><span class="t-k">transfer</span><span class="t-v">$4,800 → acct ••7731</span><span class="t-s">breach</span></li>
-        </ol>
-        <figcaption class="h-term-cap">Every system said yes.</figcaption>
+    <div class="h-frame">
+      <p class="h-k rv">At the hook</p>
+      <h2 class="h-h2 rv" id="hook-h">One check, between the decision and the deed.</h2>
+      <p class="h-lead rv" style="--d:1">Agent platforms have a step where a tool call is ready but hasn&rsquo;t run. A small connector puts us at that step. One engine, one small connector for each platform.</p>
+
+      <figure class="fl rv" style="--d:1" aria-labelledby="fl-cap">
+        <div class="fl-g">
+          <!-- platforms -->
+          <ul class="fl-plats" aria-label="Agent platforms">
+            <li><span class="fl-card">Agent platform</span><span class="fl-chip">connector</span></li>
+            <li><span class="fl-card">Coding agent</span><span class="fl-chip">connector</span></li>
+            <li><span class="fl-card">Ops agent</span><span class="fl-chip">connector</span></li>
+            <li class="fl-next"><span class="fl-card">Your next platform</span><span class="fl-chip">connector</span></li>
+          </ul>
+          <div class="fl-bus4" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <p class="fl-tag" aria-hidden="true"><span>tool call, paused before it runs</span></p>
+
+          <!-- engine + feedback loop -->
+          <div class="fl-hubrow">
+            <span class="fl-learn" aria-hidden="true"><em>baseline learns</em></span>
+            <div class="fl-hub">
+              <span class="fl-hk">Agentic GUARDIANS</span>
+              <b>We score it. No AI.</b>
+              <span class="fl-hs">Which tool, in what order, against this agent&rsquo;s own baseline. Actions, not prompts.</span>
+            </div>
+            <span aria-hidden="true"></span>
+          </div>
+          <div class="fl-bus3" aria-hidden="true"><i></i><i></i><i></i></div>
+
+          <!-- outcomes -->
+          <div class="fl-out">
+            <div class="fl-o o-hold"><span class="fl-ok">Hold</span><span>Waits for a person.</span></div>
+            <div class="fl-o o-blk"><span class="fl-ok">Block</span><span>Never runs. The agent gets the reason.</span></div>
+            <div class="fl-o o-ok"><span class="fl-ok">Allow</span><span>Runs.</span></div>
+          </div>
+
+          <!-- person + record -->
+          <div class="fl-low">
+            <div class="fl-person">
+              <span class="fl-pi" aria-hidden="true"></span>
+              <b>A person</b>
+              <span>Approve once, or keep it blocked. Mark any block right or wrong.</span>
+            </div>
+            <div class="fl-pass" aria-hidden="true"></div>
+            <div class="fl-empty" aria-hidden="true"></div>
+          </div>
+          <div class="fl-recw">
+            <div class="fl-rec">
+              <span class="fl-rk">Holds and blocks</span>
+              <b>Signed record (Ed25519), chained</b>
+              <span class="fl-rc" aria-hidden="true"><i></i><i></i><i class="now"></i></span>
+            </div>
+          </div>
+        </div>
+        <p class="fl-foot"><i aria-hidden="true"></i>If we can&rsquo;t check an action, it doesn&rsquo;t run.</p>
+        <figcaption class="fl-steps" id="fl-cap">
+          <ol>
+            <li><b>1</b>Your agent picks an action.</li>
+            <li><b>2</b>The platform&rsquo;s hook pauses it, before it runs.</li>
+            <li><b>3</b>We score it. No AI.</li>
+            <li><b>4</b>Allow, hold for a person, or block.</li>
+            <li><b>5</b>Holds and blocks can carry a signed record.</li>
+          </ol>
+        </figcaption>
       </figure>
     </div>
+  </section>
+
+  <!-- 3 · Developers: what it's like to use -->
+  <section class="h-sec" id="use" aria-labelledby="use-h">
+    <span class="h-node" aria-hidden="true"></span>
     <div class="h-frame">
+      <p class="h-k rv">Using it</p>
+      <h2 class="h-h2 rv" id="use-h">Most of the time, you won&rsquo;t notice it.</h2>
+      <p class="h-lead rv" style="--d:1">There are no rules to write. Each agent gets its own baseline, learned from its own work. Actions that fit run as usual. You hear from us only when one doesn&rsquo;t.</p>
+
+      <div class="h-dec">
+        <div class="h-dc rv"><span class="dec d-ok">ALLOW</span><h3>It runs.</h3><p>The tool runs and returns its result. Nothing changes for you or the agent.</p></div>
+        <div class="h-dc rv" style="--d:1"><span class="dec d-hold">HOLD</span><h3>A person decides.</h3><p>The action waits. Someone on your team approves it once or keeps it blocked. Nothing runs until then.</p></div>
+        <div class="h-dc rv" style="--d:2"><span class="dec d-blk">BLOCK</span><h3>It never runs.</h3><p>The agent gets <code>Blocked by Agentic GUARDIANS</code> back instead of a result, with the reason.</p></div>
+      </div>
+
+      <h3 class="h-h3 rv">One run, step by step</h3>
+      <figure class="h-card h-run rv" style="--d:1">
+        <figcaption class="run-top"><span class="run-t">agentic-guardians · docs-agent</span><span class="h-ex">Example</span></figcaption>
+        <div class="run-scroll">
+          <table class="run">
+            <thead><tr><th scope="col">Step</th><th scope="col">Action</th><th scope="col">Decision</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>read_file</td><td><span class="dec d-ok">ALLOW</span></td></tr>
+              <tr><td>2</td><td>search</td><td><span class="dec d-ok">ALLOW</span></td></tr>
+              <tr><td>3</td><td>edit_file</td><td><span class="dec d-ok">ALLOW</span></td></tr>
+              <tr class="r-hold"><td>4</td><td>web_fetch</td><td><span class="dec d-hold">HOLD</span></td></tr>
+              <tr class="r-blk"><td>5</td><td>shell</td><td><span class="dec d-blk">BLOCKED</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </figure>
+      <ul class="h-walk">
+        <li class="rv"><b>Steps 1 to 3</b> match how this agent works, so they run.</li>
+        <li class="rv" style="--d:1"><b>Step 4</b> is new for this agent. It waits for a person.</li>
+        <li class="rv" style="--d:2"><b>Step 5</b> doesn&rsquo;t fit its baseline. It&rsquo;s blocked before it runs, and the agent gets the reason.</li>
+      </ul>
+
+      <div class="h-notes">
+        <p><b>You teach it.</b> Review a block and mark it right or wrong. That agent&rsquo;s baseline learns. Other agents are unaffected.</p>
+        <p><b>No system is perfect.</b> That&rsquo;s why holds go to a person, and every block can be reviewed.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · Engineers: how it decides -->
+  <section class="h-sec" id="decide" aria-labelledby="decide-h">
+    <span class="h-node" aria-hidden="true"></span>
+    <div class="h-frame">
+      <p class="h-k rv">How it decides</p>
+      <h2 class="h-h2 rv" id="decide-h">We read actions, not prompts.</h2>
+      <p class="h-lead rv" style="--d:1">An attack on an agent usually arrives as text: a hidden instruction in a file, a page or a message. We don&rsquo;t read that text. We look at what the agent does next.</p>
+
+      <div class="h-rw">
+        <div class="h-card h-rwc rv"><p class="dg-k">What we look at</p><ul><li>Which tool the agent calls</li><li>In what order</li><li>Compared with that agent&rsquo;s own baseline</li></ul></div>
+        <div class="h-card h-rwc rw-no rv" style="--d:1"><p class="dg-k">What we don&rsquo;t read or store</p><ul><li>Prompts</li><li>Messages</li><li>Files</li></ul></div>
+      </div>
+
       <h3 class="h-h3 rv">Why another AI can&rsquo;t be the guard</h3>
-      <p class="h-lead rv" style="--d:1">The usual answer is a second model that reads the agent&rsquo;s prompts and output. But that guard reads the same text the agent reads. A prompt that misleads the agent can mislead the guard. Its answers also vary: same input, different answers.</p>
+      <p class="h-lead rv" style="--d:1">A common answer is a second model that reads the agent&rsquo;s prompts. But that guard reads the same text the agent reads. Text that misleads the agent can mislead the guard.</p>
       <div class="h-diag">
         <figure class="h-card h-dg rv" aria-label="AI guarding AI: the same prompt reaches the agent and the guard">
           <p class="dg-k">AI guarding AI</p>
@@ -109,108 +213,34 @@
           <figcaption class="dg-cap">Reads actions, not prompts.</figcaption>
         </figure>
       </div>
-    </div>
-  </section>
 
-  <!-- 3 · How -->
-  <section class="h-sec" id="how" aria-labelledby="how-h">
-    <span class="h-node" aria-hidden="true"></span>
-    <div class="h-frame">
-      <p class="h-k rv">How</p>
-      <h2 class="h-h2 rv" id="how-h">Five steps, before every tool call.</h2>
-      <p class="h-lead rv" style="--d:1">We score the sequence of tool calls: which tool, in what order, against that agent&rsquo;s own history. We never read the arguments or commands, and we never read the prompt.</p>
-      <ol class="h-steps h-steps2">
-        <li class="rv"><span class="s-n">1</span><div><h3>Connect.</h3><p>We sit between your agent and its tools, so we see every action before it runs.</p></div></li>
-        <li class="rv"><span class="s-n">2</span><div><h3>Learn.</h3><p>We learn each agent&rsquo;s normal from its own behavior and work. No rules to write. Each agent gets its own baseline. When something new is legitimate, you approve it once and it becomes part of that baseline.</p></div></li>
-        <li class="rv"><span class="s-n">3</span><div><h3>Spot the drift.</h3><p>We check every action against its fingerprint, with math. The score is statistical, not a model&rsquo;s opinion. Same sequence, same score.</p></div></li>
-        <li class="rv"><span class="s-n">4</span><div><h3>Stop.</h3><p>Allow it, hold it for a person, or block it, before it runs. Every block comes with the reason. A blocked tool call never runs: the agent gets <code>Blocked by Agentic GUARDIANS</code> back instead of a result. A person can review it in the console and mark it right or wrong, and the agent&rsquo;s baseline learns from that.</p></div></li>
-        <li class="rv"><span class="s-n">5</span><div><h3>Prove.</h3><p>Blocks and holds can carry a signed record (Ed25519), chained so any tampering shows. Verify it with our public key.</p></div></li>
-      </ol>
-
-      <h3 class="h-h3 rv">One run, step by step</h3>
-      <figure class="h-card h-run rv" style="--d:1">
-        <figcaption class="run-top"><span class="run-t">agentic-guardians · payments-01</span><span class="h-ex">Example</span></figcaption>
-        <div class="run-scroll">
-          <table class="run">
-            <thead><tr><th scope="col">Step</th><th scope="col">Action</th><th scope="col">Decision</th><th scope="col">Status</th></tr></thead>
-            <tbody>
-              <tr><td>1</td><td>read_file invoices.csv</td><td><span class="dec d-ok">ALLOW</span></td><td>ok</td></tr>
-              <tr><td>2</td><td>match_ledger october</td><td><span class="dec d-ok">ALLOW</span></td><td>ok</td></tr>
-              <tr><td>3</td><td>read_file invoice_0412.pdf</td><td><span class="dec d-ok">ALLOW</span></td><td>ok</td></tr>
-              <tr class="r-hold"><td>4</td><td>http.post new supplier ••5519</td><td><span class="dec d-hold">HOLD</span></td><td>held for review</td></tr>
-              <tr class="r-blk"><td>5</td><td>http.post transfer → ••7731</td><td><span class="dec d-blk">BLOCKED</span></td><td>signed</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </figure>
-      <ul class="h-walk">
-        <li class="rv"><b>Steps 1 to 3</b> match how this agent normally works, so they run.</li>
-        <li class="rv" style="--d:1"><b>Step 4</b> doesn&rsquo;t match its history. It waits for a person to allow or reject it.</li>
-        <li class="rv" style="--d:2"><b>Step 5</b> deviates from its fingerprint. It is blocked before it runs, the agent gets the block back, and the block is signed.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 4 · Different -->
-  <section class="h-sec" id="different" aria-labelledby="different-h">
-    <span class="h-node" aria-hidden="true"></span>
-    <div class="h-frame">
-      <p class="h-k rv">What makes it different</p>
-      <h2 class="h-h2 rv" id="different-h">No language model in the decision.</h2>
-      <p class="h-lead rv" style="--d:1">The decision is made by math on the agent&rsquo;s actions. There is nothing to persuade, and nothing for a prompt to reach.</p>
-      <div class="h-card h-cmp rv" style="--d:1">
-        <table class="cmp">
-          <thead><tr><th scope="col"><span class="sr-only">Compare</span></th><th scope="col">AI guarding AI</th><th scope="col" class="c-us">Agentic GUARDIANS</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Reads</th><td>Prompts and text</td><td class="c-us">Tool calls, in order</td></tr>
-            <tr><th scope="row">Can be talked to</th><td>Yes</td><td class="c-us">No</td></tr>
-            <tr><th scope="row">How it decides</th><td>Varies. Same input, different answers.</td><td class="c-us">Same sequence, same score.</td></tr>
-            <tr><th scope="row">Runs on</th><td>Costly GPUs</td><td class="c-us">CPU. No GPU.</td></tr>
-            <tr><th scope="row">Proof</th><td>Its own logs</td><td class="c-us">A signed, chained record</td></tr>
-          </tbody>
-        </table>
-      </div>
       <ul class="h-bul">
-        <li class="rv">No language model, nothing that can be talked around.</li>
-        <li class="rv" style="--d:1">Doesn&rsquo;t read prompts, so it can&rsquo;t be injected.</li>
-        <li class="rv" style="--d:2">Runs locally, next to your agent. Runs on CPU. No GPU.</li>
+        <li class="rv">No AI in the decision, so there&rsquo;s nothing to talk around.</li>
+        <li class="rv" style="--d:1">If we can&rsquo;t check an action, it doesn&rsquo;t run.</li>
+        <li class="rv" style="--d:2">Runs on your machine, on CPU. Nothing leaves it.</li>
+        <li class="rv" style="--d:3">Blocks and holds can carry a signed record (Ed25519), chained so any tampering shows. Verify it with our public key.</li>
+      </ul>
+      <p class="h-p h-sig rv" style="--d:3">Each record is signed with our private key, and anyone can check it with our public key. Each record also links to the one before it, so a changed or deleted record shows.</p>
+    </div>
+  </section>
+
+  <!-- 5 · Investors: why now -->
+  <section class="h-sec" id="now" aria-labelledby="now-h">
+    <span class="h-node" aria-hidden="true"></span>
+    <div class="h-frame">
+      <p class="h-k rv">Why now</p>
+      <h2 class="h-h2 rv" id="now-h">Agents now act with real access.</h2>
+      <p class="h-lead rv" style="--d:1">They read mail, edit code and run commands with real keys. When one is misled, its keys still work, so every system says yes. Checks on who the agent is pass. Logs show the damage after it happened.</p>
+      <p class="h-p rv" style="--d:2">The missing check is on what the agent does, at the moment it does it. That&rsquo;s the one we built.</p>
+      <ul class="h-short">
+        <li class="h-card rv"><b>Who it&rsquo;s for</b><span>Small and mid-sized teams running agents.</span></li>
+        <li class="h-card rv" style="--d:1"><b>Where it fits</b><span>Designed for many agent platforms, with one small connector each.</span></li>
+        <li class="h-card rv" style="--d:2"><b>Talk to us</b><span><a href="mailto:founders@agenticguardians.com">founders@agenticguardians.com</a></span></li>
       </ul>
     </div>
   </section>
 
-  <!-- 5 · Proof -->
-  <section class="h-sec" id="record" aria-labelledby="record-h">
-    <span class="h-node" aria-hidden="true"></span>
-    <div class="h-frame">
-      <p class="h-k rv">Proof</p>
-      <h2 class="h-h2 rv" id="record-h">Not a log. A record.</h2>
-      <p class="h-lead rv" style="--d:1">Blocks and holds can carry a signed record (Ed25519), chained so any tampering shows. Verify it with our public key.</p>
-      <p class="h-p rv" style="--d:2">Each record names the agent, the tool, the decision and the reason, and points to the record before it. Change one record and its signature, and every record after it, stop checking out.</p>
-      <figure class="h-card h-cert rv" style="--d:2">
-        <figcaption class="cert-top"><span class="cert-ex">Example record</span><span class="cert-t">Agentic GUARDIANS Detection Certificate</span><span class="cert-sg"><i aria-hidden="true"></i>Signed</span></figcaption>
-        <dl class="cert-g">
-          <div><dt>Decision</dt><dd class="c-deny">Blocked (DENY)</dd></div>
-          <div><dt>Agent</dt><dd>payments-01</dd></div>
-          <div><dt>Tool</dt><dd>http.post · payments-api/transfer</dd></div>
-          <div><dt>Signed at (UTC)</dt><dd>2026-10-09 09:41:03</dd></div>
-          <div><dt>Certificate ID</dt><dd>AG-2026-000417</dd></div>
-          <div><dt>Chain</dt><dd>seq 17 · prev 9c1e…a04f</dd></div>
-          <div><dt>Proof hash (SHA-256)</dt><dd>c1cda263…73c7</dd></div>
-          <div><dt>Signature (Ed25519)</dt><dd>a543997d84f12798…4bbd5a59</dd></div>
-          <div><dt>Public key</dt><dd>eb3102a6…22cc</dd></div>
-          <div class="c-w"><dt>Threat summary</dt><dd class="c-sum">http.post to an account never seen for this agent. Blocked before it ran.</dd></div>
-        </dl>
-        <div class="cert-chain" aria-label="Example record, chained: seq 15, then 16, then 17, each signature valid">
-          <span class="ch">seq 15 <em>sig ✓</em></span><span class="ch-a" aria-hidden="true">←</span>
-          <span class="ch">seq 16 <em>sig ✓</em></span><span class="ch-a" aria-hidden="true">←</span>
-          <span class="ch ch-now">seq 17 <em>sig ✓</em></span>
-          <span class="ch-l">Example record · chained</span>
-        </div>
-      </figure>
-    </div>
-  </section>
-
-  <!-- 10 · Close -->
+  <!-- 6 · Close -->
   <div class="ending endp">
   <div class="spine-meet" aria-hidden="true"><span class="node"></span></div>
   <section class="end-glow" id="contact" aria-labelledby="close-h">
@@ -266,6 +296,6 @@
   </div>
 </main>
 
-<script src="how.js?v=how2"></script>
+<script src="how.js?v=how4"></script>
 </body>
 </html>
