@@ -302,20 +302,20 @@
         var last = mRows[mRows.length - 1];
         if (last) last.classList.add('is-bad');
       });
-      later(8100, function () { stage.classList.add('is-term-out'); });
-      later(8500, function () {
+      later(9600, function () { stage.classList.add('is-term-out'); }); /* red row held ~2.5s so it can be read */
+      later(10000, function () {
         if (skipped) return;
         canSkip = true;
         stage.classList.add('is-ask', 'is-hook');
         hook.classList.remove('is-out');
         hook.classList.add('is-in');
       });
-      later(11700, function () {
+      later(13200, function () {
         if (skipped) return;
         hook.classList.remove('is-in');
         hook.classList.add('is-out');
       });
-      later(11720, function () {
+      later(13220, function () {
         if (skipped) return;
         canSkip = false;
         if (after) after.classList.add('is-in');
