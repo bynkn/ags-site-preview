@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How it works | Agentic GUARDIANS</title>
-<meta name="description" content="How Agentic GUARDIANS works: we score every action your agent takes before it runs, against that agent&rsquo;s own baseline. Math, not another AI.">
+<meta name="description" content="How Agentic GUARDIANS works: we observe each agent, learn its baseline, and score every action before it runs. No AI. No GPU. No tokens.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Agentic GUARDIANS">
 <meta property="og:title" content="How it works | Agentic GUARDIANS">
-<meta property="og:description" content="We decide before your agent acts: allow, hold for a person, or block. We read actions, not prompts. No AI in the decision.">
+<meta property="og:description" content="We check every action your agent takes before it runs: allow, hold for a person, or block. No AI. No GPU. No tokens.">
 <meta property="og:image" content="https://agenticguardians.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -21,7 +21,7 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/figtree-latin-600-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/figtree-latin-700-normal.woff2" crossorigin>
 <link rel="stylesheet" href="styles.css?v=drive3">
-<link rel="stylesheet" href="how.css?v=how4">
+<link rel="stylesheet" href="how.css?v=puzzle1">
 <script>
 (function(){
   var r=document.documentElement,q=location.search;
@@ -45,109 +45,85 @@
 </header>
 
 <main>
+<nav class="h-subnav" aria-label="How it works pages"><div class="h-subnav-in"><a href="how-it-works.html" aria-current="page">How it works</a><a href="why-different.html">Why it’s different</a><a href="trust.html">Trust &amp; proof</a><a href="company.html">Company</a></div></nav>
 
   <!-- 1 · Hero -->
-  <section class="h-sec h-reality" id="what" aria-labelledby="h-title">
+  <section class="h-sec h-reality h-hero" id="top-hero" aria-labelledby="h-title">
     <div class="h-frame">
       <p class="h-k">How it works</p>
-      <h1 class="h-h1 rv" id="h-title">We decide before your agent acts.</h1>
-      <p class="h-lead rv" style="--d:1">Every time your agent reaches for a tool, its platform pauses the call and asks us first. We score the action against how that agent normally works. Then we allow it, hold it for a person, or block it. The tool runs only if we say yes.</p>
-      <dl class="h-facts rv" style="--d:2">
-        <div><dt>Checks</dt><dd>Every action, before it runs.</dd></div>
-        <div><dt>Reads</dt><dd>Actions, not prompts.</dd></div>
-        <div><dt>Compares against</dt><dd>That agent&rsquo;s own baseline.</dd></div>
-        <div><dt>Decides with</dt><dd>Math. No AI.</dd></div>
-        <div><dt>Runs on</dt><dd>Your machine, on CPU. Nothing leaves it.</dd></div>
-      </dl>
+      <h1 class="h-h1 rv" id="h-title">Know what your agent is doing. <span class="h-blue">Before it does it.</span></h1>
+      <p class="h-lead rv" style="--d:1">Every time your agent reaches for a tool, we check the action against how that agent normally works. Then we allow it, hold it for a person, or block it. The tool runs only if we say yes.</p>
+      <p class="h-mono rv" style="--d:2">No AI. No GPU. No tokens.</p>
     </div>
   </section>
 
-  <!-- 2 · The hook, as a diagram -->
-  <section class="h-sec" id="hook" aria-labelledby="hook-h">
+  <!-- 2 · Animated flow -->
+  <section class="h-sec" id="flow" aria-labelledby="flow-h">
     <span class="h-node" aria-hidden="true"></span>
     <div class="h-frame">
-      <p class="h-k rv">At the hook</p>
-      <h2 class="h-h2 rv" id="hook-h">One check, between the decision and the deed.</h2>
-      <p class="h-lead rv" style="--d:1">Agent platforms have a step where a tool call is ready but hasn&rsquo;t run. A small connector puts us at that step. One engine, one small connector for each platform.</p>
+      <p class="h-k rv">One action, start to finish</p>
+      <h2 class="h-h2 rv" id="flow-h">Every action stops here first.</h2>
+      <p class="h-lead rv" style="--d:1">Agent platforms have a step where a tool call is ready but hasn’t run. A small connector puts us at that step. We score the action and send the answer back. Only then does anything reach the world.</p>
 
-      <figure class="fl rv" style="--d:1" aria-labelledby="fl-cap">
-        <div class="fl-g">
-          <!-- platforms -->
-          <ul class="fl-plats" aria-label="Agent platforms">
-            <li><span class="fl-card">Agent platform</span><span class="fl-chip">connector</span></li>
-            <li><span class="fl-card">Coding agent</span><span class="fl-chip">connector</span></li>
-            <li><span class="fl-card">Ops agent</span><span class="fl-chip">connector</span></li>
-            <li class="fl-next"><span class="fl-card">Your next platform</span><span class="fl-chip">connector</span></li>
-          </ul>
-          <div class="fl-bus4" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-          <p class="fl-tag" aria-hidden="true"><span>tool call, paused before it runs</span></p>
-
-          <!-- engine + feedback loop -->
-          <div class="fl-hubrow">
-            <span class="fl-learn" aria-hidden="true"><em>baseline learns</em></span>
-            <div class="fl-hub">
-              <span class="fl-hk">Agentic GUARDIANS</span>
-              <b>We score it. No AI.</b>
-              <span class="fl-hs">Which tool, in what order, against this agent&rsquo;s own baseline. Actions, not prompts.</span>
-            </div>
-            <span aria-hidden="true"></span>
+      <figure class="af rv" style="--d:1" id="af" aria-labelledby="af-cap">
+        <div class="af-stage" id="afStage">
+          <svg class="af-lines" id="afLines" aria-hidden="true"></svg>
+          <div class="af-n af-world" data-n="world"><span class="af-ic af-ic-world" aria-hidden="true"></span><b>The world</b><span class="af-s">Files, web, apps</span><span class="af-x" aria-hidden="true">×</span><span class="af-ok" aria-hidden="true">✓</span></div>
+          <div class="af-n af-plat" data-n="plat"><span class="af-k">Your agent</span><b>Agent platform</b><span class="af-s">Picks an action</span></div>
+          <div class="af-n af-conn" data-n="conn"><span class="af-k">Connector</span><b>Paused</b><span class="af-s">before it runs</span></div>
+          <div class="af-n af-eng" data-n="eng"><span class="af-k">Agentic GUARDIANS</span><b>We score it. No AI.</b><span class="af-s">Against this agent’s own baseline</span><span class="af-scan" aria-hidden="true"></span></div>
+          <div class="af-dec" data-n="dec">
+            <div class="af-d d-allow" data-d="allow"><span class="af-th" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 11v9H4v-9h3zm2 9V10.5l4.2-6.3c.4-.6 1.3-.7 1.8-.1.3.3.4.8.3 1.2L14.4 9H19a2 2 0 0 1 2 2.3l-1.2 6.9A2.2 2.2 0 0 1 17.6 20H9z"/></svg></span><b>Allow</b><span>Runs</span></div>
+            <div class="af-d d-hold" data-d="hold"><span class="af-th" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a1.5 1.5 0 0 1 1.5 1.5V11h1V4.5a1.5 1.5 0 0 1 3 0V12h1V7.5a1.5 1.5 0 0 1 3 0V15a7 7 0 0 1-7 7h-1.2a7 7 0 0 1-5.6-2.8L2.6 13.9a1.5 1.5 0 0 1 2.3-1.9L7.5 14V5.5a1.5 1.5 0 0 1 3 0V11h0V3.5A1.5 1.5 0 0 1 12 2z"/></svg></span><b>Hold</b><span>A person decides</span></div>
+            <div class="af-d d-block" data-d="block"><span class="af-th" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17 13V4h3v9h-3zm-2-9v9.5l-4.2 6.3c-.4.6-1.3.7-1.8.1a1.4 1.4 0 0 1-.3-1.2L9.6 15H5a2 2 0 0 1-2-2.3l1.2-6.9A2.2 2.2 0 0 1 6.4 4H15z"/></svg></span><b>Block</b><span>Never runs</span></div>
           </div>
-          <div class="fl-bus3" aria-hidden="true"><i></i><i></i><i></i></div>
-
-          <!-- outcomes -->
-          <div class="fl-out">
-            <div class="fl-o o-hold"><span class="fl-ok">Hold</span><span>Waits for a person.</span></div>
-            <div class="fl-o o-blk"><span class="fl-ok">Block</span><span>Never runs. The agent gets the reason.</span></div>
-            <div class="fl-o o-ok"><span class="fl-ok">Allow</span><span>Runs.</span></div>
-          </div>
-
-          <!-- person + record -->
-          <div class="fl-low">
-            <div class="fl-person">
-              <span class="fl-pi" aria-hidden="true"></span>
-              <b>A person</b>
-              <span>Approve once, or keep it blocked. Mark any block right or wrong.</span>
-            </div>
-            <div class="fl-pass" aria-hidden="true"></div>
-            <div class="fl-empty" aria-hidden="true"></div>
-          </div>
-          <div class="fl-recw">
-            <div class="fl-rec">
-              <span class="fl-rk">Holds and blocks</span>
-              <b>Signed record (Ed25519), chained</b>
-              <span class="fl-rc" aria-hidden="true"><i></i><i></i><i class="now"></i></span>
-            </div>
+          <div class="af-n af-person" data-n="person"><span class="af-ic af-ic-person" aria-hidden="true"></span><b>A person</b><span class="af-btns"><span class="af-btn af-approve">Approve once</span><span class="af-btn">Keep blocked</span></span></div>
+          <div class="af-n af-rec" data-n="rec"><span class="af-k">Holds and blocks</span><b>Signed record (Ed25519), chained</b><span class="af-chain" id="afChain" aria-hidden="true"><i></i><i></i></span></div>
+          <div class="af-tok" id="afTok" aria-hidden="true"><span id="afTokT">read_file</span></div>
+          <div class="af-learn" id="afLearn" aria-hidden="true">baseline learns</div>
+        </div>
+        <div class="af-bar">
+          <p class="af-cap" id="af-cap" aria-live="polite">Three actions, one path. Allow, hold, block.</p>
+          <div class="af-ctl">
+            <button type="button" class="af-b" id="afPause" aria-pressed="false">Pause</button>
+            <button type="button" class="af-b" id="afReplay">Replay</button>
           </div>
         </div>
-        <p class="fl-foot"><i aria-hidden="true"></i>If we can&rsquo;t check an action, it doesn&rsquo;t run.</p>
-        <figcaption class="fl-steps" id="fl-cap">
-          <ol>
-            <li><b>1</b>Your agent picks an action.</li>
-            <li><b>2</b>The platform&rsquo;s hook pauses it, before it runs.</li>
-            <li><b>3</b>We score it. No AI.</li>
-            <li><b>4</b>Allow, hold for a person, or block.</li>
-            <li><b>5</b>Holds and blocks can carry a signed record.</li>
-          </ol>
-        </figcaption>
+        <ol class="af-steps">
+          <li><b>1</b>Your agent picks an action.</li>
+          <li><b>2</b>The connector pauses it, before it runs.</li>
+          <li><b>3</b>We score it. No AI.</li>
+          <li><b>4</b>Allow, hold for a person, or block.</li>
+          <li><b>5</b>The answer goes back. Only allowed actions reach the world.</li>
+        </ol>
+        <p class="fl-foot af-foot" id="afFoot"><i aria-hidden="true"></i>If we can’t check an action, it doesn’t run.</p>
       </figure>
     </div>
   </section>
 
-  <!-- 3 · Developers: what it's like to use -->
-  <section class="h-sec" id="use" aria-labelledby="use-h">
+  <!-- 3 · Observe Learn Score -->
+  <section class="h-sec" id="method" aria-labelledby="method-h">
     <span class="h-node" aria-hidden="true"></span>
     <div class="h-frame">
-      <p class="h-k rv">Using it</p>
-      <h2 class="h-h2 rv" id="use-h">Most of the time, you won&rsquo;t notice it.</h2>
-      <p class="h-lead rv" style="--d:1">There are no rules to write. Each agent gets its own baseline, learned from its own work. Actions that fit run as usual. You hear from us only when one doesn&rsquo;t.</p>
+      <p class="h-k rv">The method</p>
+      <h2 class="h-h2 rv" id="method-h">Observe. Learn. Score.</h2>
+      <p class="h-lead rv" style="--d:1">Your agent’s own behavior is the reference. We don’t write rules about what it should do. We measure what it actually does.</p>
+      <ol class="ols">
+        <li class="ols-c rv"><span class="ols-n">01</span><h3>Observe.</h3><p>We record each action your agent takes: which tool, in what order. Not its prompts, messages or files.</p></li>
+        <li class="ols-c rv" style="--d:1"><span class="ols-n">02</span><h3>Learn its baseline.</h3><p>From those actions we build a statistical picture of how this agent normally works. Every agent gets its own.</p></li>
+        <li class="ols-c rv" style="--d:2"><span class="ols-n">03</span><h3>Score each new action.</h3><p>Before an action runs, we check how well it fits that baseline. If it fits, it runs. If it doesn’t, it’s held for a person or blocked.</p></li>
+        <li class="ols-c rv" style="--d:3"><span class="ols-n">04</span><h3>Keep learning.</h3><p>When a person marks a block right or wrong, that agent’s baseline updates. Other agents are unaffected.</p></li>
+      </ol>
+      <p class="h-sci rv">It’s statistics on behavior, the same family of methods long used to catch fraud. <b>No AI models in the loop.</b></p>
+    </div>
+  </section>
 
-      <div class="h-dec">
-        <div class="h-dc rv"><span class="dec d-ok">ALLOW</span><h3>It runs.</h3><p>The tool runs and returns its result. Nothing changes for you or the agent.</p></div>
-        <div class="h-dc rv" style="--d:1"><span class="dec d-hold">HOLD</span><h3>A person decides.</h3><p>The action waits. Someone on your team approves it once or keeps it blocked. Nothing runs until then.</p></div>
-        <div class="h-dc rv" style="--d:2"><span class="dec d-blk">BLOCK</span><h3>It never runs.</h3><p>The agent gets <code>Blocked by Agentic GUARDIANS</code> back instead of a result, with the reason.</p></div>
-      </div>
-
-      <h3 class="h-h3 rv">One run, step by step</h3>
+  <!-- 4 · One run -->
+  <section class="h-sec" id="run" aria-labelledby="run-h">
+    <span class="h-node" aria-hidden="true"></span>
+    <div class="h-frame">
+      <p class="h-k rv">One run, step by step</p>
+      <h2 class="h-h2 rv" id="run-h">Three fit. One is new. One doesn’t fit.</h2>
       <figure class="h-card h-run rv" style="--d:1">
         <figcaption class="run-top"><span class="run-t">agentic-guardians · docs-agent</span><span class="h-ex">Example</span></figcaption>
         <div class="run-scroll">
@@ -166,80 +142,71 @@
       <ul class="h-walk">
         <li class="rv"><b>Steps 1 to 3</b> match how this agent works, so they run.</li>
         <li class="rv" style="--d:1"><b>Step 4</b> is new for this agent. It waits for a person.</li>
-        <li class="rv" style="--d:2"><b>Step 5</b> doesn&rsquo;t fit its baseline. It&rsquo;s blocked before it runs, and the agent gets the reason.</li>
+        <li class="rv" style="--d:2"><b>Step 5</b> doesn’t fit its baseline. It’s blocked before it runs, and the agent gets the reason.</li>
       </ul>
+    </div>
+  </section>
 
+  <!-- 5 · What you see -->
+  <section class="h-sec" id="use" aria-labelledby="use-h">
+    <span class="h-node" aria-hidden="true"></span>
+    <div class="h-frame">
+      <p class="h-k rv">Using it</p>
+      <h2 class="h-h2 rv" id="use-h">Most of the time, you won’t notice it.</h2>
+      <p class="h-lead rv" style="--d:1">There are no rules to write. Actions that fit run as usual. You hear from us only when one doesn’t.</p>
+      <div class="h-dec">
+        <div class="h-dc rv"><span class="dec d-ok">ALLOW</span><h3>It runs.</h3><p>The tool runs and returns its result. Nothing changes for you or the agent.</p></div>
+        <div class="h-dc rv" style="--d:1"><span class="dec d-hold">HOLD</span><h3>A person decides.</h3><p>The action waits. Someone on your team approves it once or keeps it blocked. Nothing runs until then.</p></div>
+        <div class="h-dc rv" style="--d:2"><span class="dec d-blk">BLOCK</span><h3>It never runs.</h3><p>The agent gets <code>Blocked by Agentic GUARDIANS</code> back instead of a result, with the reason.</p></div>
+      </div>
+      <figure class="h-term h-term-blk rv" style="--d:1" aria-label="Example: what the agent gets back on a block">
+        <div class="h-term-bar"><span class="h-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="h-term-title">docs-agent · tool call</span><span class="h-ex">Example</span></div>
+        <ol class="h-term-body">
+          <li><span class="t-k">call</span><span class="t-v">shell</span><span class="t-s t-wait">paused</span></li>
+          <li class="t-bad"><span class="t-k">result</span><span class="t-v">Blocked by Agentic GUARDIANS · doesn’t fit this agent’s baseline</span><span class="t-s">blocked</span></li>
+        </ol>
+      </figure>
       <div class="h-notes">
-        <p><b>You teach it.</b> Review a block and mark it right or wrong. That agent&rsquo;s baseline learns. Other agents are unaffected.</p>
-        <p><b>No system is perfect.</b> That&rsquo;s why holds go to a person, and every block can be reviewed.</p>
+        <p><b>You teach it.</b> Review a block and mark it right or wrong. That agent’s baseline learns. Other agents are unaffected.</p>
+        <p><b>No system is perfect.</b> That’s why holds go to a person, and every block can be reviewed.</p>
       </div>
     </div>
   </section>
 
-  <!-- 4 · Engineers: how it decides -->
-  <section class="h-sec" id="decide" aria-labelledby="decide-h">
+  <!-- 6 · Read / don't -->
+  <section class="h-sec" id="reads" aria-labelledby="reads-h">
     <span class="h-node" aria-hidden="true"></span>
     <div class="h-frame">
-      <p class="h-k rv">How it decides</p>
-      <h2 class="h-h2 rv" id="decide-h">We read actions, not prompts.</h2>
-      <p class="h-lead rv" style="--d:1">An attack on an agent usually arrives as text: a hidden instruction in a file, a page or a message. We don&rsquo;t read that text. We look at what the agent does next.</p>
-
+      <p class="h-k rv">What we read</p>
+      <h2 class="h-h2 rv" id="reads-h">We read actions, not prompts.</h2>
+      <p class="h-lead rv" style="--d:1">An attack on an agent usually arrives as text: a hidden instruction in a file, a page or a message. We don’t read that text. We look at what the agent does next.</p>
       <div class="h-rw">
-        <div class="h-card h-rwc rv"><p class="dg-k">What we look at</p><ul><li>Which tool the agent calls</li><li>In what order</li><li>Compared with that agent&rsquo;s own baseline</li></ul></div>
-        <div class="h-card h-rwc rw-no rv" style="--d:1"><p class="dg-k">What we don&rsquo;t read or store</p><ul><li>Prompts</li><li>Messages</li><li>Files</li></ul></div>
+        <div class="h-card h-rwc rv"><p class="dg-k">What we look at</p><ul><li>Which tool the agent calls</li><li>In what order</li><li>Compared with that agent’s own baseline</li></ul></div>
+        <div class="h-card h-rwc rw-no rv" style="--d:1"><p class="dg-k">What we don’t read or store</p><ul><li>Prompts</li><li>Messages</li><li>Files</li></ul></div>
       </div>
-
-      <h3 class="h-h3 rv">Why another AI can&rsquo;t be the guard</h3>
-      <p class="h-lead rv" style="--d:1">A common answer is a second model that reads the agent&rsquo;s prompts. But that guard reads the same text the agent reads. Text that misleads the agent can mislead the guard.</p>
-      <div class="h-diag">
-        <figure class="h-card h-dg rv" aria-label="AI guarding AI: the same prompt reaches the agent and the guard">
-          <p class="dg-k">AI guarding AI</p>
-          <div class="dg-flow" aria-hidden="true">
-            <span class="dg-box dg-prompt">prompt</span>
-            <span class="dg-fork"><i></i><i></i></span>
-            <span class="dg-pair"><span class="dg-box">agent</span><span class="dg-box dg-hit">guard</span></span>
-          </div>
-          <figcaption class="dg-cap">Same prompt reaches both.</figcaption>
-        </figure>
-        <figure class="h-card h-dg dg-ours rv" style="--d:1" aria-label="Agentic GUARDIANS: the prompt reaches only the agent; we score its actions">
-          <p class="dg-k">Agentic GUARDIANS</p>
-          <div class="dg-flow" aria-hidden="true">
-            <span class="dg-box dg-prompt">prompt</span>
-            <span class="dg-line"></span>
-            <span class="dg-box">agent</span>
-            <span class="dg-line dg-act"><em>actions</em></span>
-            <span class="dg-box dg-ag">Agentic GUARDIANS scores</span>
-          </div>
-          <figcaption class="dg-cap">Reads actions, not prompts.</figcaption>
-        </figure>
-      </div>
-
-      <ul class="h-bul">
-        <li class="rv">No AI in the decision, so there&rsquo;s nothing to talk around.</li>
-        <li class="rv" style="--d:1">If we can&rsquo;t check an action, it doesn&rsquo;t run.</li>
-        <li class="rv" style="--d:2">Runs on your machine, on CPU. Nothing leaves it.</li>
-        <li class="rv" style="--d:3">Blocks and holds can carry a signed record (Ed25519), chained so any tampering shows. Verify it with our public key.</li>
-      </ul>
-      <p class="h-p h-sig rv" style="--d:3">Each record is signed with our private key, and anyone can check it with our public key. Each record also links to the one before it, so a changed or deleted record shows.</p>
     </div>
   </section>
 
-  <!-- 5 · Investors: why now -->
-  <section class="h-sec" id="now" aria-labelledby="now-h">
+  <section class="h-sec h-cost" aria-labelledby="cost-p1">
     <span class="h-node" aria-hidden="true"></span>
     <div class="h-frame">
-      <p class="h-k rv">Why now</p>
-      <h2 class="h-h2 rv" id="now-h">Agents now act with real access.</h2>
-      <p class="h-lead rv" style="--d:1">They read mail, edit code and run commands with real keys. When one is misled, its keys still work, so every system says yes. Checks on who the agent is pass. Logs show the damage after it happened.</p>
-      <p class="h-p rv" style="--d:2">The missing check is on what the agent does, at the moment it does it. That&rsquo;s the one we built.</p>
-      <ul class="h-short">
-        <li class="h-card rv"><b>Who it&rsquo;s for</b><span>Small and mid-sized teams running agents.</span></li>
-        <li class="h-card rv" style="--d:1"><b>Where it fits</b><span>Designed for many agent platforms, with one small connector each.</span></li>
-        <li class="h-card rv" style="--d:2"><b>Talk to us</b><span><a href="mailto:founders@agenticguardians.com">founders@agenticguardians.com</a></span></li>
+      <p class="h-k rv">The weight</p>
+      <h2 class="cost-h rv" id="cost-p1"><span>No AI.</span> <span>No GPU.</span> <span>No tokens.</span></h2>
+      <ul class="cost-l">
+        <li class="rv" style="--d:1"><b>No AI models in the loop.</b> The decision is math on behavior. There is nothing to prompt and nothing to talk around.</li>
+        <li class="rv" style="--d:2"><b>Runs on a lightweight CPU, on your machine.</b> Nothing leaves it.</li>
+        <li class="rv" style="--d:3"><b>No GPU bill. No token bill.</b> Checking an action doesn’t mean paying for another model to think.</li>
       </ul>
     </div>
   </section>
 
+  <section class="h-sec h-next" aria-labelledby="next-h">
+    <span class="h-node" aria-hidden="true"></span>
+    <div class="h-frame">
+      <p class="h-k rv" id="next-h">Keep reading</p>
+      <div class="nx"><a class="nx-card rv" href="why-different.html"><span class="nx-k">Why it’s different</span><span class="nx-b">Why today’s tools miss it, and why AI can’t fix it.</span><span class="nx-a" aria-hidden="true">→</span></a><a class="nx-card rv" href="trust.html"><span class="nx-k">Trust &amp; proof</span><span class="nx-b">What we touch, what we don’t, and the signed record.</span><span class="nx-a" aria-hidden="true">→</span></a><a class="nx-card rv" href="company.html"><span class="nx-k">Company</span><span class="nx-b">Why now, why we started, and who we are.</span><span class="nx-a" aria-hidden="true">→</span></a></div>
+    </div>
+  </section>
   <!-- 6 · Close -->
   <div class="ending endp">
   <div class="spine-meet" aria-hidden="true"><span class="node"></span></div>
@@ -296,6 +263,6 @@
   </div>
 </main>
 
-<script src="how.js?v=how4"></script>
+<script src="how.js?v=puzzle1"></script>
 </body>
 </html>
