@@ -52,8 +52,8 @@
     <div class="h-frame">
       <p class="h-k">How it works</p>
       <h1 class="h-h1 rv" id="h-title">Know what your agent is doing. <span class="h-blue">Before it does it.</span></h1>
-      <p class="h-lead rv" style="--d:1">Before your agent acts, whether it’s reading a file, running a command or paying an invoice, we score the action against that agent’s behavioral fingerprint, a statistical model of how it acts, learned from its own history. Then we allow it, hold it for you to approve, or block it. Nothing runs unless we say yes.</p>
-      <p class="h-mono rv" style="--d:2">No LLM. No GPU. No tokens.</p>
+      <p class="h-lead rv" style="--d:1">Before your agent acts, whether it’s reading a file, running a command or paying an invoice, we score the action against its behavioral fingerprint. A statistical model of how it acts, learned from its own history. Then we allow it, hold it for you to approve, or block it. Nothing runs unless we say yes.</p>
+      <p class="h-mono rv" style="--d:2"><span class="hm-rule" aria-hidden="true"></span><span class="hm-txt">No LLM. No GPU. <b>No tokens.</b></span></p>
     </div>
   </section>
 
@@ -75,6 +75,7 @@
             <div class="af-plug-line" aria-hidden="true"></div>
             <div class="af-n af-eng" data-n="eng"><span class="af-k">Agentic GUARDIANS plugin</span><b>We score it. No LLM.</b><span class="af-s">Against this agent’s own baseline</span><span class="af-scan" aria-hidden="true"></span></div>
           </div>
+          <div class="af-n af-conn" data-n="conn"><span class="af-k">Connector</span><b>Paused</b><span class="af-s">before it runs</span></div>
           <div class="af-dec" data-n="dec">
             <div class="af-d d-allow" data-d="allow"><span class="af-th" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 11v9H4v-9h3zm2 9V10.5l4.2-6.3c.4-.6 1.3-.7 1.8-.1.3.3.4.8.3 1.2L14.4 9H19a2 2 0 0 1 2 2.3l-1.2 6.9A2.2 2.2 0 0 1 17.6 20H9z"/></svg></span><b>Allow</b><span>Runs</span></div>
             <div class="af-d d-hold" data-d="hold"><span class="af-th" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a1.5 1.5 0 0 1 1.5 1.5V11h1V4.5a1.5 1.5 0 0 1 3 0V12h1V7.5a1.5 1.5 0 0 1 3 0V15a7 7 0 0 1-7 7h-1.2a7 7 0 0 1-5.6-2.8L2.6 13.9a1.5 1.5 0 0 1 2.3-1.9L7.5 14V5.5a1.5 1.5 0 0 1 3 0V11h0V3.5A1.5 1.5 0 0 1 12 2z"/></svg></span><b>Hold</b><span>A person decides</span></div>
@@ -112,22 +113,11 @@
       <h2 class="h-h2 rv" id="method-h">Observe. Learn. Score. Refine.</h2>
       <p class="h-lead rv" style="--d:1">Your agent’s own behavior is the reference. We don’t write rules about what it should do. We measure what it actually does.</p>
       <ol class="ols">
-        <li class="ols-c rv"><span class="ols-n">01</span><h3>Observe.</h3><p>We record each action your agent takes: which tool, in what order. Not its prompts, messages or files.</p></li>
+        <li class="ols-c rv"><span class="ols-n">01</span><h3>Observe.</h3><p>We record your agent’s behavior, the tools it uses and how, as a behavioral fingerprint. Prompts, messages and files stay private. We don’t need them.</p></li>
         <li class="ols-c rv" style="--d:1"><span class="ols-n">02</span><h3>Learn its baseline.</h3><p>From those actions we build a statistical picture of how this agent normally works. Every agent gets its own.</p></li>
         <li class="ols-c rv" style="--d:2"><span class="ols-n">03</span><h3>Score each new action.</h3><p>Before an action runs, we give it a deviation score against that agent’s baseline. If it fits, it runs. If it doesn’t, it’s held for a person or blocked.</p></li>
         <li class="ols-c rv" style="--d:3"><span class="ols-n">04</span><h3>Refine.</h3><p>When a person marks a block right or wrong, that agent’s baseline updates. Other agents are unaffected.</p></li>
       </ol>
-      <figure class="bm rv" id="bm" aria-labelledby="bm-cap" aria-describedby="bm-desc">
-        <p class="sr-only" id="bm-desc">A map of this agent’s usual actions. read_file, search and edit_file connect to each other. web_fetch appears with no learned path and is marked never seen for this agent.</p>
-        <div class="bm-stage" id="bmStage">
-          <svg class="bm-svg" id="bmLines" aria-hidden="true"></svg>
-          <div class="bm-n" data-bm="read" style="--x:16%;--y:70%"><i class="bm-dot" aria-hidden="true"></i><span class="bm-lab">read_file</span></div>
-          <div class="bm-n" data-bm="search" style="--x:34%;--y:22%"><i class="bm-dot" aria-hidden="true"></i><span class="bm-lab">search</span></div>
-          <div class="bm-n" data-bm="edit" style="--x:52%;--y:70%"><i class="bm-dot" aria-hidden="true"></i><span class="bm-lab">edit_file</span></div>
-          <div class="bm-n bm-n-web" data-bm="web" style="--x:82%;--y:28%"><i class="bm-dot" aria-hidden="true"></i><span class="bm-lab">web_fetch</span><span class="bm-tag">never seen for this agent</span></div>
-        </div>
-        <figcaption class="bm-cap" id="bm-cap">Every action adds to a map of what usually follows what. Each agent gets its own.</figcaption>
-      </figure>
       <p class="h-sci rv">It’s statistics on behavior, the same family of methods long used to catch fraud. <b>No language model in the loop.</b></p>
     </div>
   </section>
