@@ -100,7 +100,7 @@
   var btnR = document.getElementById('afReplay');
   function q(s) { return stage.querySelector(s); }
   var N = {
-    box: q('.af-box'), plat: q('.af-agent'), eng: q('.af-eng'), world: q('.af-world'),
+    box: q('.af-box'), plat: q('.af-agent'), conn: q('.af-conn'), eng: q('.af-eng'), world: q('.af-world'),
     person: q('.af-person'), rec: q('.af-rec'),
     allow: q('.d-allow'), hold: q('.d-hold'), block: q('.d-block')
   };
@@ -115,7 +115,7 @@
   }
   function mobile() { return window.matchMedia('(max-width:760px)').matches; }
   function retCurve() {
-    var d = box(N.block), p = box(N.plat), W = stage.clientWidth;
+    var d = box(N.block), p = box(N.box), W = stage.clientWidth;
     if (mobile()) {
       var x = W - 6, h = box(N.hold);
       return [[d.x + d.w, d.cy], [x, d.cy], [x, p.cy], [p.x + p.w, p.cy]];
@@ -146,13 +146,22 @@
     if (mobile()) {
       return [{ cx: B.cx, cy: B.y }, { cx: W.cx, cy: W.y + W.h }];
     }
-    return [{ cx: B.x, cy: box(N.plat).cy }, { cx: W.x + W.w, cy: W.cy }];
+    return [{ cx: B.cx, cy: B.y + B.h }, { cx: W.cx, cy: W.y }];
+  }
+  function connAnchors() {
+    var B = box(N.box), C = box(N.conn), E = box(N.eng);
+    if (mobile()) {
+      return [{ cx: B.cx, cy: B.y + B.h }, { cx: C.cx, cy: C.y }];
+    }
+    return [{ cx: B.x + B.w, cy: E.cy }, { cx: C.x, cy: C.cy }];
   }
   function draw() {
     svg.setAttribute('viewBox', '0 0 ' + stage.clientWidth + ' ' + stage.clientHeight);
-    var E = box(N.eng), H = box(N.person), R = box(N.rec);
+    var C = box(N.conn), E = box(N.eng), H = box(N.person), R = box(N.rec);
     var wa = worldAnchors();
-    line('ea', E, box(N.allow)); line('eh', E, box(N.hold)); line('eb', E, box(N.block));
+    var ca = connAnchors();
+    line('ec', ca[0], ca[1]);
+    line('ca', C, box(N.allow)); line('ch', C, box(N.hold)); line('cb', C, box(N.block));
     var hpts = holdPath();
     var hp = paths.hp || (paths.hp = svg.appendChild(document.createElementNS(NS, 'path')));
     hp.setAttribute('d', 'M' + hpts.map(function (q) { return q[0] + ' ' + q[1]; }).join(' L'));
@@ -214,7 +223,7 @@
     var i = document.createElement('i'); i.className = 'now new'; chain.appendChild(i);
   }
   function reset() {
-    ['plat', 'eng', 'person', 'rec', 'world'].forEach(function (k) { N[k].classList.remove('lit', 'on', 'tap', 'ok', 'no'); });
+    ['plat', 'conn', 'eng', 'person', 'rec', 'world'].forEach(function (k) { N[k].classList.remove('lit', 'on', 'tap', 'ok', 'no'); });
     ['allow', 'hold', 'block'].forEach(function (k) { N[k].classList.remove('on'); });
     Object.keys(paths).forEach(function (k) { paths[k].classList.remove('lit'); });
     if (plugLine) plugLine.classList.remove('is-lit');
@@ -242,9 +251,13 @@
     await wait(1100, g);
     N.eng.classList.remove('is-scan');
     var D = N[r.d];
-    paths[{ allow: 'ea', hold: 'eh', block: 'eb' }[r.d]].classList.add('lit');
-    await move([c(N.eng), c(D)], 600, g);
-    lit(N.eng, 0); D.classList.add('on');
+    paths.ec.classList.add('lit');
+    await move([c(N.eng), c(N.conn)], 600, g);
+    lit(N.eng, 0); lit(N.conn, 1);
+    await wait(400, g);
+    paths[{ allow: 'ca', hold: 'ch', block: 'cb' }[r.d]].classList.add('lit');
+    await move([c(N.conn), c(D)], 600, g);
+    lit(N.conn, 0); D.classList.add('on');
     tok.classList.add({ allow: 'ok', hold: 'hold', block: 'blk' }[r.d]);
     say(r.say);
     await wait(1100, g);
@@ -328,130 +341,4 @@
 (function () {
   var c = document.querySelector('.h-subnav-in'), a = c && c.querySelector('[aria-current="page"]');
   if (c && a && c.scrollWidth > c.clientWidth) c.scrollLeft = a.offsetLeft - (c.clientWidth - a.offsetWidth) / 2;
-})();
-
-/* Baseline map (#bm): learn usual paths, then a new action appears. */
-(function () {
-  var fig = document.getElementById('bm');
-  var stage = document.getElementById('bmStage');
-  var svg = document.getElementById('bmLines');
-  if (!fig || !stage || !svg) return;
-  var REDUCED = document.documentElement.classList.contains('reduced');
-  var NS = 'http://www.w3.org/2000/svg';
-  var LEARNED = [['read', 'search'], ['search', 'edit'], ['edit', 'read']];
-  var paths = {};
-  var dash = null;
-
-  function node(id) { return stage.querySelector('[data-bm="' + id + '"]'); }
-  function center(el) {
-    var s = stage.getBoundingClientRect(), r = el.getBoundingClientRect();
-    return { x: r.left - s.left + r.width / 2, y: r.top - s.top + r.height / 2 };
-  }
-  function pathD(aEl, bEl) {
-    var a = center(aEl), b = center(bEl);
-    var dx = b.x - a.x, dy = b.y - a.y, len = Math.hypot(dx, dy) || 1;
-    var r = 8, ux = dx / len, uy = dy / len;
-    return 'M' + (a.x + ux * r) + ' ' + (a.y + uy * r) + ' L' + (b.x - ux * r) + ' ' + (b.y - uy * r);
-  }
-  function ensure() {
-    if (!svg.querySelector('defs')) {
-      var defs = document.createElementNS(NS, 'defs');
-      var m = document.createElementNS(NS, 'marker');
-      m.setAttribute('id', 'bm-arrow');
-      m.setAttribute('viewBox', '0 0 8 8');
-      m.setAttribute('refX', '7');
-      m.setAttribute('refY', '4');
-      m.setAttribute('markerWidth', '6');
-      m.setAttribute('markerHeight', '6');
-      m.setAttribute('orient', 'auto');
-      var poly = document.createElementNS(NS, 'path');
-      poly.setAttribute('d', 'M0 0 L8 4 L0 8 Z');
-      poly.setAttribute('fill', '#2F7AB0');
-      m.appendChild(poly);
-      defs.appendChild(m);
-      svg.appendChild(defs);
-    }
-    LEARNED.forEach(function (pair) {
-      var id = pair[0] + '-' + pair[1];
-      if (!paths[id]) {
-        var p = document.createElementNS(NS, 'path');
-        p.setAttribute('class', 'bm-learn');
-        p.setAttribute('marker-end', 'url(#bm-arrow)');
-        svg.appendChild(p);
-        paths[id] = p;
-      }
-    });
-    if (!dash) {
-      dash = document.createElementNS(NS, 'path');
-      dash.setAttribute('class', 'bm-dash');
-      svg.appendChild(dash);
-    }
-  }
-  function layout() {
-    ensure();
-    svg.setAttribute('viewBox', '0 0 ' + stage.clientWidth + ' ' + stage.clientHeight);
-    LEARNED.forEach(function (pair) {
-      var id = pair[0] + '-' + pair[1];
-      paths[id].setAttribute('d', pathD(node(pair[0]).querySelector('.bm-dot'), node(pair[1]).querySelector('.bm-dot')));
-    });
-    dash.setAttribute('d', pathD(node('edit').querySelector('.bm-dot'), node('web').querySelector('.bm-dot')));
-  }
-  layout();
-  if ('ResizeObserver' in window) new ResizeObserver(layout).observe(stage);
-  else window.addEventListener('resize', layout);
-
-  function finish() {
-    LEARNED.forEach(function (pair) {
-      var p = paths[pair[0] + '-' + pair[1]];
-      p.classList.add('is-on', 'is-w2', 'is-w3');
-    });
-    dash.classList.add('is-on');
-    fig.classList.add('is-web', 'is-new', 'is-done');
-  }
-  if (REDUCED) { finish(); return; }
-
-  var elapsed = 0, last = 0, playing = false, done = false, raf = 0;
-  var fired = {};
-  var TIMING = [
-    [400, function () { paths['read-search'].classList.add('is-on'); }],
-    [1000, function () { paths['search-edit'].classList.add('is-on'); }],
-    [1600, function () { paths['edit-read'].classList.add('is-on'); }],
-    [2300, function () {
-      LEARNED.forEach(function (pair) { paths[pair[0] + '-' + pair[1]].classList.add('is-w2'); });
-    }],
-    [3000, function () {
-      LEARNED.forEach(function (pair) { paths[pair[0] + '-' + pair[1]].classList.add('is-w3'); });
-    }],
-    [3600, function () { fig.classList.add('is-web'); }],
-    [4100, function () { dash.classList.add('is-on'); }],
-    [4600, function () { fig.classList.add('is-new'); done = true; fig.classList.add('is-done'); }]
-  ];
-  function tick(now) {
-    if (!playing || done) { raf = 0; return; }
-    if (!last) last = now;
-    elapsed += now - last;
-    last = now;
-    TIMING.forEach(function (step, i) {
-      if (!fired[i] && elapsed >= step[0]) { fired[i] = true; step[1](); }
-    });
-    if (!done) raf = requestAnimationFrame(tick);
-  }
-  function play() {
-    if (done || playing) return;
-    playing = true;
-    last = 0;
-    raf = requestAnimationFrame(tick);
-  }
-  function pause() {
-    playing = false;
-    last = 0;
-    if (raf) { cancelAnimationFrame(raf); raf = 0; }
-  }
-
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (ents) {
-      if (ents[0].isIntersecting) play();
-      else pause();
-    }, { threshold: 0.35 }).observe(fig);
-  } else { play(); }
 })();
