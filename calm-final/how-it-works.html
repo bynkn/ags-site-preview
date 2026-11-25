@@ -111,7 +111,7 @@
     <div class="h-frame">
       <p class="h-k rv">The method</p>
       <h2 class="h-h2 rv" id="method-h">Observe. Learn. Score. Refine.</h2>
-      <p class="h-lead rv" style="--d:1">Your agent’s own behavior is the reference. We don’t write rules about what it should do. We measure what it actually does.</p>
+      <p class="h-lead rv" style="--d:1">Most guardrails need rules you write, or a second model reading prompts. We learn from behavior. We read actions, not prompts.</p>
       <ol class="ols">
         <li class="ols-c rv"><span class="ols-n">01</span><h3>Observe.</h3><p>We record your agent’s behavior, the tools it uses and how, as a behavioral fingerprint. Prompts, messages and files stay private. We don’t need them.</p></li>
         <li class="ols-c rv" style="--d:1"><span class="ols-n">02</span><h3>Learn its baseline.</h3><p>From those actions we build a statistical picture of how this agent normally works. Every agent gets its own.</p></li>
@@ -146,50 +146,11 @@
       <ul class="h-walk">
         <li class="rv"><b>Steps 1 to 3</b> match how this agent works, so they run.</li>
         <li class="rv" style="--d:1"><b>Step 4</b> is new for this agent. It waits for a person.</li>
-        <li class="rv" style="--d:2"><b>Step 5</b> doesn’t fit its baseline. It’s blocked before it runs, and the agent gets the reason.</li>
+        <li class="rv" style="--d:2"><b>Step 5</b> doesn’t fit its baseline. It’s blocked before it runs, and the agent gets <code>Blocked by Agentic GUARDIANS</code> back, with the reason.</li>
       </ul>
     </div>
   </section>
 
-  <!-- 5 · What you see -->
-  <section class="h-sec" id="use" aria-labelledby="use-h">
-    <span class="h-node" aria-hidden="true"></span>
-    <div class="h-frame">
-      <p class="h-k rv">Using it</p>
-      <h2 class="h-h2 rv" id="use-h">Most of the time, you won’t notice it.</h2>
-      <p class="h-lead rv" style="--d:1">There are no rules to write. Actions that fit run as usual. You hear from us only when one doesn’t.</p>
-      <div class="h-dec">
-        <div class="h-dc rv"><span class="dec d-ok">ALLOW</span><h3>It runs.</h3><p>The tool runs and returns its result. Nothing changes for you or the agent.</p></div>
-        <div class="h-dc rv" style="--d:1"><span class="dec d-hold">HOLD</span><h3>A person decides.</h3><p>The action waits. Someone on your team approves it once or keeps it blocked. Nothing runs until then.</p></div>
-        <div class="h-dc rv" style="--d:2"><span class="dec d-blk">BLOCK</span><h3>It never runs.</h3><p>The agent gets <code>Blocked by Agentic GUARDIANS</code> back instead of a result, with the reason.</p></div>
-      </div>
-      <figure class="h-term h-term-blk rv" style="--d:1" aria-label="Example: what the agent gets back on a block">
-        <div class="h-term-bar"><span class="h-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="h-term-title">docs-agent · tool call</span><span class="h-ex">Example</span></div>
-        <ol class="h-term-body">
-          <li><span class="t-k">call</span><span class="t-v">shell</span><span class="t-s t-wait">paused</span></li>
-          <li class="t-bad"><span class="t-k">result</span><span class="t-v">Blocked by Agentic GUARDIANS · doesn’t fit this agent’s baseline</span><span class="t-s">blocked</span></li>
-        </ol>
-      </figure>
-      <div class="h-notes">
-        <p><b>You teach it.</b> Review a block and mark it right or wrong. That agent’s baseline learns. Other agents are unaffected.</p>
-        <p><b>No system is perfect.</b> That’s why holds go to a person, and every block can be reviewed.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 6 · Read / don't -->
-  <section class="h-sec" id="reads" aria-labelledby="reads-h">
-    <span class="h-node" aria-hidden="true"></span>
-    <div class="h-frame">
-      <p class="h-k rv">What we read</p>
-      <h2 class="h-h2 rv" id="reads-h">We read actions, not prompts.</h2>
-      <p class="h-lead rv" style="--d:1">An attack on an agent usually arrives as text: a hidden instruction in a file, a page or a message. We don’t read that text. We look at what the agent does next.</p>
-      <div class="h-rw">
-        <div class="h-card h-rwc rv"><p class="dg-k">What we look at</p><ul><li>Which tool the agent calls</li><li>In what order</li><li>Compared with that agent’s own baseline</li></ul></div>
-        <div class="h-card h-rwc rw-no rv" style="--d:1"><p class="dg-k">What we don’t read or store</p><ul><li>Prompts</li><li>Messages</li><li>Files</li></ul></div>
-      </div>
-    </div>
-  </section>
 
   <section class="h-sec h-cost" aria-labelledby="cost-p1">
     <span class="h-node" aria-hidden="true"></span>
@@ -197,9 +158,9 @@
       <p class="h-k rv">The weight</p>
       <h2 class="cost-h rv" id="cost-p1"><span>No LLM.</span> <span>No GPU.</span> <span>No tokens.</span></h2>
       <ul class="cost-l">
-        <li class="rv" style="--d:1"><b>No language model in the loop.</b> The decision is math on behavior. There is nothing to prompt and nothing to talk around.</li>
-        <li class="rv" style="--d:2"><b>Runs on a lightweight CPU, on your machine.</b> Nothing leaves it.</li>
-        <li class="rv" style="--d:3"><b>No GPU bill. No token bill.</b> Checking an action doesn’t mean paying for another model to think.</li>
+        <li class="rv" style="--d:1"><b>No LLM.</b> Nothing to prompt, nothing to talk around.</li>
+        <li class="rv" style="--d:2"><b>No GPU.</b> It runs on a lightweight CPU, on your machine.</li>
+        <li class="rv" style="--d:3"><b>No tokens.</b> Checking an action costs you nothing extra.</li>
       </ul>
     </div>
   </section>
